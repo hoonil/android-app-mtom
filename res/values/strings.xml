@@ -4,5 +4,8 @@
     <string name="app_name">mtom</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="title_activity_activity_open">ActivityOpenActivity</string>
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="title_activity_list_view_detail">ListViewDetailActivity</string>
 
 </resources>

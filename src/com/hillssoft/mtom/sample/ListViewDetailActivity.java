@@ -6,18 +6,19 @@ import base.BaseActivity;
 
 import com.hillssoft.mtom.R;
 
-public class ActivityOpenActivity extends BaseActivity {
+public class ListViewDetailActivity extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sample_activity_open);
+		setContentView(R.layout.activity_sample_list_view_detail);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_activity_open, menu);
+		getMenuInflater()
+				.inflate(R.menu.activity_sample_list_view_detail, menu);
 		return true;
 	}
 
