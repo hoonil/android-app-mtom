@@ -19,6 +19,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="left|center"
-            android:text="2. List View" />
+            android:text="2. View Object Test" />
+        
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="left|center"
+            android:text="3. List View" />
 
 </LinearLayout>

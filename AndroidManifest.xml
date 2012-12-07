@@ -24,16 +24,30 @@
         </activity>
         <activity
             android:name="com.hillssoft.mtom.sample.ActivityOpenActivity"
-            android:label="@string/title_activity_activity_open" >
+            android:label="@string/activity_title_activity_open_activity" >
         </activity>
         <activity
-            android:name="com.hillssoft.mtom.sample.ListViewActivity"
-            android:label="@string/title_activity_list_view" >
+            android:name="com.hillssoft.mtom.sample.ViewObjectTestActivity"
+            android:label="@string/activity_title_view_object_test" >
         </activity>
+        
+        
+        <activity
+            android:name="com.hillssoft.mtom.sample.ListViewActivity"
+            android:label="@string/activity_title_list_view" >
+        </activity>
+        
+        
+        
+        
+        
+        
+        
         <activity
             android:name="com.hillssoft.mtom.sample.ListViewDetailActivity"
             android:label="@string/title_activity_list_view_detail" >
         </activity>
+        
     </application>
 
 </manifest>
