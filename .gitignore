@@ -1,0 +1,10 @@
+bin/
+dist/
+gen/
+assets/auto_gen_build.properties
+.svn/
+tmp/
+tests/.settings
+local.properties
+.DS_Store
+Thumbs.db
