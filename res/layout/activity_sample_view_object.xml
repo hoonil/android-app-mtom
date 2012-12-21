@@ -47,9 +47,32 @@
         android:id="@+id/subject_text_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="TextViewadfafddasfasfasfasfasfafdasfdasfafafasfasfasfasfasfasfasfafafasdfasfdasfdasfasfa" />
+        android:text="TextViewadfafddasfasfasfasfasfafdasfdasfafafasfasfasfasfasfasfasfafafasdfasfdasfdasfasfa"
+        android:lines="2"
+        android:ellipsize="end"
+         />
     
 
+    <EditText
+        android:id="@+id/edit_text1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:singleLine="true">
+	</EditText>
+    
+    <Button
+        android:id="@+id/btn_data_save"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Save"
+        android:layout_gravity="center" />
+    
+    
+    
+    
+    
+    
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,8 +83,6 @@
             android:layout_height="wrap_content" >
         </RelativeLayout>
     </LinearLayout>
-    
-    
 
 
 </LinearLayout>

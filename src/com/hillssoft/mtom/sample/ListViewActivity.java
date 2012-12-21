@@ -20,17 +20,24 @@ public class ListViewActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sample_list_view);
-		
 		initializeView();
-		setEventListener();
+		initializeBindService();
+		setInitializeViewEventListener();
+
 	}
 
 	
-	private void initializeView(){
+	protected void initializeView(){
 
 	}
 	
-	private void setEventListener(){
+	@Override
+	protected void initializeBindService() {
+		// TODO Auto-generated method stub
+		super.initializeBindService();
+	}
+	
+	protected void setInitializeViewEventListener(){
 
 	}
 

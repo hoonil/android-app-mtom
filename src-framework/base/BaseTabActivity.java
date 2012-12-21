@@ -1,13 +1,16 @@
 package base;
 
-import android.app.Activity;
+import android.app.TabActivity;
 import android.os.Bundle;
 
-public class BaseActivity extends Activity {
+public class BaseTabActivity extends TabActivity {
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		initializeTab();
+		initializeBindService();
 	}
-	protected void initializeView(){}
+	protected void initializeTab(){}
 	protected void initializeBindService(){}
-	protected void setInitializeViewEventListener(){}
+	
 }

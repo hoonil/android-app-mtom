@@ -9,12 +9,13 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import base.BaseActivity;
 
 import com.hillssoft.mtom.R;
 
-public class ViewObjectTestActivity extends BaseActivity {
+public class ViewObjectActivity extends BaseActivity {
 	Button btn1;
 	Button btn2;
 	Button btn3;
@@ -22,32 +23,49 @@ public class ViewObjectTestActivity extends BaseActivity {
 	Button addBtn1;
 	
 	TextView txt1;
+	EditText edit1; 
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater()
-				.inflate(R.menu.activity_sample_view_object_test, menu);
-		return true;
-	}
-
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sample_view_object_test);
-		
+		setContentView(R.layout.activity_sample_view_object);
 		initializeView();
-		setEventListener();
+		initializeBindService();
+		setInitializeViewEventListener();
 	}
 
-
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState); 
+		
+		outState.putString("edit1", edit1.getText().toString());
+	}
 	
-	private void initializeView(){
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onRestoreInstanceState(savedInstanceState);
+		
+		/*
+		 * [Data Restore]
+		 */
+		if(savedInstanceState != null){
+			edit1.setText(savedInstanceState.getString("edit1"));
+		}
+		
+	}
+	
+	
+	
+	protected void initializeView(){
 		btn1 = (Button)findViewById(R.id.btn1);
 		btn2 = (Button)findViewById(R.id.btn2);
 		btn3 = (Button)findViewById(R.id.btn3);
 		txt1 = (TextView)findViewById(R.id.subject_text_view);
+		edit1 = (EditText)findViewById(R.id.edit_text1);
+		
 		
 		/*
 		 * [ Set New Mark at TextView ]
@@ -61,12 +79,17 @@ public class ViewObjectTestActivity extends BaseActivity {
 		txt1.setTextSize(30);
 		
 		
+		/*
+		 * [ Date Restore ]
+		 */
+		edit1.setSaveEnabled(false);
+		edit1.setText("TEST DATA - Default");
 		
 		
 		
 	}
 	
-	private void setEventListener(){
+	protected void setInitializeViewEventListener(){
 		btn1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
