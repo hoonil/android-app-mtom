@@ -15,5 +15,7 @@
     <string name="title_activity_test_tab">TestTabActivity</string>
     <string name="title_activity_graph">GraphActivity</string>
     <string name="title_activity_broadcast">BroadcastActivity</string>
+    <string name="title_activity_service">ServiceActivity</string>
+    <string name="title_activity_db">DBActivity</string>
 
 </resources>
