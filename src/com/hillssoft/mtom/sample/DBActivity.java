@@ -1,5 +1,8 @@
 package com.hillssoft.mtom.sample;
 
+import java.util.Calendar;
+import java.util.HashMap;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,6 +28,8 @@ public class DBActivity extends BaseActivity {
 	private ContentValues mContentValue = null;
 	
 	private String sql = null;
+	private HashMap<String, String> sqlParams = null;
+	
 	
 	
 	
@@ -41,7 +46,7 @@ public class DBActivity extends BaseActivity {
 		 */
 		mAppDB = new AppDB(this);
 		mDB = mAppDB.getWritableDatabase();
-
+		sqlParams = new HashMap();
 		
 	}
 
@@ -81,45 +86,63 @@ public class DBActivity extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
 			case R.id.Create :
+				
 				sql = AppDBQuery.getQuery(AppDBQueryKeyType.CREATE_TABLE_POST, null);
 				mDB.execSQL(sql);
 				sql = AppDBQuery.getQuery(AppDBQueryKeyType.CREATE_TABLE_POST_COMMENT, null);
 				mDB.execSQL(sql);
 				
 				Toast.makeText(getApplicationContext(), "Create OK !!!", Toast.LENGTH_SHORT).show();
+				
 			break;
 				
 			case R.id.Insert :
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.INSERT_TABLE_POST, null);
+				
+				sqlParams.clear();
+				sqlParams.put("message", "test~~~ message");
+				sqlParams.put("create_at", Long.toString(Calendar.getInstance().getTimeInMillis() / 1000));
+				sqlParams.put("state", "1");
+				sqlParams.put("is_del", "0");
+				sql = AppDBQuery.getQuery(AppDBQueryKeyType.INSERT_TABLE_POST, sqlParams);
+				
 				mDB.execSQL(sql);
 				Toast.makeText(getApplicationContext(), "Insert OK !!!", Toast.LENGTH_SHORT).show();
 				
 				/*
 				 * [DAO]
 				 */
-//				mContentValue.clear();
-//				mContentValue.put("name", "aa");
-//				mContentValue.put("code", 11);
-//				mDB.insert(DB_TABLE_NAME, null, mContentValue);
+				//mContentValue.clear();
+				//mContentValue.put("name", "aa");
+				//mContentValue.put("code", 11);
+				//mDB.insert(DB_TABLE_NAME, null, mContentValue);
 				
 			break;
 				
 			case R.id.Update :
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.UPDATE_TABLE_POST, null);
+				
+				sqlParams.clear();
+				sqlParams.put("message", "update~~~ ok!!!!!");
+				sqlParams.put("post_id", "1");
+				sql = AppDBQuery.getQuery(AppDBQueryKeyType.UPDATE_TABLE_POST, sqlParams);
+				
 				mDB.execSQL(sql);
 				Toast.makeText(getApplicationContext(), "Update OK !!!", Toast.LENGTH_SHORT).show();
 				
 			break;
 				
 			case R.id.Delete :
+				
 				sql = AppDBQuery.getQuery(AppDBQueryKeyType.DELETE_TABLE_POST, null);
+				
 				mDB.execSQL(sql);
 				Toast.makeText(getApplicationContext(), "Delete OK !!!", Toast.LENGTH_SHORT).show();
 				
 			break;
 				
 			case R.id.Select :
+				
 				sql = AppDBQuery.getQuery(AppDBQueryKeyType.SELECT_TABLE_POST, null);
+				
 				txt1 = (TextView)findViewById(R.id.txt1);
 				txt1.setText("[ DATA SELECT] \n");
 				mCursor = mDB.rawQuery(sql, null);
@@ -135,6 +158,7 @@ public class DBActivity extends BaseActivity {
 				}
 				mCursor.close();
 				Toast.makeText(getApplicationContext(), "Select OK !!!", Toast.LENGTH_SHORT).show();
+				
 			break;
 				
 			default :

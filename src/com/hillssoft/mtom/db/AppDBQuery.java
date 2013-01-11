@@ -18,7 +18,6 @@ public class AppDBQuery {
 		SELECT_TABLE_POST,
 		SELECT_TABLE_POST_COMMENT,
 		ALTER_TABLE_POST_18,
-		
 			
 		
 	}
@@ -58,11 +57,18 @@ public class AppDBQuery {
 			break;
 			
 			case INSERT_TABLE_POST :
+				
 				sqlQuery = "" +
 						"INSERT INTO " + DB_TABLE_POST + "(" +
-						"	message, create_at, state, is_del" +
+						"	message, " +
+						"	create_at, " +
+						"	state, " +
+						"	is_del" +
 						") VALUES(" +
-						"	'AA', '10000', '10', '0'" +
+						"	'" + params.get("message") + "', " +
+						"	'" + params.get("create_at") + "', " +
+						"	'" + params.get("state") + "', " +
+						"	'" + params.get("is_del") + "'" +
 						");";
 			break;
 				
@@ -71,9 +77,9 @@ public class AppDBQuery {
 						"UPDATE " +
 						" " + DB_TABLE_POST + " " +
 						"SET " +
-						"	message = 'bbbbbb' " +
+						"	message = '" + params.get("message") + "' " +
 						"WHERE " +
-						"	post_id > 0";
+						"	post_id > " + params.get("post_id") + "";
 			break;
 			
 			case DELETE_TABLE_POST :
