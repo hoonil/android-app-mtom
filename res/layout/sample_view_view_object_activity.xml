@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".ViewObjectTestActivity" >
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sample_view_view_object_activity" />
+
+    <LinearLayout
+        android:id="@+id/linear_lyaout_1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Btn1" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Btn2" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Btn3" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/subject_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="TextViewadfafddasfasfasfasfasfafdasfdasfafafasfasfasfasfasfasfasfafafasdfasfdasfdasfasfa"
+        android:lines="2"
+        android:ellipsize="end"
+         />
+    
+
+    <EditText
+        android:id="@+id/edit_text1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:singleLine="true">
+	</EditText>
+    
+    <Button
+        android:id="@+id/btn_data_save"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Save"
+        android:layout_gravity="center" />
+    
+    
+    
+    
+    
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
