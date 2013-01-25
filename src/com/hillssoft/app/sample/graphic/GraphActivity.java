@@ -20,7 +20,6 @@ public class GraphActivity extends BaseActivity {
 	
 	@Override
 	protected void initializeView() {
-		// TODO Auto-generated method stub
 		super.initializeView();
 		setContentView(R.layout.sample_graphic_graph_activity);
 
@@ -94,8 +93,8 @@ public class GraphActivity extends BaseActivity {
 	
 	@Override
 	protected void setInitializeViewEventListener() {
-		// TODO Auto-generated method stub
-		super.setInitializeViewEventListener();
+		
+		
 	}
 
 }

@@ -29,30 +29,6 @@
         
         
         
-        <!-- Broadcast Receiver -->
-        <receiver
-            android:name=".sample.receiver.StartReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-        
-        <receiver 
-            android:name=".sample.receiver.AlertReceiver" >
-            <intent-filter>
-                <action android:name="StaticBroadcastReceiver" />
-            </intent-filter>
-        </receiver>
-        
-        
-        
-        
-        
-        <!-- Service -->
-        
-        
-        
-        
         
         
         
@@ -63,8 +39,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+				<category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
@@ -73,11 +48,11 @@
         
         <!-- Tab Activity -->
         <activity
-            android:name="com.hillssoft.app.sample.SampleTabActivity"
+            android:name=".sample.SampleTabActivity"
             android:label="@string/sample_sample_tab_activity_title" >
         </activity>
         <activity
-            android:name="com.hillssoft.app.mtom.MtomTabActivity"
+            android:name=".mtom.MtomTab"
             android:label="@string/mtom_mtom_tab_activity_title" >
         </activity>
         
@@ -111,6 +86,11 @@
         </activity>
         
         <activity
+            android:name=".sample.view.PullToRefreshActivity"
+            android:label="@string/sample_db_db_activity_title" >
+        </activity>
+        
+        <activity
             android:name=".sample.graphic.GraphActivity"
             android:label="@string/sample_graphic_graph_activity_title" >
         </activity>
@@ -131,6 +111,41 @@
         </activity>
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+         <!-- MtoM - Chat Activity -->
+
+        
+        <activity
+            android:name=".mtom.activity.auth.MemberRegisterActivity"
+            android:label="@string/mtom_auth_title" >
+        </activity>
+        <activity
+            android:name=".mtom.activity.chat.ChatRoomListActivity"
+            android:label="@string/mtom_chat_title" >
+        </activity>
+        <activity
+            android:name=".mtom.activity.friend.FriendListActivity"
+            android:label="@string/mtom_friend_title" >
+        </activity>
+        <activity
+            android:name=".mtom.activity.more.MoreListActivity"
+            android:label="@string/mtom_more_title" >
+        </activity>
+        <activity
+            android:name=".mtom.activity.myroom.MyRoomActivity"
+            android:label="@string/mtom_myroom_title" >
+        </activity>
+        <activity
+            android:name=".mtom.activity.search.SearchActivity"
+            android:label="@string/mtom_search_title" >
+        </activity>
         
         
         

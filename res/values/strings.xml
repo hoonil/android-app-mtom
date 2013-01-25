@@ -51,4 +51,30 @@
     
     
     
+    <string name="mtom_title">MtoM</string>
+    
+    
+    <!-- Service : MtoM : MyRoom -->
+    <string name="mtom_auth_title">Auth</string>
+    
+    
+    <!-- Service : MtoM : MyRoom -->
+    <string name="mtom_myroom_title">MyRoom</string>
+    
+    
+    <!-- Service : MtoM : friend -->
+    <string name="mtom_friend_title">Friend</string>
+    
+    
+    <!-- Service : MtoM : chat -->
+    <string name="mtom_chat_title">Chat</string>
+    
+    
+    <!-- Service : MtoM : search -->
+    <string name="mtom_search_title">Search</string>
+    
+    <!-- Service : MtoM : more -->
+    <string name="mtom_more_title">More</string>
+    
+    
 </resources>

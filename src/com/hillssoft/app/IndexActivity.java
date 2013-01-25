@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-import com.hillssoft.app.mtom.MtomTabActivity;
+import com.hillssoft.app.mtom.MtomTab;
 import com.hillssoft.app.sample.SampleTabActivity;
-import com.hillssoft.framework.base.BaseTabActivity;
+import com.hillssoft.framework.base.BaseTab;
 
-public class IndexActivity extends BaseTabActivity {
+public class IndexActivity extends BaseTab {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,10 +16,11 @@ public class IndexActivity extends BaseTabActivity {
 
 	}
 	
-	protected void initializeTab(){
-		final TabHost tab = getTabHost();;
+	public void initializeTab(){
+		final TabHost tab = getTabHost();
+		tab.clearAllTabs();
 		tab.addTab(tab.newTabSpec("Sample").setIndicator("Sample").setContent(new Intent(this, SampleTabActivity.class)));
-		tab.addTab(tab.newTabSpec("mTOm").setIndicator("mTOm").setContent(new Intent(this, MtomTabActivity.class)));
+		tab.addTab(tab.newTabSpec("mTOm").setIndicator("mTOm").setContent(new Intent(this, MtomTab.class)));
 	}
 	
 	

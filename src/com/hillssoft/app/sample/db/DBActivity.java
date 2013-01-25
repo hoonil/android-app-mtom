@@ -59,7 +59,6 @@ public class DBActivity extends BaseActivity {
 	
 	@Override
 	protected void initializeView() {
-		// TODO Auto-generated method stub
 		super.initializeView();
 		setContentView(R.layout.sample_db_db_activity);
 		txt1 = (TextView)findViewById(R.id.txt1);
@@ -67,8 +66,7 @@ public class DBActivity extends BaseActivity {
 	
 	@Override
 	protected void setInitializeViewEventListener() {
-		// TODO Auto-generated method stub
-		super.setInitializeViewEventListener();
+	
 	}
 	
 	@Override

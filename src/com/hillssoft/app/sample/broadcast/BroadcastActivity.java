@@ -72,9 +72,6 @@ public class BroadcastActivity extends BaseActivity {
 	
 	@Override
 	protected void setInitializeViewEventListener() {
-		// TODO Auto-generated method stub
-		super.setInitializeViewEventListener();
-		
 		btn1.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				txt1.setText("!!! Btn1 !!!");

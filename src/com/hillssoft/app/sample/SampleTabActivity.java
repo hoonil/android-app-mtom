@@ -19,6 +19,7 @@ import com.hillssoft.app.sample.db.DBActivity;
 import com.hillssoft.app.sample.graphic.GraphActivity;
 import com.hillssoft.app.sample.service.ServiceActivity;
 import com.hillssoft.app.sample.view.ListViewActivity;
+import com.hillssoft.app.sample.view.PullToRefreshActivity;
 import com.hillssoft.app.sample.view.ViewObjectActivity;
 import com.hillssoft.framework.base.BaseActivity;
 
@@ -34,6 +35,8 @@ public class SampleTabActivity extends BaseActivity {
 	private Button btn5;
 	private Button btn6;
 	private Button btn7;
+	private Button btn8;
+	
 	
 	
 	
@@ -58,6 +61,7 @@ public class SampleTabActivity extends BaseActivity {
 		
 	}
 	
+	
 
 	protected void initializeView(){
 		super.initializeView();
@@ -70,14 +74,13 @@ public class SampleTabActivity extends BaseActivity {
 		btn5 = (Button)findViewById(R.id.btn5);
 		btn6 = (Button)findViewById(R.id.btn6);
 		btn7 = (Button)findViewById(R.id.btn7);
+		btn8 = (Button)findViewById(R.id.btn8);
 		
 		txt1 = (TextView)findViewById(R.id.txt1);
 		
 	}
 	
 	protected void setInitializeViewEventListener(){
-		super.setInitializeViewEventListener();
-		
 		btn1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -142,6 +145,14 @@ public class SampleTabActivity extends BaseActivity {
 			}
 		});
 		
+		btn8.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(SampleTabActivity.this, PullToRefreshActivity.class);
+				startActivity(intent);
+			}
+		});
 		
 		
 	}

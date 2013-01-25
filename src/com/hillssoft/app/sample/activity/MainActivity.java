@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity {
 
 	
 	protected void initializeView(){
+		super.initializeView();
 		setContentView(R.layout.sample_activity_main_activity);
 
 		txt1 = (TextView)findViewById(R.id.txt1);

@@ -45,7 +45,9 @@ public class ServiceActivity extends BaseActivity {
 	}
 	@Override
 	protected void setInitializeViewEventListener() {
-		super.setInitializeViewEventListener();
+		
+		
+		
 		
 //		btn1.setOnClickListener(new OnClickListener() {
 //			public void onClick(View v) {
