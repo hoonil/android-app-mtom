@@ -1,14 +1,59 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context=".ListViewActivity" >
+    android:orientation="vertical" >
+
+
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/text_view1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:gravity="center"
         android:text="@string/sample_view_list_view_activity_title" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="!!! List Load !!!" />
+
+    
+    
+    
+    
+    
+    <LinearLayout
+        android:id="@+id/tool_box_linear_layout" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/data_edit_text"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content" />
+        
+        
+        <Button
+	        android:id="@+id/save_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Save" />
+
+        <Button
+	        android:id="@+id/delete_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Delete" />
+	</LinearLayout>
+    
+    
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+</LinearLayout>

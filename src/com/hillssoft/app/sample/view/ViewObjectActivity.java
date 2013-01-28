@@ -46,7 +46,7 @@ public class ViewObjectActivity extends BaseActivity {
 		super.onRestoreInstanceState(savedInstanceState);
 		
 		/*
-		 * [Data Restore]
+		 * [Data Restore]]
 		 */
 		if(savedInstanceState != null){
 			edit1.setText(savedInstanceState.getString("edit1"));

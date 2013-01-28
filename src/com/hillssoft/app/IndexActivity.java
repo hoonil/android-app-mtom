@@ -20,7 +20,7 @@ public class IndexActivity extends BaseTab {
 		final TabHost tab = getTabHost();
 		tab.clearAllTabs();
 		tab.addTab(tab.newTabSpec("Sample").setIndicator("Sample").setContent(new Intent(this, SampleTabActivity.class)));
-		tab.addTab(tab.newTabSpec("mTOm").setIndicator("mTOm").setContent(new Intent(this, MtomTab.class)));
+		tab.addTab(tab.newTabSpec("mTOm").setIndicator("mTOm").setContent(new Intent(this, MtomTab.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)));
 	}
 	
 	

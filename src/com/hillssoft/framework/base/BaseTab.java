@@ -13,4 +13,6 @@ abstract public class BaseTab extends TabActivity {
 	abstract public void initializeTab();
 	protected void initializeBindService(){}
 	
+	
+	
 }
