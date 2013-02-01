@@ -30,4 +30,6 @@ public class IndexActivity extends BaseTab {
 		super.initializeBindService();
 	}
 	
+	
+	//////////////////////////
 }
