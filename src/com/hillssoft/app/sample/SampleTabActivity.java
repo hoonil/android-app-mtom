@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hillssoft.app.R;
+import com.hillssoft.app.mtom.MtomTab;
 import com.hillssoft.app.sample.activity.MainActivity;
 import com.hillssoft.app.sample.broadcast.BroadcastActivity;
 import com.hillssoft.app.sample.db.DBActivity;
@@ -28,6 +29,7 @@ public class SampleTabActivity extends BaseActivity {
 	/**
 	 * Define Member Object Variables
 	 */
+	private Button btnMtom;
 	private Button btn1;
 	private Button btn2;
 	private Button btn3;
@@ -67,6 +69,7 @@ public class SampleTabActivity extends BaseActivity {
 		super.initializeView();
 		setContentView(R.layout.sample_sample_tab_activity);
 		
+		btnMtom = (Button)findViewById(R.id.btnMtom);
 		btn1 = (Button)findViewById(R.id.btn1);
 		btn2 = (Button)findViewById(R.id.btn2);
 		btn3 = (Button)findViewById(R.id.btn3);
@@ -81,6 +84,15 @@ public class SampleTabActivity extends BaseActivity {
 	}
 	
 	protected void setInitializeViewEventListener(){
+		btnMtom.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(SampleTabActivity.this, MtomTab.class);
+				startActivity(intent);
+			}
+		});
+		
 		btn1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.hillssoft.app.R;
 import com.hillssoft.app.mtom.db.AppDB;
 import com.hillssoft.app.mtom.db.AppDBQuery;
-import com.hillssoft.app.mtom.db.AppDBQuery.AppDBQueryKeyType;
 import com.hillssoft.framework.base.BaseActivity;
 
 public class DBActivity extends BaseActivity {
@@ -86,9 +85,9 @@ public class DBActivity extends BaseActivity {
 		switch(item.getItemId()){
 			case R.id.Create :
 				
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.CREATE_TABLE_POST, null);
+				sql = AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST, null);
 				mDB.execSQL(sql);
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.CREATE_TABLE_POST_COMMENT, null);
+				sql = AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST_COMMENT, null);
 				mDB.execSQL(sql);
 				
 				Toast.makeText(getApplicationContext(), "Create OK !!!", Toast.LENGTH_SHORT).show();
@@ -102,7 +101,7 @@ public class DBActivity extends BaseActivity {
 				sqlParams.put("create_at", Long.toString(Calendar.getInstance().getTimeInMillis() / 1000));
 				sqlParams.put("state", "1");
 				sqlParams.put("is_del", "0");
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.INSERT_TABLE_POST, sqlParams);
+				sql = AppDBQuery.getQuery(AppDBQuery.QueryKey.INSERT_TABLE_POST, sqlParams);
 				
 				mDB.execSQL(sql);
 				Toast.makeText(getApplicationContext(), "Insert OK !!!", Toast.LENGTH_SHORT).show();
@@ -122,7 +121,7 @@ public class DBActivity extends BaseActivity {
 				sqlParams.clear();
 				sqlParams.put("message", "update~~~ ok!!!!!");
 				sqlParams.put("post_id", "1");
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.UPDATE_TABLE_POST, sqlParams);
+				sql = AppDBQuery.getQuery(AppDBQuery.QueryKey.UPDATE_TABLE_POST, sqlParams);
 				
 				mDB.execSQL(sql);
 				Toast.makeText(getApplicationContext(), "Update OK !!!", Toast.LENGTH_SHORT).show();
@@ -131,7 +130,7 @@ public class DBActivity extends BaseActivity {
 				
 			case R.id.Delete :
 				
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.DELETE_TABLE_POST, null);
+				sql = AppDBQuery.getQuery(AppDBQuery.QueryKey.DELETE_TABLE_POST, null);
 				
 				mDB.execSQL(sql);
 				Toast.makeText(getApplicationContext(), "Delete OK !!!", Toast.LENGTH_SHORT).show();
@@ -140,7 +139,7 @@ public class DBActivity extends BaseActivity {
 				
 			case R.id.Select :
 				
-				sql = AppDBQuery.getQuery(AppDBQueryKeyType.SELECT_TABLE_POST, null);
+				sql = AppDBQuery.getQuery(AppDBQuery.QueryKey.SELECT_TABLE_POST, null);
 				
 				txt1 = (TextView)findViewById(R.id.txt1);
 				txt1.setText("[ DATA SELECT] \n");

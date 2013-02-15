@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.hillssoft.app.mtom.conf.AppConf;
-import com.hillssoft.app.mtom.db.AppDBQuery.AppDBQueryKeyType;
 import com.hillssoft.app.mtom.manager.AppManager;
 import com.hillssoft.framework.base.BaseDB;
 
@@ -28,8 +27,8 @@ public class AppDB extends BaseDB{
 		 * [ Default DB Create]
 		 */
 		Log.d("DB - Create", "version : 0");
-		db.execSQL(AppDBQuery.getQuery(AppDBQueryKeyType.CREATE_TABLE_POST));
-		db.execSQL(AppDBQuery.getQuery(AppDBQueryKeyType.CREATE_TABLE_POST_COMMENT));
+		db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST));
+		db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST_COMMENT));
 		
 		
 	}
@@ -76,7 +75,7 @@ public class AppDB extends BaseDB{
 				Log.d("DB - 17", "version : 17");
 			case 18 :
 				Log.d("DB - 18", "version : 18");
-				db.execSQL(AppDBQuery.getQuery(AppDBQueryKeyType.ALTER_TABLE_POST_18));
+				db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.ALTER_TABLE_POST_18));
 			case 19 :
 				Log.d("DB - 19", "version : 19");
 			case 20 :			

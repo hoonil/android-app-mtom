@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class AppDBQuery {
 	
-	public static enum AppDBQueryKeyType{
+	public static enum QueryKey{
 		CREATE_TABLE_POST,
 		CREATE_TABLE_POST_COMMENT,
 		INSERT_TABLE_POST,
@@ -18,18 +18,16 @@ public class AppDBQuery {
 		SELECT_TABLE_POST,
 		SELECT_TABLE_POST_COMMENT,
 		ALTER_TABLE_POST_18,
-			
-		
 	}
 	
 	private static final String DB_TABLE_POST = "tb_post";
 	private static final String DB_TABLE_POST_COMMENT = "tb_post_comment";
 	
-	public static String getQuery(AppDBQueryKeyType key){
+	public static String getQuery(QueryKey key){
 		return getQuery(key, null);
 	}
 	
-	public static String getQuery(AppDBQueryKeyType key, HashMap<String, String> params){
+	public static String getQuery(QueryKey key, HashMap<String, String> params){
 		
 		String sqlQuery = "";
 		
