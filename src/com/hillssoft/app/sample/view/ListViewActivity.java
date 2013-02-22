@@ -47,7 +47,7 @@ public class ListViewActivity extends BaseActivity {
 		 */
 		dataArrayListAdapter = ArrayAdapter.createFromResource(this, R.array.location, R.layout.sample_view_list_view_activity_list_view_item);
 		
-		listView1.setChoiceMode(listView1.CHOICE_MODE_SINGLE);
+		//listView1.setChoiceMode(listView1.CHOICE_MODE_SINGLE);
 		listView1.setAdapter(dataArrayListAdapter);
 		
 		

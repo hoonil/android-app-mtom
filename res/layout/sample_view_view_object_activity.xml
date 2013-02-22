@@ -21,27 +21,37 @@
         <Button
             android:id="@+id/btn1"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:text="Btn1" />
 
         <Button
             android:id="@+id/btn2"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="Btn2" />
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:gravity="left|center"
+            android:text="Btn21111111111111111111111111111111111111111111111jkkl;;;;;;;;;;;;;;;;adfsadfasfasfasaaaa" />
 
         <Button
             android:id="@+id/btn3"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0"
             android:text="Btn3" />
+    
     </LinearLayout>
+    
+    
+    
+    
+    
 
     <TextView
         android:id="@+id/subject_text_view"

@@ -1,18 +1,18 @@
 package com.hillssoft.app.mtom.manager;
 
-import com.hillssoft.framework.base.BaseApp;
+import com.hillssoft.framework.base.BaseContact;
 
-public class AppManager extends BaseApp {
+public class ContactManager extends BaseContact {
 	
 	/******************************************************************
 	 * [ Required default initialization ]
 	 ******************************************************************/
-	private static AppManager instance;
+	private static ContactManager instance;
 	
-	public AppManager getInstance(){
+	public ContactManager getInstance(){
 		if(instance == null){
-			synchronized (AppManager.class) {
-				instance = new AppManager();
+			synchronized (ContactManager.class) {
+				instance = new ContactManager();
 			}
 		}
 		return instance;
@@ -23,5 +23,9 @@ public class AppManager extends BaseApp {
 	}
 	/******************************************************************
 	 ******************************************************************/
+	
+	
+	
+	
 	
 }

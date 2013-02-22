@@ -1,18 +1,18 @@
 package com.hillssoft.app.mtom.manager;
 
-import com.hillssoft.framework.base.BaseApp;
+import com.hillssoft.framework.base.BaseSound;
 
-public class AppManager extends BaseApp {
+public class SoundManager extends BaseSound {
 	
 	/******************************************************************
 	 * [ Required default initialization ]
 	 ******************************************************************/
-	private static AppManager instance;
+	private static SoundManager instance;
 	
-	public AppManager getInstance(){
+	public SoundManager getInstance(){
 		if(instance == null){
-			synchronized (AppManager.class) {
-				instance = new AppManager();
+			synchronized (SoundManager.class) {
+				instance = new SoundManager();
 			}
 		}
 		return instance;

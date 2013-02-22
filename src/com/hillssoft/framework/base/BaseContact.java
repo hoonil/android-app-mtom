@@ -9,9 +9,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 
-public class BaseAddressBook {
+abstract public class BaseContact {
 	
-	private static BaseAddressBook instance;
 	private List<HashMap> addressList;
 	private HashMap<String, String> addressObject;
 	private ContentResolver contentResolver;
@@ -20,17 +19,8 @@ public class BaseAddressBook {
 	
 	
 	
-	static public BaseAddressBook getInstance(){
-		
-		if(instance == null){
-			synchronized (BaseAddressBook.class) {
-				instance = new BaseAddressBook();
-			}
-		}
-		return instance;
-	}
 	
-	public BaseAddressBook() {
+	protected BaseContact() {
 		// TODO Auto-generated constructor stub
 		addressList = new ArrayList();
 		addressObject = new HashMap<String, String>();
@@ -47,9 +37,8 @@ public class BaseAddressBook {
 		
 		int idxForAddressId = addressListCursor.getColumnIndex(ContactsContract.Contacts._ID);
 		int idxForName = addressListCursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
+		 
 		
-		
-		int idxforReturnList = 0;
 		// Set Return Object for address list
 		while(addressListCursor.moveToNext()){
 			addressObject.clear();
@@ -89,7 +78,6 @@ public class BaseAddressBook {
 			addressObject.put(name, phoneNumber);
 			addressList.add((HashMap)addressObject.clone());
 		}
-		//addressList.add(addressObject);
 		phoneNumberListCursor.close();
 		addressListCursor.close();
 		
@@ -101,8 +89,17 @@ public class BaseAddressBook {
 	}
 	
 	
-	
-	
+	/////////////////////////////////
+	public class ContractType{
+		private long id;
+		private String name;
+		private String phoneNumber;
+		private String rawPhoneNumber;
+		private String email;
+		private String country;
+		private String phoneticName;
+	}
+	/////////////////////////////////
 	
 	
 	

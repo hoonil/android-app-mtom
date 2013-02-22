@@ -44,8 +44,10 @@
         
         
         <!-- Index Activity -->
+        
+        
         <activity
-            android:name="com.hillssoft.app.IndexActivity"
+            android:name=".mtom.activity.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,6 +55,12 @@
             </intent-filter>
         </activity>
         
+        
+        
+        <activity
+            android:name=".app.IndexActivity"
+            android:label="@string/app_name" >
+        </activity>
         
         
         

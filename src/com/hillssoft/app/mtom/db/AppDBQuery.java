@@ -99,6 +99,7 @@ public class AppDBQuery {
 			case SELECT_TABLE_POST :
 				sqlQuery = "" +
 						"SELECT * FROM " + DB_TABLE_POST;
+				
 			break;
 			
 			

@@ -3,17 +3,24 @@ package com.hillssoft.app.mtom.activity.friend;
 import java.util.HashMap;
 import java.util.List;
 
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.hillssoft.app.R;
-import com.hillssoft.app.mtom.manager.AddressManager;
 import com.hillssoft.app.mtom.manager.BaseActivityManager;
+import com.hillssoft.app.mtom.manager.ContactManager;
 
 public class FriendListActivity extends BaseActivityManager{
 	
-	
+	private ExpandableListView friendListView;
 	private TextView txt;
+	private Button btn;
 	private List<HashMap> addressList;
 	
 	
@@ -34,7 +41,7 @@ public class FriendListActivity extends BaseActivityManager{
 		 * []
 		 */
 		txt = (TextView)findViewById(R.id.txt);
-		
+		btn = (Button)findViewById(R.id.btn);
 		
 		
 		/*
@@ -45,7 +52,7 @@ public class FriendListActivity extends BaseActivityManager{
 		/*
 		 * [ Get Address List ]
 		 */
-		addressList = new AddressManager().getInstance().getAddressList(getApplicationContext());
+		addressList = new ContactManager().getInstance().getAddressList(getApplicationContext());
 		
 		
 		String str = "";
@@ -72,6 +79,26 @@ public class FriendListActivity extends BaseActivityManager{
 	@Override
 	protected void setInitializeViewEventListener() {
 		super.setInitializeViewEventListener();
-		
+		btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+//				AudioManager ad = (AudioManager)getSystemService(AUDIO_SERVICE);
+//				ad.playSoundEffect(AudioManager.FX_KEYPRESS_STANDARD);	
+				
+//				Vibrator vr = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+//				vr.vibrate(1000);
+				
+				SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+				int soundBeep = soundPool.load(getApplicationContext(), R.raw.sample, 1);
+				soundPool.play( soundBeep, 1f, 1f, 0, 0, 1f );
+				
+			}
+		});
 	}
 }
+
+
+
+
+
+

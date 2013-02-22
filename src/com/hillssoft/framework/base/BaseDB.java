@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class BaseDB extends SQLiteOpenHelper {
+abstract public class BaseDB extends SQLiteOpenHelper {
 	
 	public BaseDB(Context context, String dbName, int dbVersion) {
 		// TODO Auto-generated constructor stub

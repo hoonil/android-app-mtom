@@ -1,18 +1,18 @@
 package com.hillssoft.app.mtom.manager;
 
-import com.hillssoft.framework.base.BaseApp;
+import com.hillssoft.framework.base.BaseAppNotificationCenter;
 
-public class AppManager extends BaseApp {
+public class AppNotificationCenterManager extends BaseAppNotificationCenter {
 	
 	/******************************************************************
 	 * [ Required default initialization ]
 	 ******************************************************************/
-	private static AppManager instance;
+	private static AppNotificationCenterManager instance = null;
 	
-	public AppManager getInstance(){
+	public static AppNotificationCenterManager getInstance(){
 		if(instance == null){
-			synchronized (AppManager.class) {
-				instance = new AppManager();
+			synchronized (AppNotificationCenterManager.class) {
+				instance = new AppNotificationCenterManager();
 			}
 		}
 		return instance;
@@ -23,5 +23,9 @@ public class AppManager extends BaseApp {
 	}
 	/******************************************************************
 	 ******************************************************************/
+	
+	
+	
+	
 	
 }

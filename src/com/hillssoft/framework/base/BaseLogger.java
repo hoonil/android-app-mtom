@@ -1,5 +1,5 @@
 package com.hillssoft.framework.base;
 
-public class BaseLogger {
+abstract public class BaseLogger {
 	
 }
