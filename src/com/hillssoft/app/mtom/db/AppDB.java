@@ -5,8 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.hillssoft.app.mtom.conf.AppConf;
-import com.hillssoft.app.mtom.manager.AppManager;
 import com.hillssoft.framework.base.BaseDB;
+import com.hillssoft.framework.manager.AppManager;
 
 public class AppDB extends BaseDB{
 

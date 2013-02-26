@@ -3,9 +3,9 @@ package com.hillssoft.app.sample.view;
 import android.os.Bundle;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class PullToRefreshActivity extends BaseActivity {
+public class PullToRefreshActivity extends BaseActivityManager {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

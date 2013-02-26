@@ -15,9 +15,9 @@ import android.widget.Toast;
 import com.hillssoft.app.R;
 import com.hillssoft.app.mtom.db.AppDB;
 import com.hillssoft.app.mtom.db.AppDBQuery;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class DBActivity extends BaseActivity {
+public class DBActivity extends BaseActivityManager {
 
 	
 	

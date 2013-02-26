@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class ViewObjectActivity extends BaseActivity {
+public class ViewObjectActivity extends BaseActivityManager {
 	
 	Button btn1;
 	Button btn2;

@@ -1,6 +1,4 @@
-package com.hillssoft.app.mtom.manager;
-
-import android.os.Bundle;
+package com.hillssoft.framework.manager;
 
 import com.hillssoft.framework.base.BaseTab;
 

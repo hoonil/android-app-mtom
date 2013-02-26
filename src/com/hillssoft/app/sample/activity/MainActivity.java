@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivityManager {
 
 	TextView txt1;
 	Button btn1;

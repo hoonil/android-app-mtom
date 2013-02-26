@@ -7,9 +7,7 @@ import com.hillssoft.app.R;
 import com.hillssoft.app.mtom.activity.chat.ChatRoomListActivity;
 import com.hillssoft.app.mtom.activity.friend.FriendListActivity;
 import com.hillssoft.app.mtom.activity.more.MoreListActivity;
-import com.hillssoft.app.mtom.activity.myroom.MyRoomActivity;
 import com.hillssoft.app.mtom.activity.search.SearchActivity;
-import com.hillssoft.app.sample.SampleTabActivity;
 import com.hillssoft.framework.base.BaseTab;
 
 public class MtomTab extends BaseTab {

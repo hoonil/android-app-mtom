@@ -1,14 +1,13 @@
 package com.hillssoft.app.sample.service;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class ServiceActivity extends BaseActivity {
+public class ServiceActivity extends BaseActivityManager {
 	
 	private Button btn1;
 	private Button btn2;

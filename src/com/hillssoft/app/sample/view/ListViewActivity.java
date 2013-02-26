@@ -2,8 +2,6 @@ package com.hillssoft.app.sample.view;
 
 import java.util.ArrayList;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,9 +10,9 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class ListViewActivity extends BaseActivity {
+public class ListViewActivity extends BaseActivityManager {
 
 	Button btn1;
 	ListView listView1;

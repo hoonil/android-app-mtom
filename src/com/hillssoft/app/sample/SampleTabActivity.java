@@ -22,9 +22,9 @@ import com.hillssoft.app.sample.service.ServiceActivity;
 import com.hillssoft.app.sample.view.ListViewActivity;
 import com.hillssoft.app.sample.view.PullToRefreshActivity;
 import com.hillssoft.app.sample.view.ViewObjectActivity;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class SampleTabActivity extends BaseActivity {
+public class SampleTabActivity extends BaseActivityManager {
 	
 	/**
 	 * Define Member Object Variables

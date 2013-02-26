@@ -3,9 +3,9 @@ package com.hillssoft.app.mtom.activity.chat;
 import android.os.Bundle;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class ChatRoomListActivity extends BaseActivity {
+public class ChatRoomListActivity extends BaseActivityManager {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

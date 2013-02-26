@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class SubActivity extends BaseActivity {
+public class SubActivity extends BaseActivityManager {
 	
 	TextView txt1;
 	

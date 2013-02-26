@@ -5,8 +5,9 @@ import android.widget.ImageView;
 
 import com.hillssoft.app.R;
 import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class GraphActivity extends BaseActivity {
+public class GraphActivity extends BaseActivityManager {
 	ImageView graph;
 
 	@Override

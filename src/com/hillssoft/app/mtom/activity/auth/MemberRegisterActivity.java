@@ -1,7 +1,7 @@
 package com.hillssoft.app.mtom.activity.auth;
 
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class MemberRegisterActivity extends BaseActivity {
+public class MemberRegisterActivity extends BaseActivityManager {
 
 }

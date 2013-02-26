@@ -1,12 +1,11 @@
 package com.hillssoft.app.sample.view;
 
 import android.os.Bundle;
-import android.view.Menu;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class ListViewDetailActivity extends BaseActivity {
+public class ListViewDetailActivity extends BaseActivityManager {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

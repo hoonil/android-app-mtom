@@ -1,7 +1,7 @@
 package com.hillssoft.app.mtom.activity.more;
 
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class MoreListActivity extends BaseActivity{
+public class MoreListActivity extends BaseActivityManager{
 
 }

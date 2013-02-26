@@ -3,9 +3,9 @@ package com.hillssoft.app.mtom.activity.myroom;
 import android.os.Bundle;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class MyRoomActivity extends BaseActivity {
+public class MyRoomActivity extends BaseActivityManager {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
