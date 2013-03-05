@@ -32,6 +32,12 @@ public abstract class AppConf {
 	public static final String APP_DB_NAME = "db_mtom";
 	
 	
+	/*
+	 * [ Shard Prefernce ]
+	 */
+	public static final String APP_SHARD_PREFERENCE_NAME = APP_TAG + "_pref";
+	
+	
 	
 	/*
 	 * [ Debug ]
@@ -40,8 +46,8 @@ public abstract class AppConf {
 	public static final int 	LOGGER_LOG_MEMORY_LEVEL = initMemoryLoggerLevel();
 	public static final int 	LOGGER_LOG_MEMORY_SIZE 	= initMemoryLoggerSize();
 	public static final boolean LOGGER_IS_DEBUGGABLE 	= initDebuggable();
-	public static final boolean LOGGER_DEBUG_TRACE 		= false;
-	public static final boolean LOGGER_DEBUG_DATA_TRACE	= false;
+	public static final boolean LOGGER_DEBUG_TRACE 		= true;
+	public static final boolean LOGGER_DEBUG_DATA_TRACE	= true;
 
 	
 	

@@ -9,13 +9,12 @@ import com.hillssoft.app.mtom.conf.AppConf.AppEnv;
 abstract public class BaseApp implements IBaseObjectDisposable {
 
 	
+	
 	protected BaseApp() {
 		super();
 	}
 	
-	protected void initalizeBaseApp(Context context){
-		
-	}
+	
 	
 	public static int getAppVersionCode(Context context){
 		try{
@@ -30,6 +29,9 @@ abstract public class BaseApp implements IBaseObjectDisposable {
 	public static AppEnv getAppEnv(){
 		return AppConf.APP_ENV;
 	}
+	
+	
+	
 	
 	
 	
