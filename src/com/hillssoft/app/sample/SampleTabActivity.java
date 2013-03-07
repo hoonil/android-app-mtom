@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hillssoft.app.R;
-import com.hillssoft.app.mtom.MtomTab;
+import com.hillssoft.app.mtom.MtomMainTab;
 import com.hillssoft.app.sample.activity.MainActivity;
 import com.hillssoft.app.sample.broadcast.BroadcastActivity;
 import com.hillssoft.app.sample.db.DBActivity;
@@ -88,7 +88,7 @@ public class SampleTabActivity extends BaseActivityManager {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(SampleTabActivity.this, MtomTab.class);
+				Intent intent = new Intent(SampleTabActivity.this, MtomMainTab.class);
 				startActivity(intent);
 			}
 		});

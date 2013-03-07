@@ -12,7 +12,7 @@ public class AppDB extends BaseDB{
 
 	
 	public AppDB(Context context) {
-		super(context, getAppDBName(), AppManager.getAppVersionCode(context));
+		super(context, getAppDBName(), AppManager.getInstance().getAppVersionCode());
 	}
 	
 	public static String getAppDBName(){

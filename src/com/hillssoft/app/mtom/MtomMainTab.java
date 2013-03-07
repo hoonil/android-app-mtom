@@ -9,8 +9,9 @@ import com.hillssoft.app.mtom.activity.friend.FriendListActivity;
 import com.hillssoft.app.mtom.activity.more.MoreListActivity;
 import com.hillssoft.app.mtom.activity.search.SearchActivity;
 import com.hillssoft.framework.base.BaseTab;
+import com.hillssoft.framework.manager.BaseTabManager;
 
-public class MtomTab extends BaseTab {
+public class MtomMainTab extends BaseTabManager {
 
 	
 	@Override

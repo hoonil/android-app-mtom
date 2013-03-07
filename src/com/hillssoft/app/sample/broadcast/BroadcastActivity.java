@@ -12,9 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.base.BaseActivity;
+import com.hillssoft.framework.manager.BaseActivityManager;
 
-public class BroadcastActivity extends BaseActivity {
+public class BroadcastActivity extends BaseActivityManager {
 	
 	private Button btn1;
 	private Button btn2;

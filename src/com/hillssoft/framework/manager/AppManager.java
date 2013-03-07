@@ -1,32 +1,24 @@
 package com.hillssoft.framework.manager;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Message;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 import com.hillssoft.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.app.mtom.conf.AppConf;
+import com.hillssoft.app.mtom.conf.AppConf.AppEnv;
 import com.hillssoft.framework.base.BaseApp;
+import com.hillssoft.framework.type.IDisposable;
 
-public class AppManager extends BaseApp {
+public class AppManager extends BaseApp implements IDisposable {
 	
 	
 	/*
-	 * 
+	 * [ Define Object ]
 	 */
-	private static Context context;
-	private SharedPreferences shardPreference;
-	private AppNotificationCenterManager appNotificationCenterManager;
+	private Context context = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationContext();
+	private AppSharedPreferenceManager defaultShardPreference = AppGlobalApplication.getAppGlobalApplicationContext().getDefaultShardPreference();
 	
-	
-	/*
-	 * 
-	 */
-	public static final String NOTIFICATION_INSTALL_COMPLETED = "AppManager_NOTIFICATION_INSTALL_COMPLETED";
-	public static final String NOTIFICATION_LOGIN_COMPLETE = "NOTIFICATION_LOGIN_COMPLETE";
 	
 	
 	/******************************************************************
@@ -36,22 +28,18 @@ public class AppManager extends BaseApp {
 	private AppNotificationCenterManager appNotificationManager = null;
 	
 	
-	protected AppManager(Context pContext) {
+	protected AppManager() {
 		super();
 		
-		initializeAppManagerObject(pContext);
-		bindCommonNotificationCenterEvent();
-		initializeApp(pContext);
-		
-		
-		
+		initializeAppManagerObject();
 		
 	}
 	
-	public static AppManager getInstance(Context context){
+	public static AppManager getInstance(){
 		if(instance == null){
 			synchronized (AppManager.class) {
-				instance = new AppManager(context);
+				instance = new AppManager();
+				AppGlobalApplication.getAppGlobalApplicationContext().addDisposableResource(instance);
 			}
 		}
 		return instance;
@@ -65,52 +53,45 @@ public class AppManager extends BaseApp {
 	
 	
 	
-	private void initializeAppManagerObject(Context pContext){
-		context = pContext;
-		shardPreference = pContext.getSharedPreferences(AppConf.APP_SHARD_PREFERENCE_NAME, Activity.MODE_PRIVATE);
-		appNotificationCenterManager = AppNotificationCenterManager.getInstance();
-	}
-	
-	
-	/**
-	 * [ 공통 이벤트 등록 메소드 ]
-	 */
-	private void bindCommonNotificationCenterEvent(){
-		/**
-		 * [ Register Event for app install ]
-		 */
-		appNotificationManager.getInstance().register(AppManager.NOTIFICATION_INSTALL_COMPLETED, this, new Handler() {
-        	@Override
-        	public void handleMessage(Message msg) {
-        		
-        		
-        		LoggerManager.i("3333333333333333333333333333333333333333aaaaaaaaaaaaaaaaaaaaa");
-        		
-        		//Intent intent = IntentManager.getMainIntent(context);
-        		//startActivity(intent);
-        	}
-        });
+	private void initializeAppManagerObject(){
 		
 	}
 	
 	
 	
-	/**
-	 * [ 공통 초기화 메소드 ]
-	 * @param context
-	 */
-	public void initializeApp(Context context) {
-		/**
-		 * [ App initialization start ]
-		 */
-		//AppNotificationCenterManager.getInstance().notify(NOTIFICATION_INSTALL_COMPLETE);
-		
+	public boolean isAppInitializeCompleted(){
+		return defaultShardPreference.getBoolean(AppSharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, false);
 	}
 	
 	
-	public boolean isInstallCompleted(){
-		return shardPreference.getBoolean(AppGlobalApplication.SHARD_PREFERENCE_HASH_KEY_IS_INSTALL_COMPLETED, false);
+	
+	public int getAppVersionCode(){
+		try{
+			int versionCode = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode;
+			return versionCode;
+		}catch(NameNotFoundException e){
+			return 0;
+		}
 	}
+	
+	public String getAppVersionName(){
+		try{
+			PackageInfo pinfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+			return pinfo.versionName;
+		}catch(NameNotFoundException e){
+			return null;
+		}
+	}
+	
+	
+	public AppEnv getAppEnv(){
+		return AppConf.APP_ENV;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

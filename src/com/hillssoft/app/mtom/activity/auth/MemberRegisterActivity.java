@@ -2,6 +2,7 @@ package com.hillssoft.app.mtom.activity.auth;
 
 import android.os.Bundle;
 
+import com.hillssoft.app.R;
 import com.hillssoft.framework.manager.BaseActivityManager;
 
 public class MemberRegisterActivity extends BaseActivityManager {
@@ -18,6 +19,7 @@ public class MemberRegisterActivity extends BaseActivityManager {
 	protected void initializeView() {
 		// TODO Auto-generated method stub
 		super.initializeView();
+		
 	}
 	
 	

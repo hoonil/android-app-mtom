@@ -13,6 +13,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.hillssoft.app.R;
+import com.hillssoft.framework.manager.AppNotificationCenterManager;
 import com.hillssoft.framework.manager.BaseActivityManager;
 import com.hillssoft.framework.manager.ContactManager;
 
@@ -52,18 +53,18 @@ public class FriendListActivity extends BaseActivityManager{
 		/*
 		 * [ Get Address List ]
 		 */
-		addressList = new ContactManager().getInstance().getAddressList(getApplicationContext());
-		
-		
-		String str = "";
-		
-		for(int i = 0; i < addressList.size(); i++){
-			txt.append(Integer.toString(i) + "\n");
-			//txt.setText(Integer.toString(i) + "\n");
-			
-			//txt.setText(txt.getText() + addressList.get(i).get(addressList.get(i).keySet().toString()));
-			
-		}
+//		addressList = new ContactManager().getInstance().getAddressList(getApplicationContext());
+//		
+//		
+//		String str = "";
+//		
+//		for(int i = 0; i < addressList.size(); i++){
+//			txt.append(Integer.toString(i) + "\n");
+//			//txt.setText(Integer.toString(i) + "\n");
+//			
+//			//txt.setText(txt.getText() + addressList.get(i).get(addressList.get(i).keySet().toString()));
+//			
+//		}
 		
 		
 		
@@ -91,7 +92,7 @@ public class FriendListActivity extends BaseActivityManager{
 				SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 				int soundBeep = soundPool.load(getApplicationContext(), R.raw.sample, 1);
 				soundPool.play( soundBeep, 1f, 1f, 0, 0, 1f );
-				
+				AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_RESTART);
 			}
 		});
 	}

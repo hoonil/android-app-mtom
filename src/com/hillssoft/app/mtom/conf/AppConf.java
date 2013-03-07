@@ -35,7 +35,7 @@ public abstract class AppConf {
 	/*
 	 * [ Shard Prefernce ]
 	 */
-	public static final String APP_SHARD_PREFERENCE_NAME = APP_TAG + "_pref";
+	public static final String APP_SHARD_PREFERENCE_DEFAULT_NAME = APP_TAG + "_pref";
 	
 	
 	

@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hillssoft.app.R;
-import com.hillssoft.framework.manager.AppManager;
 import com.hillssoft.framework.manager.AppNotificationCenterManager;
 import com.hillssoft.framework.manager.BaseActivityManager;
 import com.hillssoft.framework.manager.LoggerManager;
@@ -29,8 +28,8 @@ public class SplashActivity extends BaseActivityManager {
 	
 	
 	@Override
-	protected void initializeAppCommonObject() {
-		super.initializeAppCommonObject();
+	protected void initializeBaseActivityManagerObject() {
+		super.initializeBaseActivityManagerObject();
 	}
 	
 	@Override
@@ -51,6 +50,7 @@ public class SplashActivity extends BaseActivityManager {
 			public void onClick(View v) {
 				count = 0;
 				txt1.setText(Integer.toString(count));
+				AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_CURRENT_ACTIVITY_CLOSE);
 			}
 		});
 		/////////////////////////////////////////
@@ -69,15 +69,21 @@ public class SplashActivity extends BaseActivityManager {
 	
 	protected void onDoStart(){
 		
-		/**
-		 * [ Start Service ]
-		 */
-		if(appManager.isInstallCompleted()){
-			LoggerManager.i("!!!!! Activity Startup Successed !!!!! - AppManager.getInstance().isInstallCompleted() is true");
-			AppNotificationCenterManager.getInstance().notify(AppManager.NOTIFICATION_INSTALL_COMPLETED);
-		}else{
-			LoggerManager.e("!!!!! Activity Startup Error !!!!! - AppManager.getInstance().isInstallCompleted() is false");
+		if(appManager.isAppInitializeCompleted()){
+			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB);
 		}
+		
+
+		
+//		/**
+//		 * [ Start Service ]
+//		 */
+//		if(appManager.isInstallCompleted()){
+//			LoggerManager.i("!!!!! Activity Startup Successed !!!!! - AppManager.getInstance().isInstallCompleted() is true");
+//			AppNotificationCenterManager.getInstance().notify(AppManager.NOTIFICATION_INSTALL_COMPLETED);
+//		}else{
+//			LoggerManager.e("!!!!! Activity Startup Error !!!!! - AppManager.getInstance().isInstallCompleted() is false");
+//		}
 		
 		
 		
