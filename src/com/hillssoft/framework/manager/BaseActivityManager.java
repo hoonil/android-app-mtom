@@ -1,16 +1,9 @@
 package com.hillssoft.framework.manager;
 
-import java.util.List;
-
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 
 import com.hillssoft.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.framework.base.BaseActivity;
@@ -143,8 +136,8 @@ public class BaseActivityManager extends BaseActivity {
 		
 		appNotificationCenterManager.register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_RESTART, this, new Handler() {
 			public void handleMessage(Message msg) {
-				ActivityManager activityManager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
-				activityManager.restartPackage(appGlobalApplication.getPackageName());
+				//ActivityManager activityManager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
+				//activityManager.restartPackage(appGlobalApplication.getPackageName());
         	}
 //			@Override
 //        	public void handleMessage(Message msg) {

@@ -13,15 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hillssoft.app.R;
-import com.hillssoft.app.mtom.db.AppDB;
 import com.hillssoft.app.mtom.db.AppDBQuery;
 import com.hillssoft.framework.manager.BaseActivityManager;
+import com.hillssoft.framework.manager.DatabaseManager;
 
 public class DBActivity extends BaseActivityManager {
 
 	
 	
-	private AppDB mAppDB = null;
+	private DatabaseManager mAppDB = null;
 	private SQLiteDatabase mDB = null;
 	private Cursor mCursor = null;
 	private ContentValues mContentValue = null;
@@ -43,7 +43,7 @@ public class DBActivity extends BaseActivityManager {
 		/*
 		 * [ Open DB ]
 		 */
-		mAppDB = new AppDB(this);
+		mAppDB = DatabaseManager.getInstance();
 		mDB = mAppDB.getWritableDatabase();
 		sqlParams = new HashMap();
 		

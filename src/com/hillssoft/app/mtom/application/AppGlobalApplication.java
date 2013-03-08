@@ -14,6 +14,7 @@ import com.hillssoft.app.mtom.db.AppDB;
 import com.hillssoft.app.mtom.db.AppDBQuery;
 import com.hillssoft.framework.manager.AppNotificationCenterManager;
 import com.hillssoft.framework.manager.AppSharedPreferenceManager;
+import com.hillssoft.framework.manager.DatabaseManager;
 import com.hillssoft.framework.manager.LoggerManager;
 import com.hillssoft.framework.type.IDisposable;
 
@@ -42,22 +43,9 @@ public class AppGlobalApplication extends Application {
 	/**
 	 * [ DB Object ]
 	 */
-	private AppDB appDb = null;
+	private DatabaseManager dbManager = null;
 	private SQLiteDatabase db = null;
 	private HashMap<String, String> dbSqlParams = new HashMap<String, String>();
-	
-	//private Cursor mCursor = null;
-	//private ContentValues mContentValue = null;
-	
-	
-	
-	/**
-	 * [ ShardPreference Hash Key ]
-	 */
-	public static final String SHARD_PREFERENCE_HASH_KEY_USER_ID = "user_id";
-	public static final String SHARD_PREFERENCE_HASH_KEY_SESSION_KEY = "session_key";
-	public static final String SHARD_PREFERENCE_HASH_KEY_IS_INSTALL_COMPLETED = "is_install_completed";
-	
 	
 	
 	
@@ -118,8 +106,8 @@ public class AppGlobalApplication extends Application {
 		/*
 		 * [ DB ]
 		 */
-		appDb = new AppDB(this);
-		db = appDb.getWritableDatabase();
+		dbManager = DatabaseManager.getInstance();
+		db = dbManager.getWritableDatabase();
 		
 		/*
 		 * [ NotificationCenter ]

@@ -12,7 +12,7 @@ public abstract class AppConf {
 	public static final String APP_TAG = "MTOM";
 	
 	/*
-	 * [ App Enviroment ]
+	 * [ App Environment ]
 	 */
 	public static enum AppEnv{
 		DEV, STG, PROD;
@@ -29,14 +29,13 @@ public abstract class AppConf {
 	/*
 	 * [ DB ]
 	 */
-	public static final String APP_DB_NAME = "db_mtom";
+	public static final String APP_DB_NAME = APP_ENV.toString() + "_" + "db_mtom";
 	
 	
 	/*
-	 * [ Shard Prefernce ]
+	 * [ Shared Preference ]
 	 */
-	public static final String APP_SHARD_PREFERENCE_DEFAULT_NAME = APP_TAG + "_pref";
-	
+	public static final String APP_SHARD_PREFERENCE_DEFAULT_NAME = APP_ENV.toString() + "_" + APP_TAG + "_pref";
 	
 	
 	/*
@@ -59,9 +58,8 @@ public abstract class AppConf {
 	
 	
 	/************************************************************************************
-	 *	[ Set Config Method ] 
+	 *	[ Set Configure Method ] 
 	 ************************************************************************************/
-	
 	
 	private static int initLoggerLevel() {
 		switch (APP_ENV) {
