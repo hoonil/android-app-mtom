@@ -1,11 +1,15 @@
 package com.hillssoft.framework.manager;
 
+import java.util.Calendar;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
 import com.hillssoft.app.mtom.application.AppGlobalApplication;
+import com.hillssoft.app.mtom.db.AppDBQuery;
 import com.hillssoft.framework.base.BaseActivity;
 
 public class BaseActivityManager extends BaseActivity {
@@ -15,14 +19,17 @@ public class BaseActivityManager extends BaseActivity {
 	 */
 	protected Activity 	self = null;
 	protected AppManager appManager = null;
+	protected UserManager userManager = null;
 	protected AppGlobalApplication appGlobalApplication = null;
-	protected AppNotificationCenterManager appNotificationCenterManager = null;
-	protected Handler handler = null;
-	
+	protected SharedPreferenceManager defaultAppSharedPreference = null;
+	protected Handler defaultApplicationHandler = null;
+	protected HashMap<String, String> dbSqlParams = new HashMap<String, String>();
 	
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		self = this;
 		
 		/**
 		 * [ Common Object ]
@@ -65,17 +72,18 @@ public class BaseActivityManager extends BaseActivity {
 		 */
 		appGlobalApplication = (AppGlobalApplication)AppGlobalApplication.getAppGlobalApplicationContext();
 		appGlobalApplication.setCurrentActivity(this);
-		handler = AppGlobalApplication.getAppGlobalApplicationContext().getHandler();
+		defaultApplicationHandler = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationDefaultHandler();
+		defaultAppSharedPreference = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationDefaultSharedPreference();
 		
 		/*
-		 * [ Set application config object ]
+		 * [ Set application configure object ]
 		 */
 		appManager = AppManager.getInstance();
 		
 		/*
-		 * [ Set instance for NotificationCenter ]
+		 * [ Set user info object]
 		 */
-		appNotificationCenterManager = AppNotificationCenterManager.getInstance();
+		userManager = UserManager.getInstance();
 		
 	}
 	
@@ -95,19 +103,19 @@ public class BaseActivityManager extends BaseActivity {
 
 	protected void bindAppDefaultNotificationCenterEvent(){
 		/**
-		 * [ Register Event for app install ]
+		 * [ Register Event for application install ]
 		 */
-		appNotificationCenterManager.register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_INITIALIZE_COMPLETE, this, new Handler() {
+		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_INITIALIZE_COMPLETE, this, new Handler() {
         	@Override
         	public void handleMessage(Message msg) {
         		LoggerManager.i("OK~~~~~~~ OK~~~~~~~~~~~~ APP_GLOBAL_APPLICATION_NOTIFICATION_INITIALIZE_COMPLETE");
         	}
         });
 		
-		appNotificationCenterManager.register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB, this, new Handler() {
+		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB, this, new Handler() {
         	@Override
         	public void handleMessage(Message msg) {
-        		handler.postDelayed(new Runnable() {
+        		defaultApplicationHandler.postDelayed(new Runnable() {
 					@Override
 					public void run() {
 						if(self != null){
@@ -119,7 +127,7 @@ public class BaseActivityManager extends BaseActivity {
         	}
         });
 		
-		appNotificationCenterManager.register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_TERMINATE, this, new Handler() {
+		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_TERMINATE, this, new Handler() {
         	@Override
         	public void handleMessage(Message msg) {
         		moveTaskToBack(true);
@@ -127,14 +135,14 @@ public class BaseActivityManager extends BaseActivity {
         	}
         });
 		
-		appNotificationCenterManager.register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_CURRENT_ACTIVITY_CLOSE, this, new Handler() {
+		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_CURRENT_ACTIVITY_CLOSE, this, new Handler() {
         	@Override
         	public void handleMessage(Message msg) {
         		finish();
         	}
         });
 		
-		appNotificationCenterManager.register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_RESTART, this, new Handler() {
+		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_RESTART, this, new Handler() {
 			public void handleMessage(Message msg) {
 				//ActivityManager activityManager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
 				//activityManager.restartPackage(appGlobalApplication.getPackageName());
@@ -194,9 +202,7 @@ public class BaseActivityManager extends BaseActivity {
 		
 	}
 
-	
-	
-	
+
 	
 	
 	

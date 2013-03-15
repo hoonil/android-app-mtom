@@ -13,18 +13,23 @@ import com.hillssoft.framework.type.IDisposable;
 public class DatabaseManager extends BaseDB implements IDisposable  {
 
 	private static DatabaseManager instance;
+	private static SQLiteDatabase db;
+	private static Context context;
 	
 	
 	
 	private DatabaseManager(Context context) {
-		super(context, getAppDBName(), AppManager.getInstance().getAppVersionCode());
+		super(context, getAppDatabaseName(), AppManager.getInstance().getAppVersionCode());
 	}
 	
 	
 	public static DatabaseManager getInstance(){
 		if(instance == null){
 			synchronized (DatabaseManager.class) {
-				instance = new DatabaseManager(AppGlobalApplication.getAppGlobalApplicationContext());
+				context = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationContext();
+				instance = new DatabaseManager(context);
+				db = instance.getWritableDatabase();
+				
 				AppGlobalApplication.getAppGlobalApplicationContext().addDisposableResource(instance);
 			}
 		}
@@ -36,8 +41,12 @@ public class DatabaseManager extends BaseDB implements IDisposable  {
 		instance = null;
 	}
 	
+	public SQLiteDatabase getDatabase(){
+		return db;
+	}
 	
-	public static String getAppDBName(){
+	
+	public static String getAppDatabaseName(){
 		return AppConf.APP_DB_NAME;
 	}
 	
@@ -49,8 +58,12 @@ public class DatabaseManager extends BaseDB implements IDisposable  {
 		/**
 		 * [ Create Default Install Schema ]
 		 */
-		getWritableDatabase().execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.INSERT_TABLE_POST));
-		getWritableDatabase().execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.INSERT_TABLE_POST_COMMENT));
+		try{
+			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST));
+			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST_COMMENT));
+		}catch(Exception e){
+			LoggerManager.e(e.toString());
+		}
 		
 		
 	}

@@ -12,7 +12,7 @@ import com.hillssoft.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.app.mtom.conf.AppConf;
 import com.hillssoft.framework.type.ValueMap;
 
-public class AppSharedPreferenceManager {
+public class SharedPreferenceManager {
 	
 	
 	private boolean beginCommit = false;
@@ -23,33 +23,32 @@ public class AppSharedPreferenceManager {
 	
 
 	public static final String KEY_IS_INITIALIZE_APPLICATION_COMPLETED = "is_initialize_application_completed";
-	public static final String KEY_IS_INITIALIZE_APPLICATION_DEFAULT_CACHE_DATA = "is_initialize_application_default_cache_data";
-	public static final String KEY_IS_INITIALIZE_APPLICATION_DEFAULT_DB_SCHEMA = "is_initialize_application_default_db_schema";
+	public static final String KEY_IS_INITIALIZE_APPLICATION_DEFAULT_DB_DATA = "is_initialize_application_default_db_schema";
 	public static final String KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA = "is_initialize_application_default_user_data";
 	public static final String KEY_IS_INITIALIZE_APPLICATION_USER_SESSION_DATA = "is_initialize_application_user_session_data";
+	public static final String KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_DATA = "is_initialize_application_anonymous_user_session_data";
 	
+	public static final String KEY_UUID = "uuid";
+	public static final String KEY_ANONYMOUS_USER_SESSION_KEY = "anonymous_user_session_key";
 	public static final String KEY_USER_SESSION_KEY = "user_session_key";
 	public static final String KEY_USER_ID = "user_id";
 	public static final String KEY_USER_NICKNAME = "user_nickname";
 	
 	
 	
-	
-	
-	public AppSharedPreferenceManager() {
+	public SharedPreferenceManager() {
 		cache = new ValueMap<String, Object>(); 
 		context = AppGlobalApplication.getAppGlobalApplicationContext();
 		sharedPreference = context.getSharedPreferences(AppConf.APP_SHARD_PREFERENCE_DEFAULT_NAME, Context.MODE_PRIVATE);
 		sharedPreferenceEditor = sharedPreference.edit();
 	}
 	
-	public AppSharedPreferenceManager(String key) {
+	public SharedPreferenceManager(String key) {
 		cache = new ValueMap<String, Object>(); 
 		context = AppGlobalApplication.getAppGlobalApplicationContext();
 		sharedPreference = context.getSharedPreferences(key, Context.MODE_PRIVATE);
 		sharedPreferenceEditor = sharedPreference.edit();
 	}	
-
 
 	protected Set<String> getProtectedKeySet() {
 		return new HashSet<String>();
@@ -60,12 +59,12 @@ public class AppSharedPreferenceManager {
 	}
 
 	public void syncCommit() {
-		getEditor().commit();
+		getSharedPreferencesEditor().commit();
 		beginCommit = false;
 	}
 
 	public void commitSharedPreference(String key, String value) {
-		getEditor().putString(key, value);
+		getSharedPreferencesEditor().putString(key, value);
 		if (!beginCommit) {
 			cache.put(key, value);
 		} else {
@@ -85,7 +84,7 @@ public class AppSharedPreferenceManager {
 	}
 
 	public void commitSharedPreference(String key, int value) {
-		getEditor().putInt(key, value);
+		getSharedPreferencesEditor().putInt(key, value);
 		if (!beginCommit) {
 			sharedPreferenceEditor.commit();
 			cache.put(key, value);
@@ -105,7 +104,7 @@ public class AppSharedPreferenceManager {
 	}
 
 	public void commitSharedPreference(String key, boolean value) {
-		getEditor().putBoolean(key, value);
+		getSharedPreferencesEditor().putBoolean(key, value);
 		if (!beginCommit) {
 			sharedPreferenceEditor.commit();
 			cache.put(key, value);
@@ -125,7 +124,7 @@ public class AppSharedPreferenceManager {
 	}
 
 	public void commitSharedPreference(String key, long value) {
-		getEditor().putLong(key, value);
+		getSharedPreferencesEditor().putLong(key, value);
 		if (!beginCommit) {
 			sharedPreferenceEditor.commit();
 			cache.put(key, value);
@@ -145,7 +144,7 @@ public class AppSharedPreferenceManager {
 	}
 	
 	public void commitSharedPreference(String key, float value) {
-		getEditor().putFloat(key, value);
+		getSharedPreferencesEditor().putFloat(key, value);
 		if (!beginCommit) {
 			sharedPreferenceEditor.commit();
 			cache.put(key, value);
@@ -168,7 +167,7 @@ public class AppSharedPreferenceManager {
 		return sharedPreference;
 	}
 
-	private SharedPreferences.Editor getEditor() {
+	private SharedPreferences.Editor getSharedPreferencesEditor() {
 		return sharedPreferenceEditor;
 	}
 	
@@ -188,10 +187,10 @@ public class AppSharedPreferenceManager {
 			if (set.contains(key)) {
 				continue;
 			}
-			getEditor().putString(key, null);
+			getSharedPreferencesEditor().putString(key, null);
 		}
 
-		getEditor().commit();
+		getSharedPreferencesEditor().commit();
 		cache.clear();
 	}
 	

@@ -1,5 +1,7 @@
 package com.hillssoft.framework.manager;
 
+import java.util.UUID;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -16,16 +18,9 @@ public class AppManager extends BaseApp implements IDisposable {
 	/*
 	 * [ Define Object ]
 	 */
-	private Context context = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationContext();
-	private AppSharedPreferenceManager defaultShardPreference = AppGlobalApplication.getAppGlobalApplicationContext().getDefaultShardPreference();
-	
-	
-	
-	/******************************************************************
-	 * [ Required default initialization ]
-	 ******************************************************************/
 	private static AppManager instance;
-	private AppNotificationCenterManager appNotificationManager = null;
+	private Context context = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationContext();
+	private SharedPreferenceManager defaultSharedPreference = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationDefaultSharedPreference();
 	
 	
 	protected AppManager() {
@@ -48,8 +43,6 @@ public class AppManager extends BaseApp implements IDisposable {
 	public void dispose() {
 		instance = null;
 	}
-	/******************************************************************
-	 ******************************************************************/
 	
 	
 	
@@ -60,7 +53,7 @@ public class AppManager extends BaseApp implements IDisposable {
 	
 	
 	public boolean isAppInitializeCompleted(){
-		return defaultShardPreference.getBoolean(AppSharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, false);
+		return defaultSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, false);
 	}
 	
 	
@@ -88,6 +81,11 @@ public class AppManager extends BaseApp implements IDisposable {
 		return AppConf.APP_ENV;
 	}
 	
+	
+	
+	public String createNewUUID(){
+		return UUID.randomUUID().toString();
+	}
 	
 	
 	
