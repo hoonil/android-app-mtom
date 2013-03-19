@@ -22,14 +22,16 @@ public class SharedPreferenceManager {
 	private SharedPreferences.Editor sharedPreferenceEditor = null;
 	
 
-	public static final String KEY_IS_INITIALIZE_APPLICATION_COMPLETED = "is_initialize_application_completed";
 	public static final String KEY_IS_INITIALIZE_APPLICATION_DEFAULT_DB_DATA = "is_initialize_application_default_db_schema";
 	public static final String KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA = "is_initialize_application_default_user_data";
-	public static final String KEY_IS_INITIALIZE_APPLICATION_USER_SESSION_DATA = "is_initialize_application_user_session_data";
-	public static final String KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_DATA = "is_initialize_application_anonymous_user_session_data";
+	public static final String KEY_IS_INITIALIZE_APPLICATION_USER_UUID = "is_initialize_application_user_uuid";
+	public static final String KEY_IS_INITIALIZE_APPLICATION_USER_SESSION_KEY = "is_initialize_application_user_session_key";
+	public static final String KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY = "is_initialize_application_anonymous_user_session_k";
 	
-	public static final String KEY_UUID = "uuid";
+	public static final String KEY_IS_INITIALIZE_APPLICATION_COMPLETED = "is_initialize_application_completed";
+	
 	public static final String KEY_ANONYMOUS_USER_SESSION_KEY = "anonymous_user_session_key";
+	public static final String KEY_USER_UUID = "uuid";
 	public static final String KEY_USER_SESSION_KEY = "user_session_key";
 	public static final String KEY_USER_ID = "user_id";
 	public static final String KEY_USER_NICKNAME = "user_nickname";

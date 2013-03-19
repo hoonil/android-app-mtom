@@ -1,7 +1,6 @@
 package com.hillssoft.app.mtom.activity;
 
 import java.util.Calendar;
-import java.util.logging.Logger;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,12 +32,13 @@ public class SplashActivity extends BaseActivityManager {
 		try{
 			synchronized(this){
 				if(!appManager.isAppInitializeCompleted()){
-						initializeApplicationDefaultDbData();
-						initializeApplicationDefaultUserData();
-						initializeApplicationAnonymousSessionKey();
-						initializeInfoSyncToServer();
+					initializeApplicationDefaultDbData();
+					initializeApplicationDefaultUserData();
+					initializeApplicationUUID();
+					initializeApplicationAnonymousSessionKey();
+					initializeInfoSyncToServer();
 				}else{
-					AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB);
+					initializeInfoSyncToServer();
 				}
 			}
 		}catch(Exception e){
@@ -74,16 +74,30 @@ public class SplashActivity extends BaseActivityManager {
 		}
 	}
 	
-	private synchronized void initializeApplicationAnonymousSessionKey(){
-		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_DATA, false)){
-			// [ Create New UUID ]
-			String anonymousSessionKey = appManager.createNewUUID();
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, anonymousSessionKey);
+	private synchronized void initializeApplicationUUID(){
+		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_USER_UUID, false)){
+			// [ Set New UUID ]
+			String uuid = userManager.createNewUUID();
+			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
+			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_USER_UUID, true);
+			
+			
+			/**
+			 * [ uuid 서버에 저장 ]
+			 */
+			
+			
 		}
 	}
 	
-	
-	
+	private synchronized void initializeApplicationAnonymousSessionKey(){
+		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, false)){
+			// [ Set Anonymous Session Key ]
+			String anonymousSessionKey = userManager.createNewUUID();
+			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, anonymousSessionKey);
+			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, true);
+		}
+	}
 	
 	private synchronized void initializeInfoSyncToServer(){
 		/*
@@ -92,26 +106,46 @@ public class SplashActivity extends BaseActivityManager {
 		 * 
 		 */
 		String userSessionKey = userManager.getUserAnonymousSessionKey();
+		String userId = "10000001";
+		syncInstalledUserInfoInLocal(userId);
+		
+		
+//		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, false)){
+//			String anonymousSessionKey = userManager.createNewUUID();
+//			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, anonymousSessionKey);
+//			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, true);
+//		}
+		
+	}
+	
+	
+	
+	private void syncInstalledUserInfoInLocal(String userId){
+		if(appManager.isAppInitializeCompleted()){
+			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_ID, userId);
+			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, true);
+		}
 		updateInitializedApplicationCompleted();
 	}
 	
 	private synchronized void updateInitializedApplicationCompleted(){
-		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, false)){
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_ID, "10001");
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_NICKNAME, "hoonil.kang");
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, true);
-			
-			/*
-			 * [ Initialized End ]
-			 */
-			if(appManager.isAppInitializeCompleted()){
-				AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB);
-			}else{
-				LoggerManager.e("Initialized Error - updateInitializedApplicationCompleted()");
-			}
-			
+		/*
+		 * [ Initialized End ]
+		 */
+		if(appManager.isAppInitializeCompleted()){
+			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB);
+		}else{
+			LoggerManager.e("Initialized Error - updateInitializedApplicationCompleted()");
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

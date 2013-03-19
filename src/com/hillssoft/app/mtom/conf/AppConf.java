@@ -23,7 +23,7 @@ public abstract class AppConf {
 	/*
 	 * [ URL ]
 	 */
-	public static final String APP_WEB_SERVER_URL = "http://hoonil.codns.com";
+	public static final String APP_WEB_SERVER_URL = initApiServerUrl();
 	
 	
 	/*
@@ -92,5 +92,23 @@ public abstract class AppConf {
 		}
 		return Log.INFO;
 	}
+	
+	
+	/************************************************************************************
+	 *	[ Url Configure Method ] 
+	 ************************************************************************************/
+	private static String initApiServerUrl() {
+		switch (AppConf.APP_ENV) {
+		case DEV:
+			return "dev-app-smartphone-web.hillssoft.com/app_mtom";
+		case STG:
+			return "dev-app-smartphone-web.hillssoft.com/app_mtom";
+		case PROD:
+			return "dev-app-smartphone-web.hillssoft.com/app_mtom";
+		default :
+			return null;
+		}
+	}
+	
 	
 }
