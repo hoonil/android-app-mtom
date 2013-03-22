@@ -1,15 +1,15 @@
 package com.hillssoft.framework.manager;
 
-import java.util.Calendar;
 import java.util.HashMap;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.hillssoft.app.mtom.application.AppGlobalApplication;
-import com.hillssoft.app.mtom.db.AppDBQuery;
 import com.hillssoft.framework.base.BaseActivity;
 
 public class BaseActivityManager extends BaseActivity {
@@ -28,6 +28,8 @@ public class BaseActivityManager extends BaseActivity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
 		self = this;
 		
@@ -61,7 +63,6 @@ public class BaseActivityManager extends BaseActivity {
 	}
 	
 	protected void initializeBaseActivityManagerObject(){
-		
 		/*
 		 * [ Set self object]
 		 */
@@ -126,6 +127,23 @@ public class BaseActivityManager extends BaseActivity {
 				}, 500);
         	}
         });
+		
+		
+		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_AUTH_MEMBER_REGISTER, this, new Handler() {
+        	@Override
+        	public void handleMessage(Message msg) {
+        		defaultApplicationHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						if(self != null){
+							startActivity(IntentManager.getAuthMemberRegister(self));
+							finish();
+		        		}
+					}
+				}, 500);
+        	}
+        });
+		
 		
 		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_TERMINATE, this, new Handler() {
         	@Override

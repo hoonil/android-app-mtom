@@ -35,7 +35,7 @@ public class SplashActivity extends BaseActivityManager {
 					initializeApplicationDefaultDbData();
 					initializeApplicationDefaultUserData();
 					initializeApplicationUUID();
-					initializeApplicationAnonymousSessionKey();
+					initializeApplicationAuthMemberRegister();
 					initializeInfoSyncToServer();
 				}else{
 					initializeInfoSyncToServer();
@@ -80,24 +80,40 @@ public class SplashActivity extends BaseActivityManager {
 			String uuid = userManager.createNewUUID();
 			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
 			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_USER_UUID, true);
-			
-			
-			/**
-			 * [ uuid 서버에 저장 ]
-			 */
-			
-			
 		}
 	}
 	
-	private synchronized void initializeApplicationAnonymousSessionKey(){
+	
+	
+	private synchronized void initializeApplicationAuthMemberRegister(){
 		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, false)){
 			// [ Set Anonymous Session Key ]
-			String anonymousSessionKey = userManager.createNewUUID();
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, anonymousSessionKey);
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, true);
+			String uuid = userManager.getUUID();
+			
+			/**
+			 * [ 서버에서 세션키 전송 받아 저장 ]
+			 */
+			//defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, anonymousSessionKey);
+			//defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, true);
+			
+			
+			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_AUTH_MEMBER_REGISTER);
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private synchronized void initializeInfoSyncToServer(){
 		/*
@@ -119,13 +135,18 @@ public class SplashActivity extends BaseActivityManager {
 	}
 	
 	
+
+	
 	
 	private void syncInstalledUserInfoInLocal(String userId){
 		if(appManager.isAppInitializeCompleted()){
 			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_ID, userId);
 			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, true);
+			updateInitializedApplicationCompleted();
+		}else{
+			// 회원정보 입력 화면 이동
 		}
-		updateInitializedApplicationCompleted();
+		
 	}
 	
 	private synchronized void updateInitializedApplicationCompleted(){

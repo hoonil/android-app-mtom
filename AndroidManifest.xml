@@ -175,6 +175,10 @@
             android:label="@string/mtom_myroom_title" >
         </activity>
         <activity
+            android:name=".mtom.activity.myroom.NewsFeedActivity"
+            android:label="@string/mtom_myroom_title" >
+        </activity>
+        <activity
             android:name=".mtom.activity.search.SearchActivity"
             android:label="@string/mtom_search_title" >
         </activity>

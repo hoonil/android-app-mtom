@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+	<color name="black">#000000</color>
+
+    <!-- KAKAO STORY COLORS -->
+    <color name="bg_color">#fff7f7f0</color>
+    <color name="bg_color_pressed">#eaeae1</color>
+    <color name="bg_round_pressed">#195f5f16</color>
+    <color name="profile_pressed">#405f5f16</color>
+    <color name="gray">#7f7f72</color>
+    <color name="color_unselect_tab_text">#988f87</color>
+    <color name="divider_color">#d4d4cd</color>
+    <color name="red">#e54923</color>
+	<color name="blue">#0f87a7</color>	
+    <color name="disable_color">#cbcbcb</color>
+    <color name="hint_color">#bbbbbb</color>
+    <color name="text_link">#588cb3</color>
+    
+    <!-- Feed List Item -->
+    <color name="bg_content">#fff</color>
+    <color name="bg_content_pressed">#f0f0f0</color>
+    <color name="feed_user_name">#000</color>
+    <color name="feed_sub_info">#5a5a54</color>
+    <color name="feed_content">#5a5a54</color>
+    <color name="article_image">#f3f3e9</color>
+
+    <!-- Scrap -->
+    <color name="scrap_background">#fdfdfb</color>
+    
+    <!-- PullToRefresh // TODO: rename -->
+    <color name="light_gray">#ccccb6</color>
+    <color name="light_gray2">#a9a9a9</color>
+
+    <!-- Article detail -->
+    <color name="emotion_like">#f94e28</color>
+    <color name="emotion_cool">#bbcc28</color>
+    <color name="emotion_happy">#e8b505</color>
+    <color name="emotion_sad">#009fb0</color>
+    <color name="emotion_cheer">#93669e</color>
+    <color name="share_popup_menu_item">#432e2e</color>
+    <color name="share_popup_menu_item_dim">#55432e2e</color>
+
+    <!-- Write Article -->
+    <color name="scrap_title">#5a5a54</color>
+    <color name="scrap_host">@color/text_link</color>
+    <color name="scrap_description">#a1a196</color>
+    <color name="brown">#9c948a</color>
+    <color name="selected_filter_label">#FFFFFF</color>
+    <color name="unselected_filter_label">#cccccc</color>
+
+    <!-- Setting List Item -->
+    <color name="setting_value">#3382b7</color>
+    
+    <!-- Alert Center && Profile Home Article Color -->
+    <color name="bg_colr_01">#8dd6d4</color>
+    <color name="bg_colr_02">#e2e664</color>
+    <color name="bg_colr_03">#eeaeae</color>
+    <color name="bg_colr_04">#ffbc8d</color>
+    <color name="bg_colr_05">#aad9fa</color>
+    <color name="article_colr_01">#5c9796</color>
+    <color name="article_colr_02">#b5b84f</color>
+    <color name="article_colr_03">#cc6c6c</color>
+    <color name="article_colr_04">#e38542</color>
+    <color name="article_colr_05">#5fb3f0</color>
+    
+    <!-- Design 1.0 -->
+	<color name="font_black">#000000</color>
+    <color name="font_black_20">#33000000</color>
+
+    <!-- More Function List -->
+    <color name="grid_background">#fcfcf5</color>
+    <color name="default_list_selected_background">#5ea0cd</color>
+    
+    <drawable name="transparent_background">#00000000</drawable>
+    
+    <color name="color_select_friend_tab_text">#f55723</color>
+    
+    <color name="expandable_list_divider">#cdcdc0</color>
+    
+    <color name="bg_friend_more_color">#f4f4eb</color>
+    
+    <color name="color_invalid_abuse_email">#f55723</color>
+    
+    <color name="bg_new_friend_nor_color">#f9fbcf</color>
+    <color name="bg_new_friend_press_color">#f7f79e</color>
+</resources>

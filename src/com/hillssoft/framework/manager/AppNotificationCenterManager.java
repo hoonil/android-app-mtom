@@ -12,7 +12,7 @@ import com.hillssoft.framework.type.IDisposable;
 
 public class AppNotificationCenterManager extends BaseAppNotificationCenter implements IDisposable {
 	
-	
+	public static final String APP_GLOBAL_APPLICATION_NOTIFICATION_AUTH_MEMBER_REGISTER = "AppGlobalApplication_NOTIFICATION_AUTH_MEMBER_REGISTER";
 	public static final String APP_GLOBAL_APPLICATION_NOTIFICATION_INITIALIZE_COMPLETE = "AppGlobalApplication_NOTIFICATION_INITIALIZE_COMPLETE";
 	public static final String APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB = "AppGlobalApplication_APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB";
 	public static final String APP_GLOBAL_APPLICATION_NOTIFICATION_CURRENT_ACTIVITY_CLOSE = "AppGlobalApplication_APP_GLOBAL_APPLICATION_NOTIFICATION_CURRENT_ACTIVITY_CLOSE";
