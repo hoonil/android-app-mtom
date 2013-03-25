@@ -1,6 +1,12 @@
 package com.hillssoft.app.mtom.activity;
 
+import java.io.IOException;
 import java.util.Calendar;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.util.EntityUtils;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +21,8 @@ import com.hillssoft.app.mtom.db.AppDBQuery;
 import com.hillssoft.framework.manager.AppNotificationCenterManager;
 import com.hillssoft.framework.manager.BaseActivityManager;
 import com.hillssoft.framework.manager.DatabaseManager;
+import com.hillssoft.framework.manager.HttpConnectionManager;
+import com.hillssoft.framework.manager.HttpConnectionManager.HttpMethod;
 import com.hillssoft.framework.manager.LoggerManager;
 import com.hillssoft.framework.manager.SharedPreferenceManager;
 
@@ -86,6 +94,25 @@ public class SplashActivity extends BaseActivityManager {
 	
 	
 	private synchronized void initializeApplicationAuthMemberRegister(){
+		
+		//ProgressDialog.show(self, "Wait", "initializing...");
+		
+		ResponseHandler<HttpResponse> responseHandler = new ResponseHandler<HttpResponse>(){
+			public HttpResponse handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+				LoggerManager.i("11111111111111111111111111");
+				
+				//LoggerManager.i("55555555555555555555555555555555555555555" + EntityUtils.toString(response.getEntity(), "UTF-8"));
+				return response;
+			}
+		};
+		HttpConnectionManager.getInstance().doRequest(HttpMethod.GET, responseHandler, "http://m.naver.com", null);
+		LoggerManager.i("222222222222222222222222");
+		
+		
+		
+		
+		
+		
 		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, false)){
 			// [ Set Anonymous Session Key ]
 			String uuid = userManager.getUUID();
@@ -102,6 +129,27 @@ public class SplashActivity extends BaseActivityManager {
 	}
 	
 	
+	
+	
+	
+	private class HttpSimpleTest implements Runnable{
+		@Override
+		public void run() {
+			try{
+				Thread.sleep(10000);
+			}catch(InterruptedException e){
+				
+			}
+			
+//			HttpConnectionManager http = new HttpConnectionManager();
+//			String msgResult = http.doRequest("http://m.naver.com");
+//			LoggerManager.i(msgResult);
+
+			
+			
+			
+		}
+	}
 	
 	
 	
