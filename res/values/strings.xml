@@ -19,7 +19,31 @@
     
     
     
+    <!-- confirmation messages -->
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
     
+    <!--  common error messages -->
+    <string name="error_message_for_maintenance">Our service is temporarily shut down for maintenance. We apologize for any inconvenience. </string>    
+    <string name="error_message_for_unknown_error">An unexpected error has occurred. Please try again later.\nIf this error continues to occur, please reboot your device and if this error continues after reboot, please contact us through our website.</string>
+    <string name="error_messsage_for_unknown_server_code">An unexpected error has occurred.\nIt may be a temporary error in the server or network connection.\nKakaoTalk is currently identifying and responding to this problem.(%1$s)</string>
+    <string name="error_message_for_too_many_request">Transmission Overload \n\nPlease try again later.</string>
+    <string name="error_message_for_service_unavailable">Cannot connect to the server. \nPlease try again later.</string>
+    <string name="error_message_for_network_is_unavailable">Network connection is unstable. \nPlease check your Wi-Fi or 3G network connection.</string>
+    <string name="error_message_for_disk_full">Not enough disk space. Please free more disk space and try again.</string>
+    <string name="error_message_for_network_is_unavailable_cause_unauthorized_network">The Wi-Fi connection is not available. \n\nPlease check the network connection and try again later.</string>
+    <string name="error_message_for_banned_user">Your KakaoTalk access has been temporarily suspended according to our service policy. If you have inquiries, follow the link below. \nhttp://www.kakao.com/talk/en/contact</string>
+    <string name="error_message_for_mismatch_another_field">The information you have entered is incorrect.</string>    
+    
+    <!-- Notification Messages -->
+    <string name="message_for_waiting_dialog">Please wait...</string>
+    <string name="message_for_loading_dialog">Loading...</string>
+    
+    <!--  verification -->
+    <string name="title_for_need_to_update">Update</string>
+    <string name="message_for_need_to_update">Update Needed</string>
     
     
     
@@ -36,7 +60,7 @@
        							어떤 분야에 Mento가 되실지 입력해 주십시요.</string>
     <string name="mtom_auth_member_register_nickname_comment">닉네임을 입력해주세요.</string>
     
-    <string name="mtom_auth_member_register_btn">Mento 등록하기</string>
+    <string name="mtom_auth_member_register_btn">등록하기</string>
     
    
     

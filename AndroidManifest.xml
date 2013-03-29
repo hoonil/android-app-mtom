@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hillssoft.app"
+    package="com.hillssoft.android"
     android:versionCode="1"
     android:versionName="0.1" >
 
@@ -25,7 +25,6 @@
     
     
     
-    <uses-permission android:name="com.hillssoft.app.StaticBroadcastReceiver" />
     
     
     
@@ -40,7 +39,7 @@
     
     
     <application
-        android:name=".mtom.application.AppGlobalApplication"
+        android:name=".app.mtom.application.AppGlobalApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -54,7 +53,7 @@
         
         <!-- Index Splash Activity -->
         <activity
-            android:name=".mtom.activity.SplashActivity"
+            android:name=".app.mtom.activity.SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,7 +69,7 @@
         
         
         <activity
-            android:name=".IndexActivity"
+            android:name=".app.IndexActivity"
             android:label="@string/app_name" >
             
         </activity>
@@ -82,11 +81,11 @@
         
         <!-- Tab Activity -->
         <activity
-            android:name=".sample.SampleTabActivity"
+            android:name=".app.sample.SampleTabActivity"
             android:label="@string/sample_sample_tab_activity_title" >
         </activity>
         <activity
-            android:name="com.hillssoft.app.mtom.MtomMainTab"
+            android:name=".app.mtom.MtomMainTab"
             android:label="@string/mtom_mtom_tab_activity_title" >
         </activity>
         
@@ -95,52 +94,52 @@
         
         <!-- Sample -->
         <activity
-            android:name=".sample.activity.MainActivity"
+            android:name=".app.sample.activity.MainActivity"
             android:label="@string/sample_activity_main_activity_title" >
         </activity>
         
         <activity
-            android:name=".sample.activity.SubActivity"
+            android:name=".app.sample.activity.SubActivity"
             android:label="@string/sample_activity_sub_activity_title" >
         </activity>
         
         <activity
-            android:name=".sample.view.ViewObjectActivity"
+            android:name=".app.sample.view.ViewObjectActivity"
             android:label="@string/sample_view_view_object_activity" >
         </activity>
         
         <activity
-            android:name=".sample.view.ListViewActivity"
+            android:name=".app.sample.view.ListViewActivity"
             android:label="@string/sample_view_list_view_activity_title" >
 		</activity>
         
         <activity
-            android:name=".sample.view.ListViewDetailActivity"
+            android:name=".app.sample.view.ListViewDetailActivity"
             android:label="@string/sample_view_list_view_detail_activity_title" >
         </activity>
         
         <activity
-            android:name=".sample.view.PullToRefreshActivity"
+            android:name=".app.sample.view.PullToRefreshActivity"
             android:label="@string/sample_db_db_activity_title" >
         </activity>
         
         <activity
-            android:name=".sample.graphic.GraphActivity"
+            android:name=".app.sample.graphic.GraphActivity"
             android:label="@string/sample_graphic_graph_activity_title" >
         </activity>
         
         <activity
-            android:name=".sample.broadcast.BroadcastActivity"
+            android:name=".app.sample.broadcast.BroadcastActivity"
             android:label="@string/sample_broadcast_broadcast_activity_title" >
         </activity>
         
         <activity
-            android:name=".sample.service.ServiceActivity"
+            android:name=".app.sample.service.ServiceActivity"
             android:label="@string/sample_service_activity_title" >
         </activity>
         
         <activity
-            android:name=".sample.db.DBActivity"
+            android:name=".app.sample.db.DBActivity"
             android:label="@string/sample_db_db_activity_title" >
         </activity>
         
@@ -157,31 +156,31 @@
 
         
         <activity
-            android:name=".mtom.activity.auth.MemberRegisterActivity"
+            android:name=".app.mtom.activity.auth.MemberRegisterActivity"
             android:label="@string/mtom_auth_title" >
         </activity>
         <activity
-            android:name=".mtom.activity.chat.ChatRoomListActivity"
+            android:name=".app.mtom.activity.chat.ChatRoomListActivity"
             android:label="@string/mtom_chat_title" >
         </activity>
         <activity
-            android:name=".mtom.activity.friend.FriendListActivity"
+            android:name=".app.mtom.activity.friend.FriendListActivity"
             android:label="@string/mtom_friend_title" >
         </activity>
         <activity
-            android:name=".mtom.activity.more.MoreListActivity"
+            android:name=".app.mtom.activity.more.MoreListActivity"
             android:label="@string/mtom_more_title" >
         </activity>
         <activity
-            android:name=".mtom.activity.myroom.MyRoomActivity"
+            android:name=".app.mtom.activity.myroom.MyRoomActivity"
             android:label="@string/mtom_myroom_title" >
         </activity>
         <activity
-            android:name=".mtom.activity.myroom.NewsFeedActivity"
+            android:name=".app.mtom.activity.myroom.NewsFeedActivity"
             android:label="@string/mtom_myroom_title" >
         </activity>
         <activity
-            android:name=".mtom.activity.search.SearchActivity"
+            android:name=".app.mtom.activity.search.SearchActivity"
             android:label="@string/mtom_search_title" >
         </activity>
         
