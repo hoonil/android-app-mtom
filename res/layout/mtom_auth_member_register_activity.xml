@@ -15,18 +15,10 @@
         android:orientation="vertical" >
 	
        	
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mtom_auth_member_register_intro_msg" />
+       
 
         
-        <EditText
-            android:id="@+id/category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-	</EditText>
-
+        
         
         <TextView
             android:layout_width="wrap_content"
@@ -39,13 +31,65 @@
             android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-	</EditText>
+		</EditText>
+		
+        
+        
+        <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+	    android:text="@string/mtom_auth_member_register_sex_comment" />
+    
+    
+    
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content" >
+			<RadioGroup 
+	           	android:id="@+id/sex_group"
+	         	android:layout_width="fill_parent"
+	         	android:layout_height="match_parent"
+	         	android:orientation="horizontal">
+         	
+		        <RadioButton
+		            android:id="@+id/male"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/mtom_auth_member_register_filed_title_sex_male"
+		            android:layout_weight="1" />
+		
+		        <RadioButton
+		            android:id="@+id/female"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/mtom_auth_member_register_filed_title_sex_female"
+		            android:layout_weight="1" />
+	        
+			</RadioGroup>
+		</LinearLayout>
+        
+        
+	    
+	     <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/mtom_auth_member_register_intro_msg" />
+
+        
+        <EditText
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+		</EditText>
 	
         
         <Button
             android:id="@+id/register_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:text="@string/mtom_auth_member_register_btn" />
         

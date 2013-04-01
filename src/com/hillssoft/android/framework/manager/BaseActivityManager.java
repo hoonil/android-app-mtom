@@ -6,8 +6,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.framework.base.BaseActivity;
@@ -218,7 +220,12 @@ public class BaseActivityManager extends BaseActivity {
 
 
 	
-	
+	protected void openErrorMessage(int resMsgId){
+		Toast t = Toast.makeText(self, resMsgId, Toast.LENGTH_SHORT);
+		t.setGravity(Gravity.CENTER, 0, 0);
+		t.show();
+	}
+
 	
 	
 	

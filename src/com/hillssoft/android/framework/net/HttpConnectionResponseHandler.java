@@ -17,6 +17,14 @@ public class HttpConnectionResponseHandler implements ResponseHandler {
 	private JSONObject jsonObject;
 	
 	
+	/*
+	 * [ Define Response Status ]
+	 */
+	private static String SUCCESS = "SUCCESS";
+	private static String ERROR = "ERROR";
+	
+	
+	
 	@Override
 	public HttpResponse handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
 		responseString = EntityUtils.toString(response.getEntity(), AppConf.APP_WEB_SERVER_ENCODING);
@@ -25,11 +33,30 @@ public class HttpConnectionResponseHandler implements ResponseHandler {
 		}catch(Exception e){
 			jsonObject = null;
 		}
+		
+		/*
+		 * [ Response Status Check ]
+		 */
+		String result = getJsonToString("result");
+		if(result.equals(SUCCESS)){
+			this.onComplete(result, response);
+		}else if(result.equals(ERROR)){
+			this.onError(result, response);
+		}else{
+			this.onError(result, response);
+		}
+		
 		return response;
 	}
 	
-	public HttpResponse handleError(HttpResponse response){
-		return response;
+	
+	public boolean onComplete(String status, HttpResponse response) throws ClientProtocolException, IOException {
+		return true;
+	}
+	
+	
+	public boolean onError(String status, HttpResponse response){
+		return true;
 	}
 
 	

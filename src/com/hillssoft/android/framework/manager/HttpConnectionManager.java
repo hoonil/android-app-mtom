@@ -1,14 +1,19 @@
 package com.hillssoft.android.framework.manager;
 
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
@@ -72,9 +77,6 @@ public class HttpConnectionManager implements IDisposable {
 			requestObject.start();
 			
 		}
-		
-		
-		
 	}
 	
 	
@@ -102,43 +104,57 @@ public class HttpConnectionManager implements IDisposable {
 		
 		private void doGet(){
 			try{
-				/**
+				/*
 				 * [ Create Http Objects ]
 				 */
 				HttpPost httpPost = new HttpPost(url);
 				DefaultHttpClient client = new DefaultHttpClient();
 				
 				
-				/**
+				/*
 				 * [ Set Properties ]
 				 */
 				httpPost.setHeader("Connection", "Keep-Alive");
 				
+				/*
+				 * [ Set Http Default Params ]
+				 */
+				BasicHttpParams httpParams = new BasicHttpParams();
+				httpPost.setParams(httpParams);
+				
 				/**
 				 * [ Set Parameters ]
 				 */
+				
 				if(params != null){
-					BasicHttpParams httpParams = new BasicHttpParams();
+					List<NameValuePair> paramList = new ArrayList<NameValuePair>();
 					Iterator it = params.keySet().iterator();
 					while(it.hasNext()){
 						String key = (String)it.next();
-						String value = URLEncoder.encode(params.get(key), AppConf.APP_WEB_SERVER_ENCODING);
-						httpParams.setParameter(key, value);
+						String value = (String)params.get(key);
+						paramList.add(new BasicNameValuePair(key, value));
+						
 					}
-					httpPost.setParams(httpParams);
+					httpPost.setEntity(new UrlEncodedFormEntity(paramList, AppConf.APP_WEB_SERVER_ENCODING));
 				}
 				
+				
+				/*
+				 * [ Execute Request ]
+				 */
 				HttpResponse response = client.execute(httpPost, responseHandler);
 				
-				/**
+				/*
 				 * [ Check Status ]
 				 */
 				int status = response.getStatusLine().getStatusCode();
-				if (status != HttpStatus.SC_OK){
-					responseHandler.handleError(response);
+				if (status == HttpStatus.SC_OK){
+					responseHandler.onComplete(Integer.toString(status), response);
+				}else{
+					responseHandler.onError(Integer.toString(status), response);
 				}
 			}catch(Exception e){
-				LoggerManager.e("!!!!!!!!!!!!!!!! ----------------------  Http Get Method Error !!!!!!!!!!!!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
+				LoggerManager.e("!!!!!!!!!!!!!!!! ---------------------- PostMethodRequestObject Error ---------------------- !!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
 			}
 		}
 	}
@@ -163,140 +179,67 @@ public class HttpConnectionManager implements IDisposable {
 		
 		private void doGet(){
 			try{
-				/**
+				
+				/*
+				 * [ Set Url Parameters ]
+				 */
+				if(params != null){
+					Iterator it = params.keySet().iterator();
+					while(it.hasNext()){
+						String key = (String)it.next();
+						String value = URLEncoder.encode(params.get(key), AppConf.APP_WEB_SERVER_ENCODING);
+						if(url.indexOf("?") == -1){
+							url = url + "?" + key + "=" + value;
+						}else{
+							url = url + "&" + key + "=" + value;
+						}
+					}
+				}
+				LoggerManager.i(url);
+				
+				/*
 				 * [ Create Http Objects ]
 				 */
 				HttpGet httpGet = new HttpGet(url);
 				DefaultHttpClient client = new DefaultHttpClient();
 				
 				
-				/**
+				/*
 				 * [ Set Properties ]
 				 */
 				httpGet.setHeader("Connection", "Keep-Alive");
 				
-				/**
-				 * [ Set Parameters ]
-				 */
-				if(params != null){
-					BasicHttpParams httpParams = new BasicHttpParams();
-					Iterator it = params.keySet().iterator();
-					while(it.hasNext()){
-						String key = (String)it.next();
-						String value = URLEncoder.encode(params.get(key), AppConf.APP_WEB_SERVER_ENCODING);
-						httpParams.setParameter(key, value);
-					}
-					httpGet.setParams(httpParams);
-				}
 				
+				/*
+				 * [ Set Http Default Params ]
+				 */
+				BasicHttpParams httpParams = new BasicHttpParams();
+				httpGet.setParams(httpParams);
+				
+				
+				/*
+				 * [ Execute Request ]
+				 */
 				HttpResponse response = client.execute(httpGet, responseHandler);
 				
-				/**
+				/*
 				 * [ Check Status ]
 				 */
 				int status = response.getStatusLine().getStatusCode();
-				if (status != HttpStatus.SC_OK){
-					responseHandler.handleError(response);
+				if (status == HttpStatus.SC_OK){
+					responseHandler.onComplete(Integer.toString(status), response);
+				}else{
+					responseHandler.onError(Integer.toString(status), response);
 				}
 			}catch(Exception e){
-				LoggerManager.e("!!!!!!!!!!!!!!!! ----------------------  Http Get Method Error !!!!!!!!!!!!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
+				LoggerManager.e("!!!!!!!!!!!!!!!! ----------------------  GetMethodRequestObject Method Error ---------------------- !!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
 			}
 		}
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	private String doGet(ResponseHandler responseHandler, String url){
-//		try{
-//			/**
-//			 * [ Create Http Objects ]
-//			 */
-//			HttpGet method = new HttpGet(url);
-//			DefaultHttpClient client = new DefaultHttpClient();
-//			
-//			/**
-//			 * [ Set Properties ]
-//			 */
-//			method.setHeader("Connection", "Keep-Alive");
-//			HttpResponse response = client.execute(method, responseHandler);
-//			
-//			/**
-//			 * [ Check Status ]
-//			 */
-//			int status = response.getStatusLine().getStatusCode();
-//			if (status != HttpStatus.SC_OK){
-//				throw new Exception("");
-//			}
-//			
-//			/**
-//			 * [ Return result ]
-//			 */
-//			return EntityUtils.toString(response.getEntity(), "UTF-8");
-//		}catch(Exception e){
-//			LoggerManager.e("!!!!!!!!!!!!!!!! Http Get Method Error !!!!!!!!!!!!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
-//			
-//			return null;
-//		}
-//	}
-//
-//	private String doPost(String url, String params){
-//		try{
-//			HttpPost method = new HttpPost(url);
-//			DefaultHttpClient client = new DefaultHttpClient();
-//			
-//			StringEntity paramEntity = new StringEntity(params);
-//			paramEntity.setChunked(false);
-//	        paramEntity.setContentType("application/x-www-form-urlencoded");
-//	        method.setEntity(paramEntity);
-//	        
-//	        
-//	        HttpResponse response = client.execute(method);
-//	        int status = response.getStatusLine().getStatusCode();
-//	        if (status != HttpStatus.SC_OK){
-//	        	throw new Exception("");
-//	        }
-//	        return EntityUtils.toString(response.getEntity(), "UTF-8");
-//	    }catch(Exception e){
-//			return null;
-//		}
-//	}
-	
-	
 
-	
-	
-//	private void push(Runnable runnable) {
-//		httpQueue.add(runnable);
-//		startNext();
-//	}
-//
-//	private void startNext() {
-//		if (!httpQueue.isEmpty()) {
-//			Runnable next = null;
-//			try {
-//				next = httpQueue.remove(0);
-//			} catch (java.lang.IndexOutOfBoundsException e) {
-//				LoggerManager.e(e);
-//			}
-//
-//			if (next != null) {
-//				httpQueueExecutor.execute(next);
-//			}
-//		}
-//	}
-//
-//	private void didComplete(Runnable runnable) {
-//		startNext();
-//	}
 
 	
 }

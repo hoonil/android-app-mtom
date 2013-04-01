@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hillssoft.android.R;
+import com.hillssoft.android.framework.manager.AppManager;
 import com.hillssoft.android.framework.manager.AppNotificationCenterManager;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
 import com.hillssoft.android.framework.manager.HttpConnectionManager;
@@ -73,6 +74,8 @@ public class SplashActivity extends BaseActivityManager {
 	
 	private synchronized void initializeApplicationDefaultUserData(){
 		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, false)){
+			String uuid = AppManager.getInstance().createNewUUID();
+			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
 			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, true);
 		}
 	}

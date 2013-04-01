@@ -3,15 +3,38 @@ package com.hillssoft.android.app.mtom.application;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import org.acra.ACRA;
+import org.acra.ReportingInteractionMode;
+import org.acra.annotation.ReportsCrashes;
+
 import android.app.Activity;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.hillssoft.android.R;
 import com.hillssoft.android.framework.manager.DatabaseManager;
 import com.hillssoft.android.framework.manager.LoggerManager;
 import com.hillssoft.android.framework.manager.SharedPreferenceManager;
 import com.hillssoft.android.framework.type.IDisposable;
+
+
+
+
+@ReportsCrashes
+(
+		formKey = "",
+		resToastText = R.string.crash_toast_text,
+		mode = ReportingInteractionMode.DIALOG,
+		resDialogIcon = android.R.drawable.ic_dialog_info,
+		resDialogTitle = R.string.crash_dialog_title,
+		resDialogText = R.string.crash_dialog_text,
+		resDialogOkToast = R.string.crash_dialog_ok_toast,
+		mailTo = "hoonil.kang@gmail.com"
+		
+)
+	
+
 
 public class AppGlobalApplication extends Application {
 	
@@ -46,6 +69,11 @@ public class AppGlobalApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		/*
+		 * [ Clash Log Start ]
+		 */
+		ACRA.init(this);
+		
 		
 		/*
 		 * [ Static Object 초기화 ]
@@ -60,6 +88,8 @@ public class AppGlobalApplication extends Application {
 		initializeAppGlobalApplicationObject();
 		initializeApplicationDefaultCacheData();
 
+		
+		
 		
 	}
 	
