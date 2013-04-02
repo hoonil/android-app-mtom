@@ -84,11 +84,7 @@ public class AppManager extends BaseApp implements IDisposable {
 		return AppConf.APP_ENV;
 	}
 	
-	
-	
-	public String createNewUUID(){
-		return UUID.randomUUID().toString();
-	}
+
 	
 	public boolean isNetworkOnline() {
 		Context context = AppGlobalApplication.getAppGlobalApplicationContext();

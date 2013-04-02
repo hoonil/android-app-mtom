@@ -30,10 +30,6 @@ public class UserManager implements IDisposable {
 	}
 	
 	
-	public String getUserAnonymousSessionKey(){
-		return defaultSharedPreference.getString(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, "");
-	}
-	
 	public String getUserSessionKey(){
 		return defaultSharedPreference.getString(SharedPreferenceManager.KEY_USER_SESSION_KEY, "");
 	}

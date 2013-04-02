@@ -1,11 +1,5 @@
 package com.hillssoft.android.app.mtom.activity;
 
-import java.io.IOException;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.util.EntityUtils;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,14 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hillssoft.android.R;
-import com.hillssoft.android.framework.manager.AppManager;
 import com.hillssoft.android.framework.manager.AppNotificationCenterManager;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
-import com.hillssoft.android.framework.manager.HttpConnectionManager;
-import com.hillssoft.android.framework.manager.HttpConnectionManager.HttpMethod;
 import com.hillssoft.android.framework.manager.LoggerManager;
 import com.hillssoft.android.framework.manager.SharedPreferenceManager;
-import com.hillssoft.android.framework.net.HttpConnectionResponseHandler;
+import com.hillssoft.android.framework.manager.UserManager;
 
 public class SplashActivity extends BaseActivityManager {
 
@@ -74,7 +65,7 @@ public class SplashActivity extends BaseActivityManager {
 	
 	private synchronized void initializeApplicationDefaultUserData(){
 		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, false)){
-			String uuid = AppManager.getInstance().createNewUUID();
+			String uuid = UserManager.getInstance().createNewUUID();
 			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
 			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, true);
 		}
@@ -109,122 +100,9 @@ public class SplashActivity extends BaseActivityManager {
 	
 	
 	
-	
-	private synchronized void initializeApplicationUUID(){
-		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_USER_UUID, false)){
-			// [ Set New UUID ]
-			String uuid = userManager.createNewUUID();
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_USER_UUID, true);
-		}
-	}
-	
-	
-	
-	private synchronized void initializeApplicationAuthMemberRegister(){
-		
-		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, false)){
-			// [ Set Anonymous Session Key ]
-			String uuid = userManager.getUUID();
-			
-			/*
-			 * [ Set responseHandler ]
-			 */
-			HttpConnectionResponseHandler responseHandler = new HttpConnectionResponseHandler(){
-				public HttpResponse handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
-					String responseJsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
-					LoggerManager.i(responseJsonStr);
-					
-					//LoggerManager.e("aaaaa");
-					
-					
-					String userId = "";
-					String anonymousSessionKey = "";
-					initializeApplicationAuthMemberRegisterResponseHandler(userId, anonymousSessionKey);
-					return response;
-				}
-				
-			};
-			HttpConnectionManager.getInstance().doRequest(HttpMethod.GET, responseHandler, "http://hoonil.codns.com/app_mtom/?action_key=register_uuid", null);
-		}
-	}
-	
-	
-	
-	
-	
-	private void initializeApplicationAuthMemberRegisterResponseHandler(String userId, String anonymousSessionKey){
-		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, false)){
-			
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_ID, userId);
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, anonymousSessionKey);
-			//defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, true);
-			
-			/*
-			 * [ 가입 페이지로 이동 ]
-			 */
-			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_MEMBER_REGISTER);
-		}
-	}
-	
-	
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	private synchronized void initializeInfoSyncToServer(){
-		/*
-		 * [ 서버와 통신후 초기화 완료 처리 ]
-		 * -- 해당 로직 추가해야 됨.
-		 * 
-		 */
-		String userSessionKey = userManager.getUserAnonymousSessionKey();
-		String userId = "10000001";
-		syncInstalledUserInfoInLocal(userId);
-		
-		
-//		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, false)){
-//			String anonymousSessionKey = userManager.createNewUUID();
-//			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_ANONYMOUS_USER_SESSION_KEY, anonymousSessionKey);
-//			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_ANONYMOUS_USER_SESSION_KEY, true);
-//		}
-		
-	}
-	
-	
-
-	
-	
-	private void syncInstalledUserInfoInLocal(String userId){
-		if(appManager.isAppInitializeCompleted()){
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_ID, userId);
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, true);
-			updateInitializedApplicationCompleted();
-		}else{
-			// 회원정보 입력 화면 이동
-		}
-		
-	}
-	
-	private synchronized void updateInitializedApplicationCompleted(){
-		/*
-		 * [ Initialized End ]
-		 */
-		if(appManager.isAppInitializeCompleted()){
-			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB);
-		}else{
-			LoggerManager.e("Initialized Error - updateInitializedApplicationCompleted()");
-		}
-	}
 	
 	
 	

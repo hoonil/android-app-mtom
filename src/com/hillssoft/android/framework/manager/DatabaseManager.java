@@ -59,6 +59,8 @@ public class DatabaseManager extends BaseDB implements IDisposable  {
 		 * [ Create Default Install Schema ]
 		 */
 		try{
+			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_CATEGORY_LIST));
+			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_FRIEND_LIST));
 			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST));
 			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST_COMMENT));
 		}catch(Exception e){

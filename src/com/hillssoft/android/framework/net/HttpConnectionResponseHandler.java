@@ -76,4 +76,17 @@ public class HttpConnectionResponseHandler implements ResponseHandler {
 		}
 	}
 	
+	protected JSONObject getReturnDataToJson(){
+		try{
+			return new JSONObject((String)getJsonObject().getString("return_data"));
+		}catch(JSONException e){
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
+	
 }

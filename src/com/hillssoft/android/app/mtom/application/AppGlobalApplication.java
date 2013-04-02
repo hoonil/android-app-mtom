@@ -30,8 +30,7 @@ import com.hillssoft.android.framework.type.IDisposable;
 		resDialogTitle = R.string.crash_dialog_title,
 		resDialogText = R.string.crash_dialog_text,
 		resDialogOkToast = R.string.crash_dialog_ok_toast,
-		mailTo = "hoonil.kang@gmail.com"
-		
+		mailTo = "hoonil.kang@gmail.com"		
 )
 	
 
@@ -60,7 +59,7 @@ public class AppGlobalApplication extends Application {
 	/**
 	 * [ DB Object ]
 	 */
-	private DatabaseManager dbManager = null;
+	private DatabaseManager databaseManager = null;
 	//private SQLiteDatabase db = null;
 	private HashMap<String, String> dbSqlParams = new HashMap<String, String>();
 	
@@ -127,6 +126,11 @@ public class AppGlobalApplication extends Application {
 		 * [ Global Handler ]
 		 */
 		appGlobalApplicaitonHandler = new Handler(Looper.getMainLooper());
+		
+		/*
+		 * [ DB ]
+		 */
+		databaseManager = DatabaseManager.getInstance();
 		
 	}
 	

@@ -114,7 +114,7 @@ public class HttpConnectionManager implements IDisposable {
 				/*
 				 * [ Set Properties ]
 				 */
-				httpPost.setHeader("Connection", "Keep-Alive");
+				//httpPost.setHeader("Connection", "Keep-Alive");
 				
 				/*
 				 * [ Set Http Default Params ]
@@ -207,7 +207,7 @@ public class HttpConnectionManager implements IDisposable {
 				/*
 				 * [ Set Properties ]
 				 */
-				httpGet.setHeader("Connection", "Keep-Alive");
+				//httpGet.setHeader("Connection", "Keep-Alive");
 				
 				
 				/*
