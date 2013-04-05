@@ -91,14 +91,22 @@ public class MemberRegisterActivity extends BaseActivityManager {
 				
 				
 				/*
+				 * 
+				 */
+				String uuid = UserManager.getInstance().createNewUUID();
+				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
+				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, true);
+				
+				/*
 				 * [ Set Params ]
 				 */
 				HashMap<String, String> params = new HashMap<String, String>();
-				params.put("action_key", "member_register");
+				params.put("action_key", "user_add");
+				
 				params.put("user_name", nickname.getText().toString());
-				params.put("gender", gender);
 				params.put("category_name", category.getText().toString());
-				params.put("uuid", UserManager.getInstance().getUUID());
+				params.put("gender", gender);
+				params.put("uuid", uuid);
 				
 				HttpConnectionManager.getInstance().doRequest(HttpMethod.POST, responseHandler, "http://hoonil.codns.com/app_mtom/index.php", params);
 			}
@@ -123,22 +131,22 @@ public class MemberRegisterActivity extends BaseActivityManager {
 				/*
 				 * [ Insert DB ]
 				 */
-				HashMap<String, String> dbSqlParams = new HashMap<String, String>();
-				dbSqlParams.put("user_id", userId);
-				dbSqlParams.put("category_id", categoryId);
-				dbSqlParams.put("category_name", categoryName);
-				dbSqlParams.put("date_create", "0000-00-00 00:00:00");
-				dbSqlParams.put("state", "10");
-				DatabaseManager.getInstance().getDatabase().execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.INSERT_TABLE_CATEGORY_LIST, dbSqlParams));
-				
-				/*
-				 * [ Update Preference ]
-				 */
-				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_ID, userId);
-				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_NICKNAME, userName);
-				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_SESSION_KEY, sessionKey);
-				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_USER_SESSION_KEY, true);
-				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, true);
+//				HashMap<String, String> dbSqlParams = new HashMap<String, String>();
+//				dbSqlParams.put("user_id", userId);
+//				dbSqlParams.put("category_id", categoryId);
+//				dbSqlParams.put("category_name", categoryName);
+//				dbSqlParams.put("date_create", "0000-00-00 00:00:00");
+//				dbSqlParams.put("state", "10");
+//				DatabaseManager.getInstance().getDatabase().execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.INSERT_TABLE_CATEGORY_LIST, dbSqlParams));
+//				
+//				/*
+//				 * [ Update Preference ]
+//				 */
+//				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_ID, userId);
+//				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_NICKNAME, userName);
+//				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_SESSION_KEY, sessionKey);
+//				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_USER_SESSION_KEY, true);
+//				defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, true);
 				
 				
 				

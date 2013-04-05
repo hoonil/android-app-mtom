@@ -2,15 +2,17 @@ package com.hillssoft.android.framework.manager;
 
 import java.util.HashMap;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.Toast;
 
+import com.hillssoft.android.R;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.framework.base.BaseActivity;
 
@@ -62,6 +64,15 @@ public class BaseActivityManager extends BaseActivity {
 		
 	}
 	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.base_activity_actionbar, menu);
+		return super.onCreateOptionsMenu(menu);
+		
+	}
+	
 	protected void initializeBaseActivityManagerObject(){
 		/*
 		 * [ Set self object]
@@ -89,7 +100,7 @@ public class BaseActivityManager extends BaseActivity {
 	}
 	
 	protected void initializeView(){
-		
+		ActionBar actionBar = getActionBar();
 	}
 	
 	protected void initializeView(int layoutResID){

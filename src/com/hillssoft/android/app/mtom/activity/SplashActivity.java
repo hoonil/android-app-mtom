@@ -65,9 +65,9 @@ public class SplashActivity extends BaseActivityManager {
 	
 	private synchronized void initializeApplicationDefaultUserData(){
 		if(!defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, false)){
-			String uuid = UserManager.getInstance().createNewUUID();
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
-			defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, true);
+			//String uuid = UserManager.getInstance().createNewUUID();
+			//defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_USER_UUID, uuid);
+			//defaultAppSharedPreference.commitSharedPreference(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_DEFAULT_USER_DATA, true);
 		}
 	}
 	

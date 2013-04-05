@@ -7,6 +7,7 @@ public class AppDBQuery {
 	public static enum QueryKey{
 		CREATE_TABLE_CATEGORY_LIST,
 		CREATE_TABLE_FRIEND_LIST,
+		CREATE_TABLE_INVITE,
 		CREATE_TABLE_POST,
 		CREATE_TABLE_POST_COMMENT,
 		
@@ -57,14 +58,30 @@ public class AppDBQuery {
 			case CREATE_TABLE_FRIEND_LIST :
 				sqlQuery = "" +
 						"CREATE TABLE IF NOT EXISTS " + DB_TABLE_FRIEND_LIST + "(" +
-						"	user_id INTEGER UNSIGNED NOT NULL," +
 						"	friend_user_id INTEGER UNSIGNED NOT NULL," +
+						"	friend_user_name TEXT NOT NULL," +
+						"	friend_user_type INTEGER UNSIGNED NOT NULL," +
 						"	date_create DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'," +
 						"	state INTEGER UNSIGNED NOT NULL DEFAULT '0'," +
-						"	PRIMARY KEY (`user_id`,`friend_user_id`)" +
+						"	PRIMARY KEY (`friend_user_id`,`friend_user_type`)" +
 						");";
 			break;
-		
+			
+			case CREATE_TABLE_INVITE :
+				sqlQuery = "" +
+						"CREATE TABLE IF NOT EXISTS " + DB_TABLE_FRIEND_LIST + "(" +
+						"	friend_user_id INTEGER UNSIGNED NOT NULL," +
+						"	friend_user_name TEXT NOT NULL," +
+						"	friend_user_type INTEGER UNSIGNED NOT NULL," +
+						"	category_id INTEGER UNSIGNED NOT NULL," +
+						"	category_name TEXT NOT NULL," +
+						"	date_create DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'," +
+						"	date_accept DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'," +
+						"	state INTEGER UNSIGNED NOT NULL DEFAULT '0'," +
+						"	PRIMARY KEY (`friend_user_id`,`friend_user_type`, `category_id`)" +
+						");";
+			break;
+			
 			case CREATE_TABLE_POST :
 				sqlQuery = "" +
 						"CREATE TABLE IF NOT EXISTS " + DB_TABLE_POST + "(" +
@@ -94,9 +111,7 @@ public class AppDBQuery {
 						");";
 			break;
 			
-			
 			case INSERT_TABLE_CATEGORY_LIST :
-				
 				sqlQuery = "" +
 						"INSERT INTO " + DB_TABLE_CATEGORY_LIST + "(" +
 						"	user_id, " +
