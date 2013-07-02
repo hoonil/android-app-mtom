@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hillssoft.android"
+    package="com.hillssoft.android.app.mtom"
     android:versionCode="1"
     android:versionName="0.1" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="8"
         android:targetSdkVersion="17" />
 
 
@@ -39,7 +39,7 @@
     
     
     <application
-        android:name=".app.mtom.application.AppGlobalApplication"
+        android:name=".application.AppGlobalApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -48,6 +48,7 @@
         
         
         <!-- Clash Report Activity -->
+        <!-- 
         <activity
             android:name="org.acra.CrashReportDialog"
             android:theme="@android:style/Theme.Dialog"
@@ -56,31 +57,32 @@
             android:finishOnTaskLaunch="true" >
             
         </activity>
-        
+        //-->
         
         
         
         <!-- Index Splash Activity -->
         <activity
-            android:name=".app.mtom.activity.SplashActivity"
-            android:label="@string/app_name" >
+            android:name=".activity.SplashActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        
-        
-        
-        
-        
-        
-        
+        <!-- Tab Activity -->
         <activity
-            android:name=".app.IndexActivity"
-            android:label="@string/app_name" >
-            
+            android:name="com.hillssoft.android.app.mtom.activity.MainActivity"
+            android:label="@string/mtom_mtom_tab_activity_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"  >
         </activity>
         
         
@@ -88,7 +90,59 @@
         
         
         
-        <!-- Tab Activity -->
+        
+        
+        
+        
+        
+        <!-- MtoM - Chat Activity -->
+		<activity
+            android:name=".activity.auth.MemberRegisterActivity"
+            android:label="@string/mtom_auth_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name=".activity.chat.ChatRoomListActivity"
+            android:label="@string/mtom_chat_title" >
+        </activity>
+        <activity
+            android:name=".activity.friend.FriendListActivity"
+            android:label="@string/mtom_friend_title" >
+        </activity>
+        <activity
+            android:name=".activity.more.MoreListActivity"
+            android:label="@string/mtom_more_title" >
+        </activity>
+        <activity
+            android:name=".activity.myroom.MyRoomActivity"
+            android:label="@string/mtom_myroom_title" >
+        </activity>
+        <activity
+            android:name=".activity.myroom.NewsFeedActivity"
+            android:label="@string/mtom_myroom_title" >
+        </activity>
+        <activity
+            android:name=".activity.search.SearchActivity"
+            android:label="@string/mtom_search_title" >
+        </activity>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- Sample -->
         <activity
             android:name=".app.sample.SampleTabActivity"
             android:label="@string/sample_sample_tab_activity_title" >
@@ -99,9 +153,6 @@
         </activity>
         
         
-        
-        
-        <!-- Sample -->
         <activity
             android:name=".app.sample.activity.MainActivity"
             android:label="@string/sample_activity_main_activity_title" >
@@ -161,37 +212,7 @@
         
         
         
-         <!-- MtoM - Chat Activity -->
-
         
-        <activity
-            android:name=".app.mtom.activity.auth.MemberRegisterActivity"
-            android:label="@string/mtom_auth_title" >
-        </activity>
-        <activity
-            android:name=".app.mtom.activity.chat.ChatRoomListActivity"
-            android:label="@string/mtom_chat_title" >
-        </activity>
-        <activity
-            android:name=".app.mtom.activity.friend.FriendListActivity"
-            android:label="@string/mtom_friend_title" >
-        </activity>
-        <activity
-            android:name=".app.mtom.activity.more.MoreListActivity"
-            android:label="@string/mtom_more_title" >
-        </activity>
-        <activity
-            android:name=".app.mtom.activity.myroom.MyRoomActivity"
-            android:label="@string/mtom_myroom_title" >
-        </activity>
-        <activity
-            android:name=".app.mtom.activity.myroom.NewsFeedActivity"
-            android:label="@string/mtom_myroom_title" >
-        </activity>
-        <activity
-            android:name=".app.mtom.activity.search.SearchActivity"
-            android:label="@string/mtom_search_title" >
-        </activity>
         
         
         

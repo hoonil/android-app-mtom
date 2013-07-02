@@ -8,19 +8,19 @@ import android.content.DialogInterface.OnCancelListener;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.app.mtom.conf.AppConf;
 import com.hillssoft.android.framework.manager.LoggerManager;
 
-public class DialogUtils {
+public class DialogUtil {
 
 	private Context context;
 	//private NotificationManager notificationManager;
 	private Object waitingDialogLock = new Object();
 	private ProgressDialog waitingDialog;
 	
-	public DialogUtils(Context context) {
+	public DialogUtil(Context context) {
 		this.context = context;
 	}
 

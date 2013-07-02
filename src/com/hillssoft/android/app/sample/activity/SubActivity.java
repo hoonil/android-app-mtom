@@ -4,7 +4,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
 
 public class SubActivity extends BaseActivityManager {

@@ -2,8 +2,9 @@ package com.hillssoft.android.app.mtom.activity.myroom;
 
 import android.os.Bundle;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
+import com.hillssoft.android.framework.manager.LoggerManager;
 
 public class NewsFeedActivity extends BaseActivityManager {
 
@@ -11,6 +12,8 @@ public class NewsFeedActivity extends BaseActivityManager {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		LoggerManager.i("NewsFeedActivity - onCreate");
 	}
 	
 	

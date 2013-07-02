@@ -3,7 +3,7 @@ package com.hillssoft.android.app.sample.graphic;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
 
 public class GraphActivity extends BaseActivityManager {

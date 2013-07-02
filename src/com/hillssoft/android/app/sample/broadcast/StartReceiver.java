@@ -3,7 +3,6 @@ package com.hillssoft.android.app.sample.broadcast;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 public class StartReceiver extends BroadcastReceiver {

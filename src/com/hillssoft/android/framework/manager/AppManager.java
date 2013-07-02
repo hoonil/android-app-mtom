@@ -1,7 +1,5 @@
 package com.hillssoft.android.framework.manager;
 
-import java.util.UUID;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -13,7 +11,7 @@ import com.hillssoft.android.app.mtom.conf.AppConf;
 import com.hillssoft.android.app.mtom.conf.AppConf.AppEnv;
 import com.hillssoft.android.framework.base.BaseApp;
 import com.hillssoft.android.framework.type.IDisposable;
-import com.hillssoft.android.framework.util.DialogUtils;
+import com.hillssoft.android.framework.util.DialogUtil;
 
 public class AppManager extends BaseApp implements IDisposable {
 	
@@ -102,7 +100,7 @@ public class AppManager extends BaseApp implements IDisposable {
 	
 	public boolean checkAndAlertNetworkAvailable() {
 		if (isAirplaneMode()) {
-			DialogUtils.showAlertForNetworkIsNotUnavailable();
+			DialogUtil.showAlertForNetworkIsNotUnavailable();
 			return false;
 		}
 		return true;

@@ -12,9 +12,10 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.framework.manager.AppNotificationCenterManager;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
+import com.hillssoft.android.framework.manager.LoggerManager;
 
 public class FriendListActivity extends BaseActivityManager{
 	
@@ -29,6 +30,7 @@ public class FriendListActivity extends BaseActivityManager{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		LoggerManager.i("FriendListActivity - onCreate");
 	}
 	
 	@Override
@@ -91,7 +93,7 @@ public class FriendListActivity extends BaseActivityManager{
 				SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 				int soundBeep = soundPool.load(getApplicationContext(), R.raw.sample, 1);
 				soundPool.play( soundBeep, 1f, 1f, 0, 0, 1f );
-				AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_RESTART);
+				//AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_RESTART);
 			}
 		});
 	}

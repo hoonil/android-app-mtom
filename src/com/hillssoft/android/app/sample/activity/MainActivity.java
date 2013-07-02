@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
 
 public class MainActivity extends BaseActivityManager {
@@ -77,8 +77,7 @@ public class MainActivity extends BaseActivityManager {
 			intent.setAction(Intent.ACTION_SEND);
 			intent.setType("text/plain");
 			intent.setPackage(packageName);
-			intent.putExtra(Intent.EXTRA_TEXT, "KaKaoTalk Download \n" +
-					"https://play.google.com/store/apps/details?id=com.kakao.talk");
+			intent.putExtra(Intent.EXTRA_TEXT, "KaKaoTalk Download \n" + "https://play.google.com/store/apps/details?id=com.kakao.talk");
 			startActivity(intent);
 
 			

@@ -12,8 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hillssoft.android.R;
-import com.hillssoft.android.app.mtom.MtomMainTab;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.sample.activity.MainActivity;
 import com.hillssoft.android.app.sample.broadcast.BroadcastActivity;
 import com.hillssoft.android.app.sample.db.DBActivity;
@@ -84,14 +83,7 @@ public class SampleTabActivity extends BaseActivityManager {
 	}
 	
 	protected void setInitializeViewEventListener(){
-		btnMtom.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(SampleTabActivity.this, MtomMainTab.class);
-				startActivity(intent);
-			}
-		});
+
 		
 		btn1.setOnClickListener(new OnClickListener() {
 			@Override

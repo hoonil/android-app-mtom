@@ -2,7 +2,7 @@ package com.hillssoft.android.app.mtom.activity.myroom;
 
 import android.os.Bundle;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.framework.manager.BaseActivityManager;
 
 public class MyRoomActivity extends BaseActivityManager {

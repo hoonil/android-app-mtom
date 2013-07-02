@@ -7,7 +7,6 @@ import android.text.format.DateFormat;
 import android.util.Log;
 
 import com.hillssoft.android.app.mtom.conf.AppConf;
-import com.hillssoft.android.framework.base.BaseLogger;
 import com.hillssoft.android.framework.type.LimitedLinkedList;
 
 public class LoggerManager {

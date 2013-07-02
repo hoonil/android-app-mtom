@@ -2,7 +2,6 @@ package com.hillssoft.android.framework.manager;
 
 import java.util.HashMap;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.Toast;
 
-import com.hillssoft.android.R;
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.framework.base.BaseActivity;
 
@@ -100,7 +99,7 @@ public class BaseActivityManager extends BaseActivity {
 	}
 	
 	protected void initializeView(){
-		ActionBar actionBar = getActionBar();
+		//ActionBar actionBar = getActionBar();
 	}
 	
 	protected void initializeView(int layoutResID){
@@ -114,108 +113,7 @@ public class BaseActivityManager extends BaseActivity {
 	}
 
 	protected void bindAppDefaultNotificationCenterEvent(){
-		/**
-		 * [ Register Event for application install ]
-		 */
-		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_INITIALIZE_COMPLETE, this, new Handler() {
-        	@Override
-        	public void handleMessage(Message msg) {
-        		LoggerManager.i("OK~~~~~~~ OK~~~~~~~~~~~~ APP_GLOBAL_APPLICATION_NOTIFICATION_INITIALIZE_COMPLETE");
-        	}
-        });
-		
-		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_REDIRECT_MAIN_TAB, this, new Handler() {
-        	@Override
-        	public void handleMessage(Message msg) {
-        		defaultApplicationHandler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						if(self != null){
-							startActivity(IntentManager.getMainTabIntent(self));
-							finish();
-		        		}
-					}
-				}, 500);
-        	}
-        });
-		
-		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_MEMBER_REGISTER, this, new Handler() {
-        	@Override
-        	public void handleMessage(Message msg) {
-        		defaultApplicationHandler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						if(self != null){
-							startActivity(IntentManager.getAuthMemberRegister(self));
-							finish();
-		        		}
-					}
-				}, 500);
-        	}
-        });
-		
-		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_TERMINATE, this, new Handler() {
-        	@Override
-        	public void handleMessage(Message msg) {
-        		moveTaskToBack(true);
-        		finish();
-        	}
-        });
-		
-		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_CURRENT_ACTIVITY_CLOSE, this, new Handler() {
-        	@Override
-        	public void handleMessage(Message msg) {
-        		finish();
-        	}
-        });
-		
-		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.APP_GLOBAL_APPLICATION_NOTIFICATION_APPLICATION_RESTART, this, new Handler() {
-			public void handleMessage(Message msg) {
-				//ActivityManager activityManager = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
-				//activityManager.restartPackage(appGlobalApplication.getPackageName());
-        	}
-//			@Override
-//        	public void handleMessage(Message msg) {
-//        		handler.postDelayed(new Runnable() {
-//					@Override
-//					public void run() {
-//						if(self != null){
-//							appGlobalApplication.disposeSharedResources();
-//							ActivityManager am = (ActivityManager) appGlobalApplication.getSystemService(Context.ACTIVITY_SERVICE);
-//							if (Integer.parseInt(Build.VERSION.SDK) < 8) {
-//								am.restartPackage(appGlobalApplication.getPackageName());
-//								android.os.Process.killProcess(android.os.Process.myPid());
-//							}else{
-//								am.restartPackage(appGlobalApplication.getPackageName());
-//								android.os.Process.killProcess(android.os.Process.myPid());
-//								final int retryLimit = 20;
-//								new Thread() {
-//									@Override
-//									public void run() {
-//										int retry = 0;
-//										ActivityManager am = (ActivityManager) appGlobalApplication.getSystemService(Context.ACTIVITY_SERVICE);
-//										String name = appGlobalApplication.getApplicationInfo().processName;
-//										while (retry++ < retryLimit) {
-//											List<RunningAppProcessInfo> list = am.getRunningAppProcesses();
-//											for (RunningAppProcessInfo i : list) {
-//												if (i.processName.equals(name) == true) {
-//													if (i.importance >= RunningAppProcessInfo.IMPORTANCE_BACKGROUND)
-//														am.restartPackage(appGlobalApplication.getPackageName());
-//													else
-//														Thread.yield();
-//													break;
-//												}
-//											}
-//											SystemClock.sleep(500);
-//										}
-//									}
-//								}.start();
-//							}
-//		        		}
-//					}
-//				}, 500);
-//        	}
-        });
+
 	}
 
 	
