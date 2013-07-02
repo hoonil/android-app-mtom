@@ -77,7 +77,7 @@
         
         <!-- Tab Activity -->
         <activity
-            android:name="com.hillssoft.android.app.mtom.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/mtom_mtom_tab_activity_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

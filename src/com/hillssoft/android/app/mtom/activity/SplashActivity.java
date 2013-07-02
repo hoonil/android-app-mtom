@@ -7,6 +7,7 @@ import android.os.Message;
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.manager.AppNotificationCenterManager;
 import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.IntentManager;
 import com.hillssoft.android.app.mtom.manager.LoggerManager;
 import com.hillssoft.android.app.mtom.manager.SharedPreferenceManager;
 
@@ -90,19 +91,23 @@ public class SplashActivity extends BaseActivityManager {
 	
 	private void bindAppNotificationCenterEvent(){
 		
+		
 		/**
 		 * [ Register Event for application install ]
 		 */
 		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN, this, new Handler() {
         	@Override
         	public void handleMessage(Message msg) {
-        		defaultApplicationHandler.postDelayed(new Runnable() {
+        		activityHandler.postDelayed(new Runnable() {
 					@Override
 					public void run() {
+						
+						LoggerManager.i("111111111111111111111");
+						
 						if(self != null){
-							//startActivity(IntentManager.getMainIntent(self));
-							//finish();
-		        		}
+							startActivity(IntentManager.getMainIntent(self));
+							finish();
+						}
 					}
 				}, 500);
         	}
@@ -111,15 +116,16 @@ public class SplashActivity extends BaseActivityManager {
 		AppNotificationCenterManager.getInstance().register(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_MEMBER_REGISTER, this, new Handler() {
         	@Override
         	public void handleMessage(Message msg) {
-        		defaultApplicationHandler.postDelayed(new Runnable() {
+        		activityHandler.postDelayed(new Runnable() {
 					@Override
 					public void run() {
+						LoggerManager.i("222222222222222222222");
 						if(self != null){
-							//startActivity(IntentManager.getAuthMemberRegister(self));
-							//finish();
+							startActivity(IntentManager.getAuthMemberRegister(self));
+							finish();
 		        		}
 					}
-				}, 500);
+				}, 1000);
         	}
         });
 		

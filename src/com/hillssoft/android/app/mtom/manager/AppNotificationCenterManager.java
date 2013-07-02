@@ -19,11 +19,6 @@ public class AppNotificationCenterManager extends BaseAppNotificationCenter impl
 	public static final String ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN = "ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN";
 	
 	
-	
-	
-
-	
-	
 
 	/**
 	 * [ Class Member Variables ]

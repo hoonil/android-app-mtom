@@ -25,6 +25,7 @@ public class BaseActivityManager extends BaseActivity {
 	protected UserManager userManager = null;
 	protected AppGlobalApplication appGlobalApplication = null;
 	protected SharedPreferenceManager defaultAppSharedPreference = null;
+	protected Handler activityHandler = null;
 	protected Handler defaultApplicationHandler = null;
 	protected HashMap<String, String> dbSqlParams = new HashMap<String, String>();
 	
@@ -83,6 +84,7 @@ public class BaseActivityManager extends BaseActivity {
 		 */
 		appGlobalApplication = (AppGlobalApplication)AppGlobalApplication.getAppGlobalApplicationContext();
 		appGlobalApplication.setCurrentActivity(this);
+		activityHandler = new Handler();
 		defaultApplicationHandler = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationDefaultHandler();
 		defaultAppSharedPreference = AppGlobalApplication.getAppGlobalApplicationContext().getApplicationDefaultSharedPreference();
 		
