@@ -3,7 +3,7 @@ package com.hillssoft.android.app.mtom.conf;
 import android.text.format.DateUtils;
 import android.util.Log;
 
-import com.hillssoft.android.framework.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
 
 
 

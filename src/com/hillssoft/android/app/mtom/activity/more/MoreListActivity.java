@@ -3,8 +3,8 @@ package com.hillssoft.android.app.mtom.activity.more;
 import android.os.Bundle;
 
 import com.hillssoft.android.app.mtom.R;
-import com.hillssoft.android.framework.manager.BaseActivityManager;
-import com.hillssoft.android.framework.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
 
 public class MoreListActivity extends BaseActivityManager{
 	@Override

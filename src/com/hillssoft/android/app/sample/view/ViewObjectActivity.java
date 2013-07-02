@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.hillssoft.android.app.mtom.R;
-import com.hillssoft.android.framework.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
 
 public class ViewObjectActivity extends BaseActivityManager {
 	

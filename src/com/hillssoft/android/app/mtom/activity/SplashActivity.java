@@ -5,11 +5,10 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.hillssoft.android.app.mtom.R;
-import com.hillssoft.android.framework.manager.AppNotificationCenterManager;
-import com.hillssoft.android.framework.manager.BaseActivityManager;
-import com.hillssoft.android.framework.manager.IntentManager;
-import com.hillssoft.android.framework.manager.LoggerManager;
-import com.hillssoft.android.framework.manager.SharedPreferenceManager;
+import com.hillssoft.android.app.mtom.manager.AppNotificationCenterManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.SharedPreferenceManager;
 
 public class SplashActivity extends BaseActivityManager {
 
@@ -21,6 +20,15 @@ public class SplashActivity extends BaseActivityManager {
 		initializeApplication();
 	}
 	
+	
+	
+	@Override
+	protected void initializeView() {
+		super.initializeView();
+		setContentView(R.layout.mtom_splash_activity);		
+	}
+	
+
 	
 	private void initializeApplication(){
 		try{
@@ -92,8 +100,8 @@ public class SplashActivity extends BaseActivityManager {
 					@Override
 					public void run() {
 						if(self != null){
-							startActivity(IntentManager.getMainIntent(self));
-							finish();
+							//startActivity(IntentManager.getMainIntent(self));
+							//finish();
 		        		}
 					}
 				}, 500);
@@ -107,8 +115,8 @@ public class SplashActivity extends BaseActivityManager {
 					@Override
 					public void run() {
 						if(self != null){
-							startActivity(IntentManager.getAuthMemberRegister(self));
-							finish();
+							//startActivity(IntentManager.getAuthMemberRegister(self));
+							//finish();
 		        		}
 					}
 				}, 500);
@@ -137,21 +145,9 @@ public class SplashActivity extends BaseActivityManager {
 	
 	
 	
-	@Override
-	protected void initializeView() {
-		super.initializeView();
-		setContentView(R.layout.mtom_splash_activity);
-		
-
-		
-		
-	}
-	
 
 	
 	
-	
-	////////////////
 	
 	
 	

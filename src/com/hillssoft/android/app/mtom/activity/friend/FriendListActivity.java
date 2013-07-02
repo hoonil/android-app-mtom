@@ -13,9 +13,8 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.hillssoft.android.app.mtom.R;
-import com.hillssoft.android.framework.manager.AppNotificationCenterManager;
-import com.hillssoft.android.framework.manager.BaseActivityManager;
-import com.hillssoft.android.framework.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
 
 public class FriendListActivity extends BaseActivityManager{
 	

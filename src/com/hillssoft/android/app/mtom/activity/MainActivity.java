@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.hillssoft.android.app.mtom.R;
@@ -51,26 +48,26 @@ public class MainActivity extends FragmentActivity {
 		
 	
 	private void setInitializeViewEventListener(){
-		fragmentBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if(isMenuOpen){
-					FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-					fragmentTransaction.remove(lefMenuFragment);
-					fragmentTransaction.addToBackStack(null);
-					fragmentTransaction.commit();
-					isMenuOpen = false;
-				}else{
-					FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-					fragmentTransaction.replace(android.R.id.content, lefMenuFragment, "tag2");
-					fragmentTransaction.addToBackStack(null);
-					fragmentTransaction.commit();
-					isMenuOpen = true;
-				}
-				
-				
-			}
-		});
+//		fragmentBtn.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				if(isMenuOpen){
+//					FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//					fragmentTransaction.remove(lefMenuFragment);
+//					fragmentTransaction.addToBackStack(null);
+//					fragmentTransaction.commit();
+//					isMenuOpen = false;
+//				}else{
+//					FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//					fragmentTransaction.replace(android.R.id.content, lefMenuFragment, "tag2");
+//					fragmentTransaction.addToBackStack(null);
+//					fragmentTransaction.commit();
+//					isMenuOpen = true;
+//				}
+//				
+//				
+//			}
+//		});
 	}
 		
 		

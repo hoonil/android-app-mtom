@@ -15,13 +15,13 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.hillssoft.android.app.mtom.R;
-import com.hillssoft.android.framework.manager.AppNotificationCenterManager;
-import com.hillssoft.android.framework.manager.BaseActivityManager;
-import com.hillssoft.android.framework.manager.HttpConnectionManager;
-import com.hillssoft.android.framework.manager.HttpConnectionManager.HttpMethod;
-import com.hillssoft.android.framework.manager.LoggerManager;
-import com.hillssoft.android.framework.manager.SharedPreferenceManager;
-import com.hillssoft.android.framework.manager.UserManager;
+import com.hillssoft.android.app.mtom.manager.AppNotificationCenterManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.HttpConnectionManager;
+import com.hillssoft.android.app.mtom.manager.HttpConnectionManager.HttpMethod;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.SharedPreferenceManager;
+import com.hillssoft.android.app.mtom.manager.UserManager;
 import com.hillssoft.android.framework.net.HttpConnectionResponseHandler;
 
 public class MemberRegisterActivity extends BaseActivityManager {

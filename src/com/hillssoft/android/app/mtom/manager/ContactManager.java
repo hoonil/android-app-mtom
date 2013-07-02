@@ -1,4 +1,4 @@
-package com.hillssoft.android.framework.manager;
+package com.hillssoft.android.app.mtom.manager;
 
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.framework.base.BaseContact;

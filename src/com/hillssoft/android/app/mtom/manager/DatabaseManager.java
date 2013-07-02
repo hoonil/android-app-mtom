@@ -1,4 +1,4 @@
-package com.hillssoft.android.framework.manager;
+package com.hillssoft.android.app.mtom.manager;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

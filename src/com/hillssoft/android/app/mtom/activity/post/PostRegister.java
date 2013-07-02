@@ -2,7 +2,7 @@ package com.hillssoft.android.app.mtom.activity.post;
 
 import android.os.Bundle;
 
-import com.hillssoft.android.framework.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
 
 public class PostRegister extends BaseActivityManager {
 	@Override

@@ -2,8 +2,8 @@ package com.hillssoft.android.app.mtom.activity.search;
 
 import android.os.Bundle;
 
-import com.hillssoft.android.framework.manager.BaseActivityManager;
-import com.hillssoft.android.framework.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
 
 public class SearchActivity extends BaseActivityManager {
 	@Override

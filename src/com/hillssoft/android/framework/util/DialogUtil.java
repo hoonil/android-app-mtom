@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.app.mtom.conf.AppConf;
-import com.hillssoft.android.framework.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
 
 public class DialogUtil {
 

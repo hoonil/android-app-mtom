@@ -3,16 +3,14 @@ package com.hillssoft.android.app.mtom.application;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import org.acra.ACRA;
-
 import android.app.Activity;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.hillssoft.android.framework.manager.DatabaseManager;
-import com.hillssoft.android.framework.manager.LoggerManager;
-import com.hillssoft.android.framework.manager.SharedPreferenceManager;
+import com.hillssoft.android.app.mtom.manager.DatabaseManager;
+import com.hillssoft.android.app.mtom.manager.LoggerManager;
+import com.hillssoft.android.app.mtom.manager.SharedPreferenceManager;
 import com.hillssoft.android.framework.type.IDisposable;
 
 
@@ -68,7 +66,7 @@ public class AppGlobalApplication extends Application {
 		/*
 		 * [ Clash Log Start ]
 		 */
-		ACRA.init(this);
+		//ACRA.init(this);
 		
 		
 		/*

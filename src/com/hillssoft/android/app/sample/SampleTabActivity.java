@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hillssoft.android.app.mtom.R;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
 import com.hillssoft.android.app.sample.activity.MainActivity;
 import com.hillssoft.android.app.sample.broadcast.BroadcastActivity;
 import com.hillssoft.android.app.sample.db.DBActivity;
@@ -21,7 +22,6 @@ import com.hillssoft.android.app.sample.service.ServiceActivity;
 import com.hillssoft.android.app.sample.view.ListViewActivity;
 import com.hillssoft.android.app.sample.view.PullToRefreshActivity;
 import com.hillssoft.android.app.sample.view.ViewObjectActivity;
-import com.hillssoft.android.framework.manager.BaseActivityManager;
 
 public class SampleTabActivity extends BaseActivityManager {
 	

@@ -1,4 +1,4 @@
-package com.hillssoft.android.framework.manager;
+package com.hillssoft.android.app.mtom.manager;
 
 import java.util.HashSet;
 import java.util.Iterator;
