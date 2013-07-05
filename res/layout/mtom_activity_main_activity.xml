@@ -2,21 +2,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/bg_color" >
 	
         
     
     <TextView
-        android:id="@+id/txt1"
+        android:id="@+id/test_msg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 		android:gravity="center"
         android:text="!!!!! Main Activity !!!!! " />
 
     <Button
-        android:id="@+id/fragment_btn"
+        android:id="@+id/test_btn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Open Fragment" />
+        android:text="Call Http Json Btn" />
+
+    <ImageView
+        android:id="@+id/test_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher" />
     
 </LinearLayout>

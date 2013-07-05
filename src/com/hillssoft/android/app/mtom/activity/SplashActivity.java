@@ -69,7 +69,8 @@ public class SplashActivity extends BaseActivityManager {
 		if(defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, false)){
 			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN);
 		}else{
-			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_MEMBER_REGISTER);
+			//AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_MEMBER_REGISTER);
+			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN);
 		}
 	}
 	
@@ -101,9 +102,6 @@ public class SplashActivity extends BaseActivityManager {
         		activityHandler.postDelayed(new Runnable() {
 					@Override
 					public void run() {
-						
-						LoggerManager.i("111111111111111111111");
-						
 						if(self != null){
 							startActivity(IntentManager.getMainIntent(self));
 							finish();
@@ -119,13 +117,12 @@ public class SplashActivity extends BaseActivityManager {
         		activityHandler.postDelayed(new Runnable() {
 					@Override
 					public void run() {
-						LoggerManager.i("222222222222222222222");
 						if(self != null){
 							startActivity(IntentManager.getAuthMemberRegister(self));
 							finish();
 		        		}
 					}
-				}, 1000);
+				}, 500);
         	}
         });
 		

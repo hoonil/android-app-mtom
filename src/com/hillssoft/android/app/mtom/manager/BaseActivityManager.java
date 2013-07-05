@@ -3,6 +3,7 @@ package com.hillssoft.android.app.mtom.manager;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
