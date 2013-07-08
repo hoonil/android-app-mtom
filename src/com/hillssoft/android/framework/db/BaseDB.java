@@ -1,4 +1,4 @@
-package com.hillssoft.android.framework.base;
+package com.hillssoft.android.framework.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

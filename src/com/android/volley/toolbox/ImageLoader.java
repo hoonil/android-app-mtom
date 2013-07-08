@@ -229,8 +229,7 @@ public class ImageLoader {
             });
 
         mRequestQueue.add(newRequest);
-        mInFlightRequests.put(cacheKey,
-                new BatchedImageRequest(newRequest, imageContainer));
+        mInFlightRequests.put(cacheKey, new BatchedImageRequest(newRequest, imageContainer));
         return imageContainer;
     }
 

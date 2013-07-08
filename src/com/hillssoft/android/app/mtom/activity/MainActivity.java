@@ -3,10 +3,8 @@ package com.hillssoft.android.app.mtom.activity;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,8 +15,8 @@ import android.widget.TextView;
 import com.android.volley.VolleyError;
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
-import com.hillssoft.android.app.mtom.manager.LoggerManager;
 import com.hillssoft.android.app.mtom.net.HttpRequestManager;
+import com.hillssoft.android.framework.log.Logger;
 import com.hillssoft.android.framework.net.HttpResponse;
 
 public class MainActivity extends BaseActivityManager {
@@ -30,7 +28,10 @@ public class MainActivity extends BaseActivityManager {
 //	FragmentManager fragmentManager = getSupportFragmentManager();
 //	Fragment lefMenuFragment = new LeftMenuFragment();
 //	Fragment rightMenuFragment = new RightMenuFragment();
-			
+		
+	public static Activity meActivity = null;
+	
+	
 	
 	/**
 	 * [ Widget ]
@@ -41,9 +42,13 @@ public class MainActivity extends BaseActivityManager {
 	/*
 	 * [ Test Object ]
 	 */
-	private Button testBtn = null;
-	private TextView testMsg = null;
-	private ImageView testImg = null;
+	private Button volleyTestBtn = null;
+	private TextView volleyTestMsg = null;
+	private ImageView volleyTestImg = null;
+	
+	
+	
+	private Button uilTestBtn = null;
 	
 	
 	@Override
@@ -51,7 +56,7 @@ public class MainActivity extends BaseActivityManager {
 		super.onCreate(savedInstanceState);
 		initializeView();
 		setInitializeViewEventListener();
-		
+		meActivity = self;
 		
 	}
 	
@@ -65,14 +70,16 @@ public class MainActivity extends BaseActivityManager {
 		/*
 		 * [ Set Test Object ]
 		 */
-		testMsg = (TextView)findViewById(R.id.test_msg);
-		testBtn = (Button)findViewById(R.id.test_btn);
-		testImg = (ImageView)findViewById(R.id.test_img);
+		volleyTestMsg = (TextView)findViewById(R.id.volley_test_msg);
+		volleyTestImg = (ImageView)findViewById(R.id.volley_test_img);
+		volleyTestBtn = (Button)findViewById(R.id.volley_test_btn);
+		
+		uilTestBtn = (Button)findViewById(R.id.uil_test_btn);
 		
 		
-		HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", testImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
-		HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", testImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
-		HttpRequestManager.getInstance().addViewBackgroundImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", testBtn);
+		HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
+		HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
+		//HttpRequestManager.getInstance().addViewBackgroundImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", volleyTestBtn);
 		
 	}
 	
@@ -86,7 +93,7 @@ public class MainActivity extends BaseActivityManager {
 		/*
 		 * [ ]
 		 */
-		testBtn.setOnClickListener(new OnClickListener() {
+		volleyTestBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
@@ -121,16 +128,16 @@ public class MainActivity extends BaseActivityManager {
 				HttpResponse.Listener<String> successListener =  new HttpResponse.Listener<String>(){
 					@Override
 					public void onResponse(String response) {
-						LoggerManager.i("!!!!!!! OK !!!!!!");
-						LoggerManager.i(response.toString());
-						testMsg.setText(response.toString());
+						Logger.i("!!!!!!! OK !!!!!!");
+						Logger.i(response.toString());
+						volleyTestMsg.setText(response.toString());
 					}
 				};
 				HttpResponse.ErrorListener errorListener = new HttpResponse.ErrorListener() {
 					@Override
 					public void onErrorResponse(VolleyError error) {
-						LoggerManager.i("ERROR");
-						LoggerManager.i(error.toString());
+						Logger.i("ERROR");
+						Logger.i(error.toString());
 					}
 				};
 				HttpRequestManager.getInstance().addStringRequest(HttpRequestManager.POST, "http://hoonil.codns.com/app_mtom/index.php?key=search", params, successListener, errorListener);
@@ -140,11 +147,41 @@ public class MainActivity extends BaseActivityManager {
 				/*
 				 * [ Image Request ]
 				 */
-				HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_admin/skin_01/bullet2.gif", testImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
+				HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_admin/skin_01/bullet2.gif", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
 				
 				
 			}
 		});
+		
+		
+		
+		
+		
+		uilTestBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				HttpResponse.Listener<Bitmap> successListener =  new HttpResponse.Listener<Bitmap>(){
+					@Override
+					public void onResponse(Bitmap response) {
+						Logger.i("!!!!!!! OK !!!!!!");
+						Logger.i(response.toString());
+					}
+				};
+				HttpResponse.ErrorListener errorListener = new HttpResponse.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						Logger.i("ERROR");
+						Logger.i(error.toString());
+					}
+				};
+				
+				HttpRequestManager.getInstance().addImageRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_admin/skin_01/bullet2.gif", successListener, errorListener);
+				
+			}
+		});
+		
+		
 	}
 		
 		

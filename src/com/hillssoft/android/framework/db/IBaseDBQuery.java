@@ -1,4 +1,4 @@
-package com.hillssoft.android.framework.base;
+package com.hillssoft.android.framework.db;
 
 import java.util.HashMap;
 

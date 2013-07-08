@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.hillssoft.android.app.mtom.manager.DatabaseManager;
-import com.hillssoft.android.app.mtom.manager.LoggerManager;
 import com.hillssoft.android.app.mtom.manager.SharedPreferenceManager;
+import com.hillssoft.android.framework.log.Logger;
 import com.hillssoft.android.framework.type.IDisposable;
 
 
@@ -75,7 +75,7 @@ public class AppGlobalApplication extends Application {
 		try {
 			disposeSharedResources();
 		} catch (Exception e) {
-			LoggerManager.e(e);
+			Logger.e(e);
 		}
 		
 		instance = this;
@@ -103,7 +103,7 @@ public class AppGlobalApplication extends Application {
 	}
 	
 	private void initializeAppGlobalApplicationObject(){
-		LoggerManager.i("00001. AppGlobalApplication - initializeApplication Start");
+		Logger.i("00001. AppGlobalApplication - initializeApplication Start");
 		
 		instance = this;
 		
@@ -149,7 +149,7 @@ public class AppGlobalApplication extends Application {
 				try {
 					sharedResource.dispose();
 				} catch (Exception e) {
-					LoggerManager.e("Error - disposeSharedResources()");
+					Logger.e("Error - disposeSharedResources()");
 				}
 			}
 		}

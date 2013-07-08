@@ -1,4 +1,4 @@
-package com.hillssoft.android.app.mtom.manager;
+package com.hillssoft.android.framework.log;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import android.util.Log;
 import com.hillssoft.android.app.mtom.conf.AppConf;
 import com.hillssoft.android.framework.type.LimitedLinkedList;
 
-public class LoggerManager {
+public class Logger {
 
 	public static final String DEFAULT_TAG = AppConf.APP_TAG;
 	public static final int DEV = 0;
@@ -30,7 +30,7 @@ public class LoggerManager {
 
 		@Override
 		public String toString() {
-			return String.format("%s %s %s", DateFormat.format("MM-dd kk:mm:ss", date), LoggerManager.toSimpleStringLogLevel(logLevel), message);
+			return String.format("%s %s %s", DateFormat.format("MM-dd kk:mm:ss", date), Logger.toSimpleStringLogLevel(logLevel), message);
 		}
 	}
 
@@ -74,7 +74,7 @@ public class LoggerManager {
 	
 	public static String getTraceInfo(StackTraceElement[] stacks) {
 		StackTraceElement stack = null;
-		String loggerName = LoggerManager.class.getCanonicalName();
+		String loggerName = Logger.class.getCanonicalName();
 
 		for (int i = 0; i < stacks.length; i++) {
 			if (!stacks[i].getClassName().startsWith(loggerName) && stacks[i].getClassName().startsWith(AppConf.LOGGER_TRACE_PREFIX_PACKAGE_NAME)) {

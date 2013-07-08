@@ -5,25 +5,44 @@
     android:orientation="vertical"
     android:background="@color/bg_color" >
 	
+    <!-- Top Menu GMB -->
+    <include layout="@layout/global_include_top_bar"/>
+    
+    
+    
+    
         
     
     <TextView
-        android:id="@+id/test_msg"
+        android:id="@+id/volley_test_msg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 		android:gravity="center"
         android:text="!!!!! Main Activity !!!!! " />
-
-    <Button
-        android:id="@+id/test_btn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Call Http Json Btn" />
-
+    
+    
     <ImageView
-        android:id="@+id/test_img"
+        android:id="@+id/volley_test_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher" />
+    
+    
+    <Button
+        android:id="@+id/volley_test_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="[ Volley ] Call Http Json Btn" />
+
+    
+    <Button
+        android:id="@+id/uil_test_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="[ UIL ] Call Http Json Btn" />
+
+    
+    
+    
     
 </LinearLayout>

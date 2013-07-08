@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 import com.hillssoft.android.app.mtom.conf.AppConf;
 
-public class HttpConnectionResponseHandler implements ResponseHandler {
+public class __HttpConnectionResponseHandler implements ResponseHandler {
 	
 	
 	private String responseString;

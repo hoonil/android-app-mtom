@@ -29,7 +29,7 @@ import com.android.volley.toolbox.Volley;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.app.mtom.conf.AppConf;
 import com.hillssoft.android.app.mtom.manager.AppManager;
-import com.hillssoft.android.app.mtom.manager.LoggerManager;
+import com.hillssoft.android.framework.log.Logger;
 
 public class BaseHttpRequestManager implements Request.Method {
 
@@ -38,9 +38,9 @@ public class BaseHttpRequestManager implements Request.Method {
 	 */
 	private RequestQueue requestQueue = null;
 	private ImageLoader imageLoader = null;
-
+	private	HttpRequestImageBitmapCache imageBitmapCache = null;
 	
-	public class HttpRequestImageBitmapCache implements ImageLoader.ImageCache{
+	private class HttpRequestImageBitmapCache implements ImageLoader.ImageCache{
 		private int maxCacheSize = 10 * 1024 * 1024;
 		private LruCache<String, Bitmap> lruCache;
 		
@@ -63,9 +63,16 @@ public class BaseHttpRequestManager implements Request.Method {
 		}
 	}
 	
+	
+	
+	
+	
+	
+	
 	public BaseHttpRequestManager() {
 		requestQueue = Volley.newRequestQueue(AppGlobalApplication.getAppGlobalApplicationContext());
-		imageLoader = new ImageLoader(requestQueue, new HttpRequestImageBitmapCache());
+		imageBitmapCache = new HttpRequestImageBitmapCache();
+		imageLoader = new ImageLoader(requestQueue, imageBitmapCache);
 	}
 	
 	
@@ -120,6 +127,9 @@ public class BaseHttpRequestManager implements Request.Method {
 	/*
 	 * [ image request ]
 	 */
+	public void addImageRequest(String url, Response.Listener<Bitmap> listener, Response.ErrorListener errorListener){
+		addImageRequest(url, listener, 0, 0, errorListener);
+	}
 	public void addImageRequest(String url, Response.Listener<Bitmap> listener, int maxWidth, int maxHeight, Response.ErrorListener errorListener){
 		ImageRequest request = new ImageRequest(url, listener, maxWidth, maxHeight, Bitmap.Config.ARGB_8888, errorListener);
 		requestQueue.add(request);
@@ -137,14 +147,29 @@ public class BaseHttpRequestManager implements Request.Method {
 	public void addViewBackgroundImageLoaderRequest(String url ,View view){
 		addViewBackgroundImageLoaderRequest(url, view, null);
 	}
-	public void addViewBackgroundImageLoaderRequest(String url, final View view, Response.ErrorListener errorListener){
+	public void addViewBackgroundImageLoaderRequest(final String url, final View view, Response.ErrorListener errorListener){
 		HttpResponse.Listener<Bitmap> listener = new HttpResponse.Listener<Bitmap>(){
 			@Override
 			public void onResponse(Bitmap response) {
+				if(response == null){
+					return;
+				}
 				BitmapDrawable bmDrawable = new BitmapDrawable(AppGlobalApplication.getAppGlobalApplicationContext().getResources(), response);
 				view.setBackground(bmDrawable);
+				if(imageBitmapCache.getBitmap(url) == null){
+					imageBitmapCache.putBitmap(url, response);
+				}
 			}
 		};
+		
+		/*
+		 * [ Cache Check ]
+		 */
+		if(imageBitmapCache.getBitmap(url) != null){
+			listener.onResponse(imageBitmapCache.getBitmap(url));
+			return;
+		}
+		
 		ImageRequest request = new ImageRequest(url, listener, 0, 0, Bitmap.Config.ARGB_8888, errorListener);
 		requestQueue.add(request);
 		requestQueue.start();
@@ -201,7 +226,7 @@ public class BaseHttpRequestManager implements Request.Method {
 			}
 			return url;
 		}catch(Exception e){
-			LoggerManager.i(e);
+			Logger.i(e);
 			return null;
 		}
 	}

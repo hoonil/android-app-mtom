@@ -7,7 +7,8 @@ import android.util.Log;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.app.mtom.conf.AppConf;
 import com.hillssoft.android.app.mtom.db.AppDBQuery;
-import com.hillssoft.android.framework.base.BaseDB;
+import com.hillssoft.android.framework.db.BaseDB;
+import com.hillssoft.android.framework.log.Logger;
 import com.hillssoft.android.framework.type.IDisposable;
 
 public class DatabaseManager extends BaseDB implements IDisposable  {
@@ -64,7 +65,7 @@ public class DatabaseManager extends BaseDB implements IDisposable  {
 			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST));
 			db.execSQL(AppDBQuery.getQuery(AppDBQuery.QueryKey.CREATE_TABLE_POST_COMMENT));
 		}catch(Exception e){
-			LoggerManager.e(e.toString());
+			Logger.e(e.toString());
 		}
 		
 		

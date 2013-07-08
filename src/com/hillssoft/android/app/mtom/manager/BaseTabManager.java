@@ -2,9 +2,9 @@ package com.hillssoft.android.app.mtom.manager;
 
 import android.os.Bundle;
 
-import com.hillssoft.android.framework.base.BaseTab;
+import com.hillssoft.android.framework.activity.BaseTabActivity;
 
-abstract public class BaseTabManager extends BaseTab {
+abstract public class BaseTabManager extends BaseTabActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -3,10 +3,8 @@ package com.hillssoft.android.app.mtom.manager;
 import java.util.HashMap;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,7 +12,7 @@ import android.widget.Toast;
 
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
-import com.hillssoft.android.framework.base.BaseActivity;
+import com.hillssoft.android.framework.activity.BaseActivity;
 
 public class BaseActivityManager extends BaseActivity {
 	

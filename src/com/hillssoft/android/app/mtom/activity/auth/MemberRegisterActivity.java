@@ -17,12 +17,12 @@ import android.widget.RadioGroup;
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.manager.AppNotificationCenterManager;
 import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
-import com.hillssoft.android.app.mtom.manager.HttpConnectionManager;
-import com.hillssoft.android.app.mtom.manager.HttpConnectionManager.HttpMethod;
-import com.hillssoft.android.app.mtom.manager.LoggerManager;
 import com.hillssoft.android.app.mtom.manager.SharedPreferenceManager;
 import com.hillssoft.android.app.mtom.manager.UserManager;
-import com.hillssoft.android.framework.net.HttpConnectionResponseHandler;
+import com.hillssoft.android.framework.log.Logger;
+import com.hillssoft.android.framework.net.__HttpConnectionManager;
+import com.hillssoft.android.framework.net.__HttpConnectionManager.HttpMethod;
+import com.hillssoft.android.framework.net.__HttpConnectionResponseHandler;
 
 public class MemberRegisterActivity extends BaseActivityManager {
 	
@@ -106,16 +106,16 @@ public class MemberRegisterActivity extends BaseActivityManager {
 				params.put("gender", gender);
 				params.put("uuid", uuid);
 				
-				HttpConnectionManager.getInstance().doRequest(HttpMethod.POST, responseHandler, "http://hoonil.codns.com/app_mtom/index.php", params);
+				__HttpConnectionManager.getInstance().doRequest(HttpMethod.POST, responseHandler, "http://hoonil.codns.com/app_mtom/index.php", params);
 			}
 		});
 		
 	}
 	
 	
-	private HttpConnectionResponseHandler responseHandler = new HttpConnectionResponseHandler(){
+	private __HttpConnectionResponseHandler responseHandler = new __HttpConnectionResponseHandler(){
 		public boolean onComplete(String status, HttpResponse response) throws ClientProtocolException, IOException {
-			LoggerManager.i(getResponseString());
+			Logger.i(getResponseString());
 			try{
 				/*
 				 * [Get response]
@@ -154,7 +154,7 @@ public class MemberRegisterActivity extends BaseActivityManager {
 				AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN);
 			
 			}catch(JSONException e){
-				LoggerManager.e(e.toString());
+				Logger.e(e.toString());
 			}
 			
 			return super.onComplete(status, response);

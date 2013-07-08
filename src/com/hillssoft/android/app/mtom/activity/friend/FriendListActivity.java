@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
-import com.hillssoft.android.app.mtom.manager.LoggerManager;
+import com.hillssoft.android.framework.log.Logger;
 
 public class FriendListActivity extends BaseActivityManager{
 	
@@ -29,7 +29,7 @@ public class FriendListActivity extends BaseActivityManager{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		LoggerManager.i("FriendListActivity - onCreate");
+		Logger.i("FriendListActivity - onCreate");
 	}
 	
 	@Override

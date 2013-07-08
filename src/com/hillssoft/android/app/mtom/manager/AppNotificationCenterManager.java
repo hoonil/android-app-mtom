@@ -8,6 +8,7 @@ import android.os.Message;
 
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.framework.base.BaseAppNotificationCenter;
+import com.hillssoft.android.framework.log.Logger;
 import com.hillssoft.android.framework.type.IDisposable;
 
 public class AppNotificationCenterManager extends BaseAppNotificationCenter implements IDisposable {
@@ -74,7 +75,7 @@ public class AppNotificationCenterManager extends BaseAppNotificationCenter impl
 	}
 	
 	public void notify(String notificationKey) {
-		LoggerManager.i("[ Called NotificationCenter Event ] - " + notificationKey.toString());
+		Logger.i("[ Called NotificationCenter Event ] - " + notificationKey.toString());
 		notify(notificationKey, null);
 	}
 	
@@ -92,7 +93,7 @@ public class AppNotificationCenterManager extends BaseAppNotificationCenter impl
 			try {
 				handler.sendMessage(Message.obtain(handler, NOTIFICATION, data));
 			} catch (Exception e) {
-				LoggerManager.e(e);
+				Logger.e(e);
 			}
 		}	
 

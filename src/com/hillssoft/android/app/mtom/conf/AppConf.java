@@ -3,7 +3,7 @@ package com.hillssoft.android.app.mtom.conf;
 import android.text.format.DateUtils;
 import android.util.Log;
 
-import com.hillssoft.android.app.mtom.manager.LoggerManager;
+import com.hillssoft.android.framework.log.Logger;
 
 
 
@@ -83,7 +83,7 @@ public abstract class AppConf {
 		case PROD:
 			return Log.ERROR;
 		}
-		return LoggerManager.DEV;
+		return Logger.DEV;
 	}
 	
 	private static boolean initDebuggable() {

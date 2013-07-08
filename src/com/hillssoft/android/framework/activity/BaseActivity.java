@@ -1,4 +1,4 @@
-package com.hillssoft.android.framework.base;
+package com.hillssoft.android.framework.activity;
 
 import android.app.Activity;
 

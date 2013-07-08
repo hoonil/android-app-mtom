@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.app.mtom.conf.AppConf;
-import com.hillssoft.android.app.mtom.manager.LoggerManager;
+import com.hillssoft.android.framework.log.Logger;
 
 public class DialogUtil {
 
@@ -47,7 +47,7 @@ public class DialogUtil {
 		try {
 			dialog.show();
 		} catch (Exception e) {
-			LoggerManager.e(e);
+			Logger.e(e);
 		}
 		return dialog;
 	}
@@ -60,7 +60,7 @@ public class DialogUtil {
 				waitingDialog = null;
 			}
 		} catch (Exception e) {
-			LoggerManager.d(e);
+			Logger.d(e);
 		}
 	}
 
@@ -171,7 +171,7 @@ public class DialogUtil {
 		errorAlert.show();
 
 		if (AppConf.LOGGER_IS_DEBUGGABLE) {
-			LoggerManager.w(new Exception(message));
+			Logger.w(new Exception(message));
 		}
 	}
 	

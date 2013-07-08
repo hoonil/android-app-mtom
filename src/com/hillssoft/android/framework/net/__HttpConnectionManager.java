@@ -1,4 +1,4 @@
-package com.hillssoft.android.app.mtom.manager;
+package com.hillssoft.android.framework.net;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -18,17 +18,18 @@ import org.apache.http.params.BasicHttpParams;
 
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.app.mtom.conf.AppConf;
-import com.hillssoft.android.framework.net.HttpConnectionResponseHandler;
+import com.hillssoft.android.app.mtom.manager.AppManager;
+import com.hillssoft.android.framework.log.Logger;
 import com.hillssoft.android.framework.type.IDisposable;
 import com.hillssoft.android.framework.util.DeviceUtil;
 
-public class HttpConnectionManager implements IDisposable {
+public class __HttpConnectionManager implements IDisposable {
 	
 	
 	/*
 	 * [ Define Object ]
 	 */
-	private static HttpConnectionManager instance;
+	private static __HttpConnectionManager instance;
 	//private ArrayList<Runnable> httpQueue = new ArrayList<Runnable>();
 	//private Executor httpQueueExecutor;
 	//private ThreadGroup httpConnectionThreadGroup;
@@ -37,14 +38,14 @@ public class HttpConnectionManager implements IDisposable {
 		GET, POST;
 	}
 	
-	public HttpConnectionManager() {
+	public __HttpConnectionManager() {
 		//httpConnectionThreadGroup = new ThreadGroup("HTTP-CONNECTION-MANAGER-THREAD-GROUP");
 	}
 	
-	public static HttpConnectionManager getInstance(){
+	public static __HttpConnectionManager getInstance(){
 		if(instance == null){
-			synchronized (AppManager.class) {
-				instance = new HttpConnectionManager();
+			synchronized (__HttpConnectionManager.class) {
+				instance = new __HttpConnectionManager();
 				AppGlobalApplication.getAppGlobalApplicationContext().addDisposableResource(instance);
 			}
 		}
@@ -58,7 +59,7 @@ public class HttpConnectionManager implements IDisposable {
 	
 
 	
-	public void doRequest(HttpMethod method, HttpConnectionResponseHandler responseHandler, String url, HashMap<String, String> params){
+	public void doRequest(HttpMethod method, __HttpConnectionResponseHandler responseHandler, String url, HashMap<String, String> params){
 		/*
 		 * [ Check network connection state ]
 		 */
@@ -87,12 +88,12 @@ public class HttpConnectionManager implements IDisposable {
 	
 	
 	private class PostMethodRequestObject extends Thread{
-		private HttpConnectionResponseHandler responseHandler;
+		private __HttpConnectionResponseHandler responseHandler;
 		private String url;
 		HashMap<String, String> params;
 		
 		
-		public PostMethodRequestObject(HttpConnectionResponseHandler rh, String u, HashMap<String, String> p) {
+		public PostMethodRequestObject(__HttpConnectionResponseHandler rh, String u, HashMap<String, String> p) {
 			this.responseHandler = rh;
 			this.url = u;
 			this.params = p;
@@ -154,7 +155,7 @@ public class HttpConnectionManager implements IDisposable {
 					responseHandler.onError(Integer.toString(status), response);
 				}
 			}catch(Exception e){
-				LoggerManager.e("!!!!!!!!!!!!!!!! ---------------------- PostMethodRequestObject Error ---------------------- !!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
+				Logger.e("!!!!!!!!!!!!!!!! ---------------------- PostMethodRequestObject Error ---------------------- !!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
 			}
 		}
 	}
@@ -162,12 +163,12 @@ public class HttpConnectionManager implements IDisposable {
 	
 	
 	private class GetMethodRequestObject extends Thread{
-		private HttpConnectionResponseHandler responseHandler;
+		private __HttpConnectionResponseHandler responseHandler;
 		private String url;
 		HashMap<String, String> params;
 		
 		
-		public GetMethodRequestObject(HttpConnectionResponseHandler rh, String u, HashMap<String, String> p) {
+		public GetMethodRequestObject(__HttpConnectionResponseHandler rh, String u, HashMap<String, String> p) {
 			this.responseHandler = rh;
 			this.url = u;
 			this.params = p;
@@ -195,7 +196,7 @@ public class HttpConnectionManager implements IDisposable {
 						}
 					}
 				}
-				LoggerManager.i(url);
+				Logger.i(url);
 				
 				/*
 				 * [ Create Http Objects ]
@@ -232,7 +233,7 @@ public class HttpConnectionManager implements IDisposable {
 					responseHandler.onError(Integer.toString(status), response);
 				}
 			}catch(Exception e){
-				LoggerManager.e("!!!!!!!!!!!!!!!! ----------------------  GetMethodRequestObject Method Error ---------------------- !!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
+				Logger.e("!!!!!!!!!!!!!!!! ----------------------  GetMethodRequestObject Method Error ---------------------- !!!!!!!!!!!!!!!!" + e.getMessage() + e.toString());
 			}
 		}
 	}
