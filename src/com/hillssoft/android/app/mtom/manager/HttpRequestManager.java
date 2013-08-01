@@ -1,4 +1,6 @@
-package com.hillssoft.android.app.mtom.net;
+package com.hillssoft.android.app.mtom.manager;
+
+import java.util.Map;
 
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.framework.net.BaseHttpRequestManager;
@@ -26,4 +28,10 @@ public class HttpRequestManager extends BaseHttpRequestManager implements IDispo
 	public void dispose() {
 		instance = null;
 	}
+	
+	
+	
+	protected Map<String,String> getHttpRequestHeaders() {
+		return super.getHttpRequestHeaders();
+	};
 }

@@ -14,13 +14,20 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.hillssoft.android.app.mtom.R;
-import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
-import com.hillssoft.android.app.mtom.net.HttpRequestManager;
+import com.hillssoft.android.app.mtom.manager.BaseFragmentActivityManager;
+import com.hillssoft.android.app.mtom.manager.HttpRequestManager;
 import com.hillssoft.android.framework.log.Logger;
 import com.hillssoft.android.framework.net.HttpResponse;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class MainActivity extends BaseActivityManager {
+public class MainActivity extends BaseFragmentActivityManager {
 
+	
+	/*
+	 * [ Slid Menu ]
+	 */
+	private SlidingMenu slidingMenu = null;
+	
 	
 	/**
 	 * [ Define Fragment Variables ]
@@ -45,20 +52,25 @@ public class MainActivity extends BaseActivityManager {
 	private Button volleyTestBtn = null;
 	private TextView volleyTestMsg = null;
 	private ImageView volleyTestImg = null;
-	
-	
-	
 	private Button uilTestBtn = null;
+	
+	
+	
+	
+	
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		initializeView();
+		initializeSlidingMenu();
 		setInitializeViewEventListener();
-		meActivity = self;
+		setTestCode();
 		
 	}
+	
+	
 	
 	
 	
@@ -67,6 +79,42 @@ public class MainActivity extends BaseActivityManager {
 		super.initializeView();
 		setContentView(R.layout.mtom_activity_main_activity);
 		
+		
+		
+		
+		
+	}
+	
+	
+	
+	@Override
+	protected void setInitializeViewEventListener() {
+		// TODO Auto-generated method stub
+		super.setInitializeViewEventListener();
+		
+	}
+	
+	
+	private void initializeSlidingMenu(){
+		slidingMenu = new SlidingMenu(self);
+		slidingMenu.setMode(SlidingMenu.LEFT);
+		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+		slidingMenu.setShadowWidth(20);
+		//slidingMenu.setShadowDrawable(R.drawable.shadow_sliding_menu);
+//		slidingMenu.setBehindOffsetRes(100);
+//		slidingMenu.setFadeDegree(0.35f);
+//		slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
+//		slidingMenu.setMenu(R.layout.left_menu);
+//		getSupportFragmentManager().beginTransaction().replace(R.id.left_menu, new Le).commit();
+	}
+	
+	
+	
+	
+	
+	
+	
+	private void setTestCode(){
 		/*
 		 * [ Set Test Object ]
 		 */
@@ -77,18 +125,15 @@ public class MainActivity extends BaseActivityManager {
 		uilTestBtn = (Button)findViewById(R.id.uil_test_btn);
 		
 		
-		HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
-		HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
+		//HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/test.png", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
+		//HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/test.png", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
 		//HttpRequestManager.getInstance().addViewBackgroundImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_member/skin_01/icon_home.gif", volleyTestBtn);
 		
-	}
-	
-	
-	
-	@Override
-	protected void setInitializeViewEventListener() {
-		// TODO Auto-generated method stub
-		super.setInitializeViewEventListener();
+		
+		//ImageLoaderManager.getInstance().
+		
+		
+		
 		
 		/*
 		 * [ ]
@@ -147,7 +192,7 @@ public class MainActivity extends BaseActivityManager {
 				/*
 				 * [ Image Request ]
 				 */
-				HttpRequestManager.getInstance().addImageLoaderRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_admin/skin_01/bullet2.gif", volleyTestImg, R.drawable.ic_launcher, R.drawable.ic_launcher);
+				HttpRequestManager.getInstance().addViewBackgroundImageLoaderRequest("http://hoonil.codns.com/5mb.png", volleyTestImg, getWindowManager());
 				
 				
 			}
@@ -176,14 +221,16 @@ public class MainActivity extends BaseActivityManager {
 					}
 				};
 				
-				HttpRequestManager.getInstance().addImageRequest("http://hoonil.codns.com/hills_etc/images/korea/hills_admin/skin_01/bullet2.gif", successListener, errorListener);
+				HttpRequestManager.getInstance().addImageRequest("http://hoonil.codns.com/10mb.png", successListener, errorListener);
 				
 			}
 		});
 		
 		
-	}
 		
+		
+		
+	}
 		
 
 

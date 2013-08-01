@@ -9,9 +9,12 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.util.LruCache;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
@@ -31,7 +34,7 @@ import com.hillssoft.android.app.mtom.conf.AppConf;
 import com.hillssoft.android.app.mtom.manager.AppManager;
 import com.hillssoft.android.framework.log.Logger;
 
-public class BaseHttpRequestManager implements Request.Method {
+public abstract class BaseHttpRequestManager implements Request.Method {
 
 	/*
 	 * [　Define Variables ]
@@ -136,6 +139,9 @@ public class BaseHttpRequestManager implements Request.Method {
 		requestQueue.start();
 	}
 	public void addImageLoaderRequest(String url, ImageView view, int defaultImageResId, int errorImageResId){
+		addImageLoaderRequest(url, view, defaultImageResId, errorImageResId, 0, 0);
+	}
+	public void addImageLoaderRequest(String url, ImageView view, int defaultImageResId, int errorImageResId, int viewWidth, int viewHeight){
 		ImageListener listener = ImageLoader.getImageListener(view, defaultImageResId, errorImageResId);
 		imageLoader.get(url, listener);
 	}
@@ -144,10 +150,24 @@ public class BaseHttpRequestManager implements Request.Method {
 	/*
 	 * [ View Background Image ]
 	 */
-	public void addViewBackgroundImageLoaderRequest(String url ,View view){
-		addViewBackgroundImageLoaderRequest(url, view, null);
+	public void addViewBackgroundImageLoaderRequest(String url ,View view, WindowManager windowManager){
+		addViewBackgroundImageLoaderRequest(url ,view, windowManager, (Response.ErrorListener)null);
 	}
-	public void addViewBackgroundImageLoaderRequest(final String url, final View view, Response.ErrorListener errorListener){
+	public void addViewBackgroundImageLoaderRequest(String url ,View view, WindowManager windowManager, Response.ErrorListener errorListener){
+		Display display = windowManager.getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int width = size.x;
+		int height = size.y;
+		addViewBackgroundImageLoaderRequest(url, view, width, height, errorListener);
+	}
+	public void addViewBackgroundImageLoaderRequest(String url ,View view){
+		addViewBackgroundImageLoaderRequest(url, view, (Response.ErrorListener)null);
+	}
+	public void addViewBackgroundImageLoaderRequest(String url, View view, Response.ErrorListener errorListener){
+		addViewBackgroundImageLoaderRequest(url, view, 0, 0, errorListener);
+	}
+	public void addViewBackgroundImageLoaderRequest(final String url, final View view, int viewWidth, int viewHeight, Response.ErrorListener errorListener){
 		HttpResponse.Listener<Bitmap> listener = new HttpResponse.Listener<Bitmap>(){
 			@Override
 			public void onResponse(Bitmap response) {

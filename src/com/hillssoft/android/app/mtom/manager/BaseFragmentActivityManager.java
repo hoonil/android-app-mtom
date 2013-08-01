@@ -3,14 +3,12 @@ package com.hillssoft.android.app.mtom.manager;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
-import com.hillssoft.android.framework.activity.BaseActivity;
+import com.hillssoft.android.framework.activity.BaseFragmentActivity;
 
-public class BaseActivityManager extends BaseActivity {
+public class BaseFragmentActivityManager extends BaseFragmentActivity {
 	
 	/*
 	 * [ Define Default Object ]
@@ -62,7 +60,7 @@ public class BaseActivityManager extends BaseActivity {
 	
 //	@Override
 //	public boolean onCreateOptionsMenu(Menu menu) {
-//		MenuInflater inflater = getMenuInflater();
+//		MenuInflater inflater = (MenuInflater)getMenuInflater();
 //		inflater.inflate(R.menu.base_activity_actionbar, menu);
 //		return super.onCreateOptionsMenu(menu);
 //		
@@ -125,12 +123,6 @@ public class BaseActivityManager extends BaseActivity {
 	}
 
 
-	
-	protected void openErrorMessage(int resMsgId){
-		Toast t = Toast.makeText(self, resMsgId, Toast.LENGTH_SHORT);
-		t.setGravity(Gravity.CENTER, 0, 0);
-		t.show();
-	}
 
 	
 	

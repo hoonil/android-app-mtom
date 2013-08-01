@@ -1,11 +1,13 @@
-package com.hillssoft.android.framework.imageloader;
+package com.hillssoft.android.framework.image;
 
 import android.graphics.Bitmap;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.v4.util.LruCache;
 import android.util.Base64;
+import android.widget.ImageView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
@@ -54,9 +56,42 @@ public class BaseImageLoaderManager {
 	
 	
 	
+	public void loadImage(String url, ImageView v){
+		loadImage(url, v, null);
+	}
+	
+	public void loadImage(String url, ImageView v, Handler handler){
+		
+		if(imageBitmapCache.getBitmap(url) != null){
+			v.setImageBitmap(imageBitmapCache.getBitmap(url));
+		}
+	
+		
+		
+	}
 	
 	
 	
+	private Bitmap getBitmap(String url){
+		Bitmap bm = null;
+		if(imageBitmapCache.getBitmap(url) != null){
+			bm = imageBitmapCache.getBitmap(url);
+		}
+		
+		
+		return bm;
+	}
+	
+	
+	
+	
+	
+	
+//	public void loadBackgroundImage(String imgSrcUrl, View v){
+//		if(imageBitmapCache.getBitmap(imgSrcUrl) != null){
+//			v.setImageBitmap(imageBitmapCache.getBitmap(imgSrcUrl));
+//		}
+//	}
 	
 	
 	

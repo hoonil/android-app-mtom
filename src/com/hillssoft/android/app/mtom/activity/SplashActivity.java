@@ -16,9 +16,19 @@ public class SplashActivity extends BaseActivityManager {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		//VMRuntime.getRuntime().setTargetHeapUtilization(0.85f);
+		//VMRuntime.getRuntime().setTargetHeapUtilization(0.7f);
+		//dalvik.system.VMRuntime.getRuntime().setTargetHeapUtilization(0.7f);
+		
 		super.onCreate(savedInstanceState);
 		bindAppNotificationCenterEvent();
 		initializeApplication();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		System.gc();
 	}
 	
 	

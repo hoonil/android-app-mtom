@@ -1,8 +1,9 @@
 package com.hillssoft.android.framework.util;
 
-import org.apache.commons.lang3.StringUtils;
 
-public class StringUtil extends StringUtils {
+
+public class StringUtil{
+
 	public static boolean isEmpty(String str) {
 		return (str == null || str.trim().length() == 0 || "null".equalsIgnoreCase(str));
 	}
@@ -16,4 +17,5 @@ public class StringUtil extends StringUtils {
 	public static boolean isNull(String str) {
 		return (str == null || str.length() == 0);
 	}
+	
 }

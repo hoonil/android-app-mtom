@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="9" />
+        android:targetSdkVersion="17" />
 
 
     
@@ -81,8 +81,7 @@
             android:label="@string/mtom_mtom_tab_activity_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"  >
+            android:configChanges="orientation|keyboardHidden" >
         </activity>
         
         
@@ -101,8 +100,7 @@
             android:label="@string/mtom_auth_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:configChanges="orientation|keyboardHidden" >
         </activity>
         <activity
             android:name=".activity.chat.ChatRoomListActivity"
