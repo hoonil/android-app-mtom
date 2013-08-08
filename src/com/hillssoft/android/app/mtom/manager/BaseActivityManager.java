@@ -1,12 +1,17 @@
 package com.hillssoft.android.app.mtom.manager;
 
-import android.app.Activity;
+
+
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
-import android.view.Window;
 import android.widget.Toast;
 
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.application.AppGlobalApplication;
 import com.hillssoft.android.framework.activity.BaseActivity;
 
@@ -15,7 +20,7 @@ public class BaseActivityManager extends BaseActivity {
 	/*
 	 * [ Define Default Object ]
 	 */
-	protected Activity 	self = null;
+	protected ActionBarActivity 	self = null;
 	protected AppManager appManager = null;
 	protected UserManager userManager = null;
 	protected AppGlobalApplication appGlobalApplication = null;
@@ -26,7 +31,7 @@ public class BaseActivityManager extends BaseActivity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
 		self = this;
 		
@@ -34,6 +39,11 @@ public class BaseActivityManager extends BaseActivity {
 		 * [ Common Object ]
 		 */
 		initializeBaseActivityManagerObject();
+		
+		/**
+		 * [ Set ActionBar ]
+		 */
+		initializeActionBar();
 		
 		/**
 		 * [ View ]
@@ -95,8 +105,17 @@ public class BaseActivityManager extends BaseActivity {
 		
 	}
 	
+	protected void initializeActionBar(){
+		self.getSupportActionBar().setDisplayOptions(	ActionBar.DISPLAY_HOME_AS_UP | 
+														ActionBar.DISPLAY_SHOW_HOME | 
+														ActionBar.DISPLAY_USE_LOGO | 
+														ActionBar.DISPLAY_SHOW_TITLE | 
+														ActionBar.DISPLAY_SHOW_CUSTOM);
+		self.getSupportActionBar().setCustomView(R.layout.global_action_bar_custom_view);
+	}
+	
 	protected void initializeView(){
-		//ActionBar actionBar = getActionBar();
+		
 	}
 	
 	protected void initializeView(int layoutResID){

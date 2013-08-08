@@ -31,6 +31,12 @@ public class SplashActivity extends BaseActivityManager {
 		System.gc();
 	}
 	
+	@Override
+	protected void initializeActionBar() {
+		super.initializeActionBar();
+		self.getSupportActionBar().hide();
+	}
+	
 	
 	
 	@Override

@@ -3,9 +3,12 @@ package com.hillssoft.android.app.mtom.activity;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,19 +17,20 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.hillssoft.android.app.mtom.R;
-import com.hillssoft.android.app.mtom.manager.BaseFragmentActivityManager;
+import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
 import com.hillssoft.android.app.mtom.manager.HttpRequestManager;
 import com.hillssoft.android.framework.log.Logger;
 import com.hillssoft.android.framework.net.HttpResponse;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class MainActivity extends BaseFragmentActivityManager {
+public class MainActivity extends BaseActivityManager {
 
 	
 	/*
 	 * [ Slid Menu ]
 	 */
 	private SlidingMenu slidingMenu = null;
+	
 	
 	
 	/**
@@ -36,23 +40,14 @@ public class MainActivity extends BaseFragmentActivityManager {
 //	Fragment lefMenuFragment = new LeftMenuFragment();
 //	Fragment rightMenuFragment = new RightMenuFragment();
 		
-	public static Activity meActivity = null;
 	
 	
 	
 	/**
 	 * [ Widget ]
 	 */
-	boolean isMenuOpen = false;
 	
 	
-	/*
-	 * [ Test Object ]
-	 */
-	private Button volleyTestBtn = null;
-	private TextView volleyTestMsg = null;
-	private ImageView volleyTestImg = null;
-	private Button uilTestBtn = null;
 	
 	
 	
@@ -63,25 +58,35 @@ public class MainActivity extends BaseFragmentActivityManager {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		initializeMainTabMenu();
 		initializeView();
 		initializeSlidingMenu();
 		setInitializeViewEventListener();
+		
+		
+		
+		
 		setTestCode();
 		
 	}
 	
 	
+	@Override
+	protected void initializeActionBar() {
+		super.initializeActionBar();
+		self.getSupportActionBar().setTitle("Main Activity Title");
+	}
 	
+	
+	private void initializeMainTabMenu(){
+		//self.getSupportActionBar().addTab("aaa")
+	}
 	
 	
 	@Override
 	protected void initializeView() {
 		super.initializeView();
 		setContentView(R.layout.mtom_activity_main_activity);
-		
-		
-		
-		
 		
 	}
 	
@@ -96,10 +101,11 @@ public class MainActivity extends BaseFragmentActivityManager {
 	
 	
 	private void initializeSlidingMenu(){
-		slidingMenu = new SlidingMenu(self);
-		slidingMenu.setMode(SlidingMenu.LEFT);
-		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
-		slidingMenu.setShadowWidth(20);
+//		slidingMenu = new SlidingMenu(self);
+//		slidingMenu.setMode(SlidingMenu.LEFT);
+//		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+//		slidingMenu.setShadowWidth(20);
+		
 		//slidingMenu.setShadowDrawable(R.drawable.shadow_sliding_menu);
 //		slidingMenu.setBehindOffsetRes(100);
 //		slidingMenu.setFadeDegree(0.35f);
@@ -112,7 +118,39 @@ public class MainActivity extends BaseFragmentActivityManager {
 	
 	
 	
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //MenuItem item = menu.add("HELP").setIcon(android.R.drawable.ic_menu_help);
+        //MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        
+        
+        getMenuInflater().inflate(R.menu.global_default_menu, menu);
+        return true;
+    }
 	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		Logger.d(item.getTitle().toString());
+		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	
+	
+	
+	
+	/******************************************************************************************
+	 *****		[ Test Code ] 
+	 ******************************************************************************************/
+	
+	/*
+	 * [ Test Object ]
+	 */
+	private Button volleyTestBtn = null;
+	private TextView volleyTestMsg = null;
+	private ImageView volleyTestImg = null;
+	private Button uilTestBtn = null;
 	
 	private void setTestCode(){
 		/*

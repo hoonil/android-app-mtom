@@ -1,8 +1,8 @@
 package com.hillssoft.android.framework.activity;
 
-import android.app.Activity;
+import android.support.v7.app.ActionBarActivity;
 
-abstract public class BaseActivity extends Activity implements IBaseActivity{
+abstract public class BaseActivity extends ActionBarActivity implements IBaseActivity{
 	
 	
 
