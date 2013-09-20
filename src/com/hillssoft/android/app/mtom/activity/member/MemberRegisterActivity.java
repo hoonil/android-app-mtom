@@ -1,4 +1,4 @@
-package com.hillssoft.android.app.mtom.activity.auth;
+package com.hillssoft.android.app.mtom.activity.member;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -39,10 +40,20 @@ public class MemberRegisterActivity extends BaseActivityManager {
 	}
 	
 	
+	protected void initializeActionBar(){
+		super.initializeActionBar();
+		self.getSupportActionBar().setDisplayOptions(	//ActionBar.DISPLAY_HOME_AS_UP | 
+														//ActionBar.DISPLAY_SHOW_HOME | 
+														//ActionBar.DISPLAY_USE_LOGO | 
+														ActionBar.DISPLAY_SHOW_TITLE | 
+														ActionBar.DISPLAY_SHOW_CUSTOM);
+	}
+	
+	
 	@Override
 	protected void initializeView() {
 		super.initializeView();
-		setContentView(R.layout.mtom_auth_member_register_activity);
+		setContentView(R.layout.mtom_activity_member_member_register_activity);
 		
 		
 		/*

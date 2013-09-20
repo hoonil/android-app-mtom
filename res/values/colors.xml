@@ -6,7 +6,7 @@
 	<color name="black">#000000</color>
 
     <!-- KAKAO STORY COLORS -->
-    <color name="bg_color">#fff7f7f0</color>
+    <color name="bg_color">#ffffff</color>
     <color name="bg_color_pressed">#eaeae1</color>
     <color name="bg_round_pressed">#195f5f16</color>
     <color name="profile_pressed">#405f5f16</color>

@@ -18,18 +18,18 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     
-    
-    
-    
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     
     
-    
-    
-    
-    
-    
-    
+    <!-- GCM Permission -->
+    <uses-permission android:name="com.hillssoft.android.app.mtom.permission.C2D_MESSAGE" /> 
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <permission android:name="com.hillssoft.android.app.mtom.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	
     
     
     
@@ -41,10 +41,29 @@
     <application
         android:name=".application.AppGlobalApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_action_user"
         android:label="@string/app_name"
-        android:theme="@style/Theme.AppCompat"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         android:debuggable="true" >
+        
+        
+        
+        
+        
+        <!-- GCM Service & Receiver -->
+        <service android:name=".gcm.GCMIntentService" />
+        
+        <receiver
+			android:name=".gcm.GCMReceiver"
+			android:permission="com.google.android.c2dm.permission.SEND" >
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="com.hillssoft.android.app.mtom" />
+			</intent-filter>
+		</receiver>
+        
+        
         
         
         <!-- Clash Report Activity -->
@@ -74,32 +93,61 @@
             </intent-filter>
         </activity>
         
-        <!-- Tab Activity -->
+        <!-- Main Activity -->
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/mtom_mtom_tab_activity_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden" >
+            android:configChanges="orientation|keyboardHidden"
+            android:uiOptions="splitActionBarWhenNarrow" >
         </activity>
         
         
+        <!-- Post Activity -->
+        <activity
+            android:name=".activity.post.PostRegisterActivity"
+            android:label="@string/mtom_mtom_tab_activity_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:uiOptions="splitActionBarWhenNarrow" >
+        </activity>
+        <activity
+            android:name=".activity.post.PostViewActivity"
+            android:label="@string/mtom_mtom_tab_activity_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:uiOptions="splitActionBarWhenNarrow" >
+        </activity>
         
         
-        
-        
-        
+        <!-- Notice Activity -->
+        <activity
+            android:name=".activity.etc.NoticeActivity"
+            android:label="@string/mtom_mtom_tab_activity_title"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"
+            android:uiOptions="splitActionBarWhenNarrow" >
+        </activity>
         
         
         
         
         <!-- MtoM - Chat Activity -->
 		<activity
-            android:name=".activity.auth.MemberRegisterActivity"
-            android:label="@string/mtom_auth_title"
+            android:name=".activity.member.MemberRegisterActivity"
+            android:label="@string/mtom_member_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden" >
+            <intent-filter>
+            	<action android:name="android.intent.action.SEND" />
+            	<category android:name="android.intent.category.DEFAULT" />
+            	<data android:mimeType="text/plain" />
+            </intent-filter>   
         </activity>
         <activity
             android:name=".activity.chat.ChatRoomListActivity"

@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white" >
+
+    
+    <!-- Top Menu GMB -->
+	<!-- 
+	<include layout="@layout/main_function_button"/>
+	-->
+	
+	
+	
+    <TextView
+        android:id="@+id/txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Main Fragment " />
+    
+    
+    
+    
+    
+    
+    
+    
+	
+	
+    <ScrollView
+	android:id="@+id/scrollView1"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:scrollbars="horizontal|vertical" >
+
+    <LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical" >
+            
+        
+    
+	    <TextView
+	        android:id="@+id/volley_test_msg"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+			android:gravity="center"
+	        android:text="!!!!! Main Activity !!!!! " />
+	    
+	    
+	    <ImageView
+	        android:id="@+id/volley_test_img"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_launcher"
+	        android:scaleType="matrix" />
+	    
+	    
+	    <Button
+	        android:id="@+id/volley_test_btn"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="[ Volley ] Call Http Json Btn" />
+	
+	    
+	    <Button
+	        android:id="@+id/uil_test_btn"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="[ UIL ] Call Http Json Btn" />
+
+		
+	    <Button
+	        android:id="@+id/sound_play_btn"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="[ Sound ] Play Btn" />
+	    
+	    
+    	<Button
+	        android:id="@+id/sound_stop_btn"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:text="[ Sound ] Stop Btn" />
+	    
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

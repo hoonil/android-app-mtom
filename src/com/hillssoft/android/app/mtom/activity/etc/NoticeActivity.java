@@ -1,20 +1,22 @@
-package com.hillssoft.android.app.mtom.activity.post;
+package com.hillssoft.android.app.mtom.activity.etc;
 
 import android.os.Bundle;
 
+import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
 
-public class PostRegister extends BaseActivityManager {
+public class NoticeActivity extends BaseActivityManager {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
 	}
 	
 	@Override
 	protected void initializeView() {
-		// TODO Auto-generated method stub
 		super.initializeView();
+		setContentView(R.layout.comm_full_web_view_layout);
 	}
 	
 	
@@ -23,6 +25,7 @@ public class PostRegister extends BaseActivityManager {
 		// TODO Auto-generated method stub
 		super.setInitializeViewEventListener();
 	}
+	
 	
 	
 	

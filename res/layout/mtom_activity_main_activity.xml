@@ -1,63 +1,76 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_drawer_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@color/bg_color">
+    android:background="@color/white">
+
+    
 
     
     
-    	
-    <!-- Top Menu GMB -->
-	<include layout="@layout/global_include_top_bar"/>
-	
-	
-	
-    <ScrollView
-	android:id="@+id/scrollView1"
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:scrollbars="horizontal|vertical" >
-
     <LinearLayout
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical" >
-            
-        
+    android:id="@+id/left_draw"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white" />
     
-	    <TextView
-	        android:id="@+id/volley_test_msg"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-			android:gravity="center"
-	        android:text="!!!!! Main Activity !!!!! " />
-	    
-	    
-	    <ImageView
-	        android:id="@+id/volley_test_img"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/ic_launcher"
-	        android:scaleType="matrix" />
-	    
-	    
-	    <Button
-	        android:id="@+id/volley_test_btn"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:text="[ Volley ] Call Http Json Btn" />
-	
-	    
-	    <Button
-	        android:id="@+id/uil_test_btn"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:text="[ UIL ] Call Http Json Btn" />
-
-	
     
+    
+    
+    <!-- navigation drawer - Left Menu -->
+	<LinearLayout
+	android:id="@+id/main_left_drawer_menu_layout"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:layout_gravity="left"
+	android:background="@color/blue" >
+ 
+		<include layout="@layout/global_action_bar_left_slide_menu"/>
+		
     </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+
+	
+	
+	
+    <!-- navigation drawer - Right Menu -->
+ 
+	<LinearLayout
+	android:id="@+id/main_right_drawer_menu_layout"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_gravity="right"
+	android:background="@color/brown" >
+ 		
+	    
+	    <include layout="@layout/global_action_bar_right_slide_menu"/>
+
+		
+    </LinearLayout>
+    
+	
+	
+	
+	
+	
+   
+	<LinearLayout
+    android:id="@+id/main_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+		
+		
+	    <include layout="@layout/mtom_activity_main_activity_main_layout"/>
+	    
+	    
+	</LinearLayout>
+	
+	
+    
+    
+</android.support.v4.widget.DrawerLayout>

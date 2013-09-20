@@ -5,9 +5,13 @@ import java.util.LinkedList;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.google.android.gcm.GCMRegistrar;
+import com.hillssoft.android.app.mtom.conf.AppConf;
+import com.hillssoft.android.app.mtom.gcm.GCMIntentService;
 import com.hillssoft.android.app.mtom.manager.DatabaseManager;
 import com.hillssoft.android.app.mtom.manager.SharedPreferenceManager;
 import com.hillssoft.android.framework.log.Logger;
@@ -63,6 +67,7 @@ public class AppGlobalApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		
 		/*
 		 * [ Clash Log Start ]
 		 */
@@ -81,8 +86,15 @@ public class AppGlobalApplication extends Application {
 		instance = this;
 		initializeAppGlobalApplicationObject();
 		initializeApplicationDefaultCacheData();
-
 		
+		
+		/*
+		 * [ Set GCM ]
+		 */
+		initializeGCMService();
+		
+		
+
 		
 		
 	}
@@ -96,6 +108,21 @@ public class AppGlobalApplication extends Application {
 		
 	}
 	
+	
+	private void initializeGCMService(){
+		/*
+		 * [ Set GCM ]
+		 */
+//		GCMRegistrar.unregister(this);
+		GCMRegistrar.checkDevice(this);
+		GCMRegistrar.checkManifest(this);
+		String gcmRegisterId = GCMRegistrar.getRegistrationId(this);
+		if(("").equals(gcmRegisterId)){
+			GCMRegistrar.register(this, AppConf.APP_GCM_SENDER_ID);
+		}else{
+			Logger.d("GCM Register OK - " + gcmRegisterId);
+		}
+	}
 	
 	
 	public final static AppGlobalApplication getAppGlobalApplicationContext() {

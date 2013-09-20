@@ -2,8 +2,8 @@
 <resources>
 
     
-    <string name="app_title">Mento &amp; Mentee</string>
-    <string name="app_name">Mento &amp; Mentee</string>
+    <string name="app_title">App</string>
+    <string name="app_name">App</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     
@@ -14,8 +14,9 @@
     <string name="sample_sample_tab_activity_title">Sample</string>
     <string name="mtom_mtom_tab_activity_title">MtoM</string>
     
-    
-    
+    <!-- Main Drawer Menu -->
+    <string name="main_left_drawer_menu_open">Left Open</string>
+    <string name="main_left_drawer_menu_close">Left Close</string>
     
     
     
@@ -103,7 +104,7 @@
     
     <string name="mtom_auth_member_register_nickname_comment">닉네임을 입력해 주세요.</string>
     
-    <string name="mtom_auth_member_register_sex_comment">성벽을 선택해 주세요.</string>
+    <string name="mtom_auth_member_register_sex_comment">성별을 선택해 주십시요.</string>
     
     <string name="mtom_auth_member_register_filed_title_sex_male">남성</string>
     <string name="mtom_auth_member_register_filed_title_sex_female">여성</string>
@@ -175,8 +176,8 @@
     
     
     
-    <!-- Service : MtoM : MyRoom -->
-    <string name="mtom_auth_title">Auth</string>
+    <!-- Service : MtoM : Member -->
+    <string name="mtom_member_title">회원가입</string>
     
     
     <!-- Service : MtoM : MyRoom -->

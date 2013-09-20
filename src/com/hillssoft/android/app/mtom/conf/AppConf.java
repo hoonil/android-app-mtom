@@ -21,6 +21,12 @@ public abstract class AppConf {
 	}
 	public static final AppEnv APP_ENV = AppEnv.DEV;
 	
+	/*
+	 * [ GCM ]
+	 */
+	public static final String APP_GCM_SENDER_ID = "611756839686";
+	public static final String APP_GCM_API_KEY = "AIzaSyDlj-GwAlM7cUjiANkNiZL3BsbaWhvpO3E";
+	
 	
 	/*
 	 * [ URL ]
@@ -50,7 +56,7 @@ public abstract class AppConf {
 	/*
 	 * [ Debug ]
 	 */
-	public static final String 	LOGGER_TRACE_PREFIX_PACKAGE_NAME 	= "com.hillssoft.android";
+	public static final String 	LOGGER_TRACE_PREFIX_PACKAGE_NAME 	= "com.hillssoft.android.app.mtom";
 	public static final int 	LOGGER_LOG_LEVEL 					= initLoggerLevel();
 	public static final int 	LOGGER_LOG_MEMORY_LEVEL 			= initMemoryLoggerLevel();
 	public static final int 	LOGGER_LOG_MEMORY_SIZE 				= initMemoryLoggerSize();

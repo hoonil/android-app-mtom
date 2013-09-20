@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import com.google.android.gcm.GCMRegistrar;
 import com.hillssoft.android.app.mtom.R;
 import com.hillssoft.android.app.mtom.manager.AppNotificationCenterManager;
 import com.hillssoft.android.app.mtom.manager.BaseActivityManager;
@@ -21,8 +22,10 @@ public class SplashActivity extends BaseActivityManager {
 		//dalvik.system.VMRuntime.getRuntime().setTargetHeapUtilization(0.7f);
 		
 		super.onCreate(savedInstanceState);
+		overridePendingTransition(0, 0);
 		bindAppNotificationCenterEvent();
 		initializeApplication();
+		
 	}
 	
 	@Override
@@ -85,8 +88,8 @@ public class SplashActivity extends BaseActivityManager {
 		if(defaultAppSharedPreference.getBoolean(SharedPreferenceManager.KEY_IS_INITIALIZE_APPLICATION_COMPLETED, false)){
 			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN);
 		}else{
-			//AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_MEMBER_REGISTER);
-			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN);
+			AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_MEMBER_REGISTER);
+			//AppNotificationCenterManager.getInstance().notify(AppNotificationCenterManager.ACTIVITY_SPLASH_NOTIFICATION_EVENT_REDIRECT_MAIN);
 		}
 	}
 	

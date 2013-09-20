@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string-array name="location">
-	    
-	    <item>1</item>
-	    <item>2</item>
-	    <item>3</item>
-	    <item>4</item>
-	    <item>5</item>
-	    
+    
+	<string-array name="main_activity_action_bar_navigation_list">
+	    <item>News Feed</item>
+	    <item>My List</item>
 	</string-array>
-	    
+	
+	
+
 </resources>
